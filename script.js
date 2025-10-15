@@ -22,23 +22,39 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Xử lý cuộn mượt khi nhấn vào menu
     const navLinks = document.querySelectorAll('.nav-menu a');
-
     navLinks.forEach(link => {
         link.addEventListener('click', function(e) {
             const href = this.getAttribute('href');
-            
-            // Chỉ xử lý cho các link trỏ đến section (bắt đầu bằng #)
             if (href.startsWith('#')) {
                 e.preventDefault();
                 const targetId = href.substring(1);
                 const targetElement = document.getElementById(targetId);
-
                 if (targetElement) {
                     targetElement.scrollIntoView({
                         behavior: 'smooth',
                         block: 'start'
                     });
                 }
+            }
+        });
+    });
+
+    // =======================================================
+    // --- MÃ MỚI: XỬ LÝ MENU TRÊN DI ĐỘNG ---
+    // =======================================================
+    const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
+    const navMenu = document.querySelector('.nav-menu');
+
+    // Khi nhấn nút hamburger
+    mobileNavToggle.addEventListener('click', () => {
+        navMenu.classList.toggle('active');
+    });
+
+    // Tự động đóng menu khi nhấn vào một mục
+    navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            if (navMenu.classList.contains('active')) {
+                navMenu.classList.remove('active');
             }
         });
     });

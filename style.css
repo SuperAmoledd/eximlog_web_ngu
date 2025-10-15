@@ -11,7 +11,7 @@
 }
 
 html {
-    scroll-behavior: smooth; /* Hỗ trợ cuộn mượt bằng CSS */
+    scroll-behavior: smooth;
 }
 
 body {
@@ -59,12 +59,14 @@ body {
     z-index: 1000;
 }
 .brand-logo img {
-    height: 60px; /* Điều chỉnh chiều cao logo cho cân đối hơn */
+    height: 60px;
 }
 .nav-menu {
     display: flex;
     list-style: none;
     gap: 35px;
+    margin: 0;
+    padding: 0;
 }
 .nav-menu a {
     text-decoration: none;
@@ -98,6 +100,10 @@ body {
 .quote-button:hover {
     background-color: var(--primary-blue);
     transform: translateY(-2px);
+}
+
+.mobile-nav-toggle {
+    display: none; /* Ẩn nút hamburger trên desktop */
 }
 
 /* --- HERO SECTION --- */
@@ -349,4 +355,115 @@ body {
     color: #e0f2f1;
     text-align: center;
     padding: 25px 0;
+}
+
+/* ================================================================
+--- RESPONSIVE (DÀNH CHO ĐIỆN THOẠI VÀ MÁY TÍNH BẢNG) ---
+================================================================
+*/
+
+/* Áp dụng cho màn hình nhỏ hơn 992px */
+@media (max-width: 992px) {
+    .hero-grid, .about-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        text-align: center;
+    }
+
+    .hero-image-column {
+        order: -1;
+    }
+    
+    .feature-item {
+        justify-content: center;
+        text-align: left;
+    }
+
+    .main-headline {
+        font-size: 36px;
+    }
+
+    .services-grid, .contact-info-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .mobile-nav-toggle {
+        display: block;
+        background: none;
+        border: none;
+        font-size: 28px;
+        color: var(--primary-blue);
+        cursor: pointer;
+        z-index: 1001;
+    }
+
+    .nav-menu {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 80%;
+        max-width: 320px;
+        height: 100vh;
+        background-color: var(--white-color);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 40px;
+        transition: right 0.4s ease-in-out;
+        box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+    }
+
+    .nav-menu.active {
+        right: 0;
+    }
+
+    .nav-menu a {
+        font-size: 18px;
+    }
+    
+    .quote-button {
+        display: none;
+    }
+}
+
+/* Áp dụng cho màn hình nhỏ hơn 576px */
+@media (max-width: 576px) {
+    .content-section {
+        padding: 60px 0;
+    }
+    
+    .main-headline {
+        font-size: 32px;
+    }
+
+    .section-title {
+        font-size: 28px;
+    }
+
+    .service-card {
+        padding: 30px;
+    }
+
+    .top-header .contact-details {
+        font-size: 12px;
+    }
+    .top-header .contact-details span:first-child {
+        display: none; /* Ẩn bớt email trên màn hình quá nhỏ */
+    }
+
+    .floating-contact-buttons {
+        bottom: 20px;
+        right: 20px;
+    }
+
+    .fab-icon {
+        width: 50px;
+        height: 50px;
+        font-size: 20px;
+    }
+
+    .fab-icon.zalo {
+        width: 55px;
+        height: 55px;
+    }
 }
