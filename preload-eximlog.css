@@ -1,0 +1,171 @@
+/* Import font giống file gốc */
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&display=swap");
+
+/* Lớp .preload-eximlog chính, che phủ toàn màn hình */
+.preload-eximlog {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    /* Nền trắng (ffff) như file gốc của bạn */
+    background-color: #ffff; 
+    
+    font-family: "Montserrat", sans-serif;
+    position: fixed;
+    z-index: 99999;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+}
+
+.preload-eximlog .loading-container {
+    width: 100%;
+    max-width: 1240px;
+    text-align: center;
+    
+    /* Màu chữ chính (EXIM) được lấy từ màu cam/vàng */
+    color: #ff9100; 
+    
+    position: relative;
+    margin: 0 32px;
+}
+
+/* Hiệu ứng gạch chân chạy */
+.preload-eximlog .loading-container:before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 3px;
+    
+    /* Gạch chân màu cam/vàng */
+    background-color: #ff9100; 
+    
+    bottom: 0;
+    left: 0;
+    border-radius: 10px;
+    
+    /* Tốc độ gạch chân chạy chậm lại (3.5s) */
+    animation: movingLine 3.5s infinite ease-in-out; 
+}
+
+.preload-eximlog .loading-text {
+    font-size: 5vw; 
+    line-height: 64px;
+    letter-spacing: 10px;
+    margin-bottom: 10px; /* Giảm margin để chừa chỗ cho slogan */
+    display: flex;
+    justify-content: space-evenly;
+    font-weight: 700; /* Đổi thành 700 để đậm hơn */
+}
+
+/* Hiệu ứng cho TỪNG CHỮ CÁI */
+.preload-eximlog .loading-text span {
+    /* Tốc độ chữ chạy chậm lại (3.5s) */
+    animation: moveLetters 3.5s infinite ease-in-out; 
+    
+    transform: translatex(0);
+    position: relative;
+    display: inline-block;
+    opacity: 0;
+    text-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1); /* Giảm shadow 1 chút */
+}
+
+/* === THÊM MỚI: ĐỔI MÀU "LOG" SANG ĐEN === */
+.preload-eximlog .loading-text span.log-part {
+    color: #000000; /* Màu đen tuyền cho LOG */
+    text-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* === THÊM MỚI: CSS CHO SLOGAN === */
+.preload-eximlog .slogan-text {
+    font-size: 1.8vw; /* Kích thước slogan */
+    color: #000000; /* Màu đen */
+    font-weight: 700; /* In đậm giống logo */
+    letter-spacing: 1px;
+    margin-bottom: 22px; /* Đẩy gạch chân xuống (10 + 22 = 32) */
+    
+    /* Animation: Ẩn ban đầu */
+    opacity: 0; 
+    /* Dùng animation "sloganFadeIn" (định nghĩa bên dưới) */
+    animation: sloganFadeIn 3.5s infinite ease-in-out;
+}
+
+/* Độ trễ cho 7 chữ cái E-X-I-M-L-O-G (Giữ nguyên) */
+.preload-eximlog .loading-text span:nth-child(1) { animation-delay: 0.1s; } /* E */
+.preload-eximlog .loading-text span:nth-child(2) { animation-delay: 0.2s; } /* X */
+.preload-eximlog .loading-text span:nth-child(3) { animation-delay: 0.3s; } /* I */
+.preload-eximlog .loading-text span:nth-child(4) { animation-delay: 0.4s; } /* M */
+.preload-eximlog .loading-text span:nth-child(5) { animation-delay: 0.5s; } /* L */
+.preload-eximlog .loading-text span:nth-child(6) { animation-delay: 0.6s; } /* O */
+.preload-eximlog .loading-text span:nth-child(7) { animation-delay: 0.7s; } /* G */
+
+
+/* Định nghĩa chuyển động "chạy qua" của chữ (Giữ nguyên) */
+@keyframes moveLetters {
+    0% {
+        transform: translateX(-15vw);
+        opacity: 0;
+    }
+    33.3%,
+    66% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+    100% {
+        transform: translateX(15vw);
+        opacity: 0;
+    }
+}
+
+/* Định nghĩa chuyển động "gạch chân chạy" (Giữ nguyên) */
+@keyframes movingLine {
+    0% {
+        opacity: 0;
+        width: 0;
+    }
+    33.3%,
+    66% {
+        opacity: 0.8;
+        width: 100%;
+    }
+    85% {
+        width: 0;
+        left: initial;
+        right: 0;
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        width: 0;
+    }
+}
+
+/* === THÊM MỚI: ANIMATION CHO SLOGAN === */
+/* Animation này có cùng % với "moveLetters" để đảm bảo chúng xuất hiện đồng thời */
+@keyframes sloganFadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(10px); /* Bắt đầu ở dưới 1 chút */
+    }
+
+    33.3%,
+    66% {
+        opacity: 1;
+        transform: translateY(0); /* Di chuyển về vị trí */
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateY(10px); /* Biến mất */
+    }
+}
+
+/* Responsive cho slogan */
+@media (max-width: 768px) {
+    .preload-eximlog .slogan-text {
+        font-size: 3.5vw;
+    }
+    .preload-eximlog .loading-text {
+        font-size: 8vw; /* Làm chữ to hơn trên di động */
+    }
+}

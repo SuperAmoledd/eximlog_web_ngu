@@ -7,16 +7,16 @@
     <title>Eximlog - Vận chuyển niềm tin, Nâng tầm giá trị</title>
 
     <meta name="keywords" content="Eximlog, Eximlog Express, vận chuyển quốc tế, logistics"/>
-    <meta name="description" content="Eximlog cung cấp dịch vụ vận chuyển quốc tế và giải pháp logistics giá rẻ, uy tín tại TPHCM."/>
+    <meta name="description" content="Eximlog cung cấp dịch vụ vận chuyển quốc tế và giải pháp logistics giá rẻ, uy tín tại TPHCM..."/>
 
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Eximlog" />
     <meta property="og:url" content="https://eximlog.vn/" />
-
     <meta property="og:title" content="Công ty TNHH Thương Mại Dịch Vụ Vận Tải EximLog" />
     <meta property="og:description" content="Dịch vụ vận chuyển quốc tế giá rẻ tại TPHCM. Nhanh chóng - An toàn - Tiết kiệm." />
-    <meta property="og:image" content="https://eximlog.vn/img/anh_cang_maybay_log.png" />
+    <meta property="og:image" content="https://eximlog.vn/img/eximlog_logo.png" />
     <meta property="og:image:alt" content="Eximlog Logistics" />
+    <meta property="og:image:type" content="image/png" />
 
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -25,9 +25,30 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
-    <link rel="icon" type="image/x-icon" href="https://eximlog.vn/img/eximlog_logo.jpg">
+    <link rel="shortcut icon" type="image/x-icon" href="https://eximlog.vn/img/eximlog_logo.jpg">
+
 </head>
 <body>
+    <link rel="stylesheet" href="/preload-eximlog.css">
+    <!-- PHẦN PRELOAD WEB KHI RELOAD LẠI WEB -->
+        <div class="preload-eximlog">
+            <div class="loading-container">
+                <div class="loading-text">
+                    <span>E</span>
+                    <span>X</span>
+                    <span>I</span>
+                    <span>M</span>
+                    <span class="log-part">L</span>
+                    <span class="log-part">O</span>
+                    <span class="log-part">G</span>
+                </div>
+                <div class="slogan-text">
+                    Vận chuyển niềm tin, nâng tầm giá trị
+                </div>
+
+            </div>
+        </div>
+
     <header>
         <div class="top-header">
             <div class="container flex-container">
@@ -225,5 +246,19 @@
     </footer>
 
     <script src="script.js"></script>
+
+    <!-- ĐÂY LÀ PHẦN PRELOAD Ở TRÊN -->
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    <script>
+    document.addEventListener("DOMContentLoaded", (event) => {
+        // Tăng thời gian delay lên 2000ms (2 giây) để hiệu ứng chạy 1-2 lần rồi mới ẩn
+        $(".preload-eximlog").delay(2000).fadeOut("slow");
+    });
+    </script>
+
 </body>
 </html>

@@ -57,6 +57,9 @@ body {
     position: sticky;
     top: 0;
     z-index: 1000;
+
+    width: 100%;
+    left: 0;
 }
 .brand-logo img {
     height: 60px;
@@ -589,4 +592,8 @@ body {
 .zalo-staff-item span {
     font-size: 15px;
     font-weight: 500;
+}
+
+main {
+    padding-top: 80px;
 }
