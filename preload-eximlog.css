@@ -9,6 +9,8 @@
     
     /* Nền trắng (ffff) như file gốc của bạn */
     background-color: #ffff; 
+    /* background-image: url("");  */
+
     
     font-family: "Montserrat", sans-serif;
     position: fixed;
