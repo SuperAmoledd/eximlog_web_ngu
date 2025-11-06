@@ -1,8 +1,21 @@
 /* --- BIẾN MÀU VÀ CÀI ĐẶT CHUNG --- */
 :root {
-    --primary-blue: #005f73;
+    /* CÁI NÀY CHÍNH */
+
+    /* --primary-blue: #005f73;
     --secondary-green: #0a9396;
     --accent-light-blue: #94d2bd;
+    --text-dark: #212529;
+    --text-light: #495057;
+    --background-light: #f8f9fa;
+    --white-color: #ffffff;
+    --border-color: #dee2e6; */
+
+    /* CÁI NÀY ĐỂ TEST */
+
+    --primary-blue: #ff9100;
+    --secondary-green: #e99e3c;
+    --accent-light-blue: #eaac5a;
     --text-dark: #212529;
     --text-light: #495057;
     --background-light: #f8f9fa;
