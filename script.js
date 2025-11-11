@@ -91,4 +91,4 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-}); // Đóng trình nghe sự kiện DOMContentLoaded
+});
