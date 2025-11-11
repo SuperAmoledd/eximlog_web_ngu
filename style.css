@@ -365,12 +365,219 @@ body {
     border: 0;
 }
 
-/* --- FOOTER --- */
+/* === FOOTER MỚI (ĐÃ THAY THẾ) === */
 .site-footer {
-    background-color: var(--primary-blue);
-    color: #e0f2f1;
+    background-color: var(--primary-blue); /* Nền màu cam chính */
+    color: var(--white-color); /* Chữ trắng */
+    padding-top: 60px; /* Tăng padding cho nội dung mới */
+    font-size: 15px;
+    line-height: 1.7;
+}
+
+.footer-top {
+    padding-bottom: 40px; /* Khoảng cách trước thanh copyright */
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 cột trên desktop */
+    gap: 30px;
+}
+
+/* Cột 1: Giới thiệu */
+.footer-column.about {
+    grid-column: span 1; 
+}
+
+/* Cột 2 & 3: Links */
+.footer-column.links {
+    grid-column: span 1;
+}
+
+/* Cột 4: Liên hệ */
+.footer-column.contact {
+    grid-column: span 1;
+}
+
+.footer-logo {
+    height: 60px; /* Logo nhỏ hơn */
+    margin-bottom: 20px;
+    /* Logo EXIM có màu cam trùng nền, thêm nền trắng để thấy rõ */
+    background-color: var(--white-color);
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+.footer-column p {
+    color: #f0f0f0; /* Màu trắng ngà cho dễ đọc */
+    margin-bottom: 20px;
+}
+
+.footer-social-icons {
+    display: flex;
+    gap: 12px;
+    margin-top: 20px;
+}
+
+.social-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.1); /* Nền mờ */
+    color: var(--white-color);
+    font-size: 16px;
+    text-decoration: none;
+    transition: background-color 0.3s, transform 0.3s;
+}
+.social-icon:hover {
+    background-color: var(--secondary-green); /* Màu cam đậm hơn khi hover */
+    transform: translateY(-3px);
+}
+
+.footer-column-title {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--white-color);
+    margin-bottom: 25px;
+    position: relative;
+}
+
+.footer-nav-menu,
+.footer-contact-info {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-nav-menu li {
+    margin-bottom: 12px;
+}
+
+.footer-nav-menu li a,
+.footer-contact-info li a {
+    text-decoration: none;
+    color: #f0f0f0; /* Màu trắng ngà */
+    transition: color 0.3s, padding-left 0.3s;
+}
+
+.footer-nav-menu li a:hover {
+    color: var(--white-color); /* Sáng lên khi hover */
+    padding-left: 5px; /* Hiệu ứng hover */
+}
+
+.footer-contact-info li {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 15px;
+    color: #f0f0f0;
+}
+
+.footer-contact-info li i {
+    margin-right: 12px;
+    font-size: 16px;
+    margin-top: 4px; /* Căn icon cho đẹp */
+    width: 20px; 
     text-align: center;
-    padding: 25px 0;
+}
+.footer-contact-info li span {
+    flex: 1; /* Cho text tự xuống dòng */
+}
+.footer-contact-info li a:hover {
+    color: var(--white-color);
+}
+
+/* Thanh Copyright */
+.footer-bottom {
+    background-color: rgba(0, 0, 0, 0.1); /* Lớp nền tối hơn một chút */
+    text-align: center;
+    padding: 20px 0;
+    margin-top: 40px;
+    font-size: 14px;
+    color: #f0f0f0;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer-bottom p {
+    margin: 0;
+}
+/* === HẾT CSS FOOTER MỚI === */
+
+
+/* ================================================================
+--- CSS CHO DROPDOWN MENU MỚI ---
+================================================================
+*/
+.nav-item-dropdown {
+    position: relative; /* Quan trọng để định vị menu con */
+}
+
+.nav-item-dropdown > a .fa-chevron-down {
+    font-size: 12px;
+    margin-left: 6px;
+    transition: transform 0.3s ease;
+}
+
+.dropdown-menu {
+    display: block;
+    position: absolute;
+    top: 100%; /* Hiển thị ngay dưới mục cha */
+    left: 0;
+    min-width: 250px; /* Độ rộng tối thiểu của dropdown */
+    
+    background-color: var(--white-color);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+    border-radius: 8px;
+    
+    list-style: none;
+    margin: 0;
+    padding: 8px 0;
+    z-index: 1100;
+
+    /* Ẩn dropdown mặc định */
+    visibility: hidden;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
+}
+
+/* Hiển thị dropdown khi hover vào .nav-item-dropdown */
+.nav-item-dropdown:hover > .dropdown-menu {
+    visibility: visible;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Xoay icon khi hover */
+.nav-item-dropdown:hover > a .fa-chevron-down {
+    transform: rotate(180deg);
+}
+
+.dropdown-menu li {
+    position: relative;
+}
+
+.dropdown-menu li a {
+    display: block;
+    padding: 10px 20px;
+    color: var(--text-dark);
+    font-weight: 500; /* Nhẹ hơn nav chính */
+    font-size: 15px;
+    white-space: nowrap; /* Ngăn xuống dòng */
+    transition: background-color 0.2s, color 0.2s;
+}
+
+/* Bỏ gạch chân .active cho menu con */
+.dropdown-menu li a.active::after,
+.dropdown-menu li a::after {
+    content: none;
+}
+
+.dropdown-menu li a:hover {
+    background-color: var(--background-light);
+    color: var(--primary-blue); /* Giữ màu hover giống nav chính */
 }
 
 /* ================================================================
@@ -440,7 +647,74 @@ body {
     .quote-button {
         display: none;
     }
+
+    /* --- CSS cho dropdown trên mobile --- */
+    .nav-item-dropdown {
+        position: static; /* Reset lại position */
+        width: 100%;
+        text-align: center;
+    }
+    .nav-item-dropdown > a .fa-chevron-down {
+        display: none; /* Ẩn mũi tên trên mobile */
+    }
+
+    .dropdown-menu {
+        position: static;
+        display: block;
+        visibility: visible;
+        opacity: 1;
+        transform: none;
+        box-shadow: none;
+        background-color: transparent;
+        min-width: auto;
+        width: 100%;
+        padding: 0 0 0 25px; /* Thụt lề các mục con */
+    }
+    
+    .dropdown-menu li a {
+        padding: 8px 15px;
+        font-size: 16px; /* Kích thước nhỏ hơn 1 chút */
+    }
+    /* --- Hết CSS cho dropdown trên mobile --- */
+
+    /* --- RESPONSIVE CHO FOOTER MỚI --- */
+    .footer-grid {
+        grid-template-columns: repeat(2, 1fr); /* 2 cột trên tablet */
+        gap: 40px;
+    }
+    .footer-column.about {
+        grid-column: span 2; /* Cột 'about' chiếm toàn bộ chiều rộng */
+        text-align: center;
+    }
+    .footer-social-icons {
+        justify-content: center; /* Căn giữa icon social */
+    }
+    .footer-column.contact,
+    .footer-column.links {
+        grid-column: span 1;
+    }
+    /* --- HẾT RESPONSIVE FOOTER --- */
 }
+
+/* Áp dụng cho màn hình nhỏ hơn 576px */
+@media (max-width: 768px) {
+    /* --- RESPONSIVE CHO FOOTER (MOBILE) --- */
+    .footer-grid {
+        grid-template-columns: 1fr; /* 1 cột trên mobile */
+    }
+    .footer-column.about,
+    .footer-column.links,
+    .footer-column.contact {
+        grid-column: span 1; /* Tất cả về 1 cột */
+        text-align: center;
+    }
+    .footer-contact-info li {
+        justify-content: center; /* Căn giữa thông tin liên hệ */
+        text-align: left; /* Nhưng giữ text bên trái */
+    }
+     /* --- HẾT RESPONSIVE FOOTER (MOBILE) --- */
+}
+
 
 /* Áp dụng cho màn hình nhỏ hơn 576px */
 @media (max-width: 576px) {
