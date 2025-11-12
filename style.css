@@ -16,11 +16,12 @@
     --primary-blue: #ff9100;
     --secondary-green: #e99e3c;
     --accent-light-blue: #eaac5a;
-    --text-dark: #212529;
+    --text-dark: #212529; 
     --text-light: #495057;
     --background-light: #f8f9fa;
     --white-color: #ffffff;
     --border-color: #dee2e6;
+    --light-orange: #fffaf0; /* MỚI: Màu vàng cam nhạt cho footer */
 }
 
 html {
@@ -33,6 +34,7 @@ body {
     color: var(--text-dark);
     background-color: var(--white-color);
     line-height: 1.6;
+    overflow-x: hidden; /* Tránh scroll ngang */
 }
 
 .container {
@@ -45,6 +47,63 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+
+/* --- ANIMATIONS (MỚI) --- */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInSlide {
+    from {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes bounceIn {
+    0% { transform: scale(0.95); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+.fade-in-up {
+    animation: fadeInUp 0.8s ease-out forwards;
+}
+
+.fade-in-slide {
+    animation: fadeInSlide 0.8s ease-out forwards;
+}
+
+.bounce-hover {
+    transition: transform 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.bounce-hover:hover {
+    animation: bounceIn 0.6s ease-out;
+}
+
+/* Intersection Observer cho staggered animation (sẽ add JS) */
+.animate-on-scroll {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.animate-on-scroll.animate {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 /* --- HEADER --- */
@@ -112,6 +171,24 @@ body {
     text-decoration: none;
     font-weight: 700;
     transition: background-color 0.3s, transform 0.2s;
+    position: relative;
+    overflow: hidden; /* Cho ripple effect */
+}
+.quote-button::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255,255,255,0.3);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+.quote-button:hover::before {
+    width: 300px;
+    height: 300px;
 }
 .quote-button:hover {
     background-color: var(--primary-blue);
@@ -122,15 +199,29 @@ body {
     display: none; /* Ẩn nút hamburger trên desktop */
 }
 
-/* --- HERO SECTION --- */
+/* --- HERO SECTION (THÊM ANIMATION) --- */
 .hero {
     padding: 80px 0;
+    position: relative;
+    overflow: hidden;
+}
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(255,145,0,0.05) 0%, rgba(233,158,60,0.05) 100%);
+    z-index: 1;
 }
 .hero-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     align-items: center;
     gap: 60px;
+    position: relative;
+    z-index: 2;
 }
 .hero-image-column {
     display: flex;
@@ -141,17 +232,20 @@ body {
     width: 100%;
     border-radius: 15px;
     box-shadow: 0 10px 30px rgba(0,95,115,0.2);
+    animation: fadeInUp 1s ease-out 0.5s both; /* Delay cho image */
 }
 .main-headline {
     font-size: 42px;
     color: var(--primary-blue);
     line-height: 1.2;
     margin-bottom: 20px;
+    animation: fadeInSlide 0.8s ease-out both;
 }
 .sub-headline {
     font-size: 18px;
     color: var(--text-light);
     margin-bottom: 40px;
+    animation: fadeInUp 0.8s ease-out 0.3s both;
 }
 .feature-list {
     display: flex;
@@ -162,7 +256,12 @@ body {
 .feature-item {
     display: flex;
     align-items: center;
+    opacity: 0;
+    animation: fadeInUp 0.6s ease-out forwards;
 }
+.feature-item:nth-child(1) { animation-delay: 0.5s; }
+.feature-item:nth-child(2) { animation-delay: 0.7s; }
+.feature-item:nth-child(3) { animation-delay: 0.9s; }
 .feature-icon {
     background-color: #e0f2f1;
     width: 55px;
@@ -172,6 +271,10 @@ body {
     justify-content: center;
     align-items: center;
     margin-right: 20px;
+    transition: transform 0.3s;
+}
+.feature-item:hover .feature-icon {
+    transform: scale(1.1);
 }
 .feature-icon i {
     font-size: 24px;
@@ -194,6 +297,25 @@ body {
     font-weight: 700;
     display: inline-block;
     transition: background-color 0.3s, transform 0.2s;
+    position: relative;
+    overflow: hidden; /* Cho ripple */
+    animation: bounceIn 0.8s ease-out 1.2s both;
+}
+.learn-more-button::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255,255,255,0.3);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+.learn-more-button:hover::before {
+    width: 300px;
+    height: 300px;
 }
 .learn-more-button:hover {
     background-color: #004250;
@@ -224,7 +346,7 @@ body {
     transition: transform 0.3s, background-color 0.3s;
 }
 .fab-icon:hover {
-    transform: scale(1.1);
+    transform: scale(1.1) rotate(5deg); /* Thêm rotate nhẹ cho fun */
 }
 .fab-icon.call { background-color: #007bff; }
 .fab-icon.messenger { background: linear-gradient(45deg, #0099ff, #a033ff); }
@@ -263,6 +385,7 @@ body {
     font-size: 36px;
     color: var(--primary-blue);
     margin-bottom: 20px;
+    text-align: center;
 }
 .section-subtitle {
     font-size: 18px;
@@ -284,6 +407,7 @@ body {
 .about-image img {
     width: 100%;
     border-radius: 15px;
+    animation: fadeInUp 1s ease-out both;
 }
 .about-content h3 {
     font-size: 24px;
@@ -295,7 +419,7 @@ body {
     line-height: 1.8;
 }
 
-/* --- SERVICES SECTION --- */
+/* --- SERVICES SECTION (THÊM STAGGERED ANIMATION) --- */
 .services-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -308,15 +432,26 @@ body {
     border-radius: 15px;
     box-shadow: 0 8px 25px rgba(0,0,0,0.08);
     transition: transform 0.3s, box-shadow 0.3s;
+    opacity: 0; /* Sẽ animate bằng JS */
 }
+.service-card.animate {
+    animation: fadeInUp 0.6s ease-out forwards;
+}
+.service-card:nth-child(1).animate { animation-delay: 0.2s; }
+.service-card:nth-child(2).animate { animation-delay: 0.4s; }
+.service-card:nth-child(3).animate { animation-delay: 0.6s; }
 .service-card:hover {
-    transform: translateY(-10px);
+    transform: translateY(-10px) rotate(1deg); /* Thêm rotate nhẹ */
     box-shadow: 0 12px 35px rgba(0,95,115,0.15);
 }
 .card-icon {
     font-size: 40px;
     color: var(--secondary-green);
     margin-bottom: 20px;
+    transition: transform 0.3s;
+}
+.service-card:hover .card-icon {
+    transform: scale(1.2) rotate(360deg); /* Spin icon khi hover */
 }
 .service-card h4 {
     font-size: 22px;
@@ -335,6 +470,10 @@ body {
 }
 .contact-info-item {
     text-align: center;
+    transition: transform 0.3s;
+}
+.contact-info-item:hover {
+    transform: translateY(-5px);
 }
 .contact-info-item i {
     font-size: 32px;
@@ -365,13 +504,18 @@ body {
     border: 0;
 }
 
-/* === FOOTER MỚI (ĐÃ THAY THẾ) === */
+/* =========================================
+   === FOOTER MỚI (MÀU VÀNG CAM NHẠT) === 
+   ========================================= */
 .site-footer {
-    background-color: var(--primary-blue); /* Nền màu cam chính */
-    color: var(--white-color); /* Chữ trắng */
-    padding-top: 60px; /* Tăng padding cho nội dung mới */
+    /* ĐÃ THAY ĐỔI: Chuyển sang màu vàng cam nhạt theo yêu cầu */
+    background-color: var(--light-orange);
+    color: var(--text-dark); /* ĐÃ THAY ĐỔI: Chữ màu tối */
+    padding-top: 60px; 
     font-size: 15px;
     line-height: 1.7;
+    /* ĐÃ THAY ĐỔI: Shadow mờ màu cam */
+    box-shadow: 0 -4px 20px rgba(255,145,0,0.1); 
 }
 
 .footer-top {
@@ -402,14 +546,14 @@ body {
 .footer-logo {
     height: 60px; /* Logo nhỏ hơn */
     margin-bottom: 20px;
-    /* Logo EXIM có màu cam trùng nền, thêm nền trắng để thấy rõ */
-    background-color: var(--white-color);
+    /* ĐÃ THAY ĐỔI: Bỏ nền trắng vì footer đã sáng màu */
+    background-color: transparent; 
     padding: 5px 10px;
     border-radius: 5px;
 }
 
 .footer-column p {
-    color: #f0f0f0; /* Màu trắng ngà cho dễ đọc */
+    color: var(--text-light); /* ĐÃ THAY ĐỔI: Chữ màu xám nhạt */
     margin-bottom: 20px;
 }
 
@@ -426,21 +570,24 @@ body {
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    background-color: rgba(255, 255, 255, 0.1); /* Nền mờ */
-    color: var(--white-color);
+    /* ĐÃ THAY ĐỔI: Nền cam nhạt, icon màu cam đậm */
+    background-color: #ffe8cc; 
+    color: var(--primary-blue);
     font-size: 16px;
     text-decoration: none;
-    transition: background-color 0.3s, transform 0.3s;
+    transition: background-color 0.3s, transform 0.3s, color 0.3s;
 }
 .social-icon:hover {
-    background-color: var(--secondary-green); /* Màu cam đậm hơn khi hover */
-    transform: translateY(-3px);
+    /* ĐÃ THAY ĐỔI: Hover chuẩn */
+    background-color: var(--primary-blue);
+    color: var(--white-color); /* Chữ trắng khi hover */
+    transform: translateY(-3px) scale(1.1);
 }
 
 .footer-column-title {
     font-size: 20px;
     font-weight: 700;
-    color: var(--white-color);
+    color: var(--text-dark); /* ĐÃ THAY ĐỔI: Chữ màu đen */
     margin-bottom: 25px;
     position: relative;
 }
@@ -459,12 +606,12 @@ body {
 .footer-nav-menu li a,
 .footer-contact-info li a {
     text-decoration: none;
-    color: #f0f0f0; /* Màu trắng ngà */
+    color: var(--text-light); /* ĐÃ THAY ĐỔI: Chữ xám nhạt */
     transition: color 0.3s, padding-left 0.3s;
 }
 
 .footer-nav-menu li a:hover {
-    color: var(--white-color); /* Sáng lên khi hover */
+    color: var(--primary-blue); /* ĐÃ THAY ĐỔI: Hover ra màu cam */
     padding-left: 5px; /* Hiệu ứng hover */
 }
 
@@ -472,7 +619,7 @@ body {
     display: flex;
     align-items: flex-start;
     margin-bottom: 15px;
-    color: #f0f0f0;
+    color: var(--text-light); /* ĐÃ THAY ĐỔI: Chữ xám nhạt */
 }
 
 .footer-contact-info li i {
@@ -481,23 +628,24 @@ body {
     margin-top: 4px; /* Căn icon cho đẹp */
     width: 20px; 
     text-align: center;
+    color: var(--primary-blue); /* Thêm màu cam cho icon */
 }
 .footer-contact-info li span {
     flex: 1; /* Cho text tự xuống dòng */
 }
 .footer-contact-info li a:hover {
-    color: var(--white-color);
+    color: var(--primary-blue); /* ĐÃ THAY ĐỔI: Hover ra cam */
 }
 
 /* Thanh Copyright */
 .footer-bottom {
-    background-color: rgba(0, 0, 0, 0.1); /* Lớp nền tối hơn một chút */
+    background-color: rgba(255,145,0,0.05); /* Nền cam mờ */
     text-align: center;
     padding: 20px 0;
     margin-top: 40px;
     font-size: 14px;
-    color: #f0f0f0;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--text-light); /* Chữ xám */
+    border-top: 1px solid #ffe8cc; /* Border cam nhạt */
 }
 
 .footer-bottom p {

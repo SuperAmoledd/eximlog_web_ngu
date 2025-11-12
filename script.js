@@ -91,4 +91,28 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // --- MỚI: SCROLL ANIMATION CHO SERVICE CARDS VÀ FOOTER ---
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('animate');
+            }
+        });
+    }, observerOptions);
+
+    // Observe service cards
+    const serviceCards = document.querySelectorAll('.service-card');
+    serviceCards.forEach(card => observer.observe(card));
+
+    // Observe footer columns (fade-in khi scroll đến)
+    const footerColumns = document.querySelectorAll('.footer-column');
+    footerColumns.forEach(col => {
+        observer.observe(col);
+    });
+
 });
