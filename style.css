@@ -1,17 +1,4 @@
-/* --- BIẾN MÀU VÀ CÀI ĐẶT CHUNG --- */
 :root {
-    /* CÁI NÀY CHÍNH */
-
-    /* --primary-blue: #005f73;
-    --secondary-green: #0a9396;
-    --accent-light-blue: #94d2bd;
-    --text-dark: #212529;
-    --text-light: #495057;
-    --background-light: #f8f9fa;
-    --white-color: #ffffff;
-    --border-color: #dee2e6; */
-
-    /* CÁI NÀY ĐỂ TEST */
 
     --primary-blue: #ff9100;
     --secondary-green: #e99e3c;
@@ -21,7 +8,7 @@
     --background-light: #f8f9fa;
     --white-color: #ffffff;
     --border-color: #dee2e6;
-    --light-orange: #fffaf0; /* MỚI: Màu vàng cam nhạt cho footer */
+    --light-orange: #fffaf0;
 }
 
 html {
@@ -34,7 +21,7 @@ body {
     color: var(--text-dark);
     background-color: var(--white-color);
     line-height: 1.6;
-    overflow-x: hidden; /* Tránh scroll ngang */
+    overflow-x: hidden;
 }
 
 .container {
@@ -49,7 +36,6 @@ body {
     align-items: center;
 }
 
-/* --- ANIMATIONS (MỚI) --- */
 @keyframes fadeInUp {
     from {
         opacity: 0;
@@ -94,7 +80,6 @@ body {
     animation: bounceIn 0.6s ease-out;
 }
 
-/* Intersection Observer cho staggered animation (sẽ add JS) */
 .animate-on-scroll {
     opacity: 0;
     transform: translateY(50px);
@@ -106,7 +91,6 @@ body {
     transform: translateY(0);
 }
 
-/* --- HEADER --- */
 .top-header {
     background-color: var(--background-light);
     padding: 10px 0;
@@ -172,7 +156,7 @@ body {
     font-weight: 700;
     transition: background-color 0.3s, transform 0.2s;
     position: relative;
-    overflow: hidden; /* Cho ripple effect */
+    overflow: hidden; 
 }
 .quote-button::before {
     content: '';
@@ -196,10 +180,9 @@ body {
 }
 
 .mobile-nav-toggle {
-    display: none; /* Ẩn nút hamburger trên desktop */
+    display: none;
 }
 
-/* --- HERO SECTION (THÊM ANIMATION) --- */
 .hero {
     padding: 80px 0;
     position: relative;
@@ -298,7 +281,7 @@ body {
     display: inline-block;
     transition: background-color 0.3s, transform 0.2s;
     position: relative;
-    overflow: hidden; /* Cho ripple */
+    overflow: hidden;
     animation: bounceIn 0.8s ease-out 1.2s both;
 }
 .learn-more-button::before {
@@ -322,7 +305,6 @@ body {
     transform: translateY(-2px);
 }
 
-/* --- NÚT NỔI --- */
 .floating-contact-buttons {
     position: fixed;
     bottom: 30px;
@@ -330,7 +312,7 @@ body {
     display: flex;
     flex-direction: column;
     gap: 12px;
-    z-index: 990; /* ĐÃ SỬA: Giảm z-index để popup modal có thể che phủ */
+    z-index: 990; 
 }
 .fab-icon {
     width: 55px;
@@ -346,7 +328,7 @@ body {
     transition: transform 0.3s, background-color 0.3s;
 }
 .fab-icon:hover {
-    transform: scale(1.1) rotate(5deg); /* Thêm rotate nhẹ cho fun */
+    transform: scale(1.1) rotate(5deg); 
 }
 .fab-icon.call { background-color: #007bff; }
 .fab-icon.messenger { background: linear-gradient(45deg, #0099ff, #a033ff); }
@@ -374,7 +356,6 @@ body {
     border-radius: 50%;
 }
 
-/* --- CÁC PHẦN NỘI DUNG CHUNG --- */
 .content-section {
     padding: 80px 0;
 }
@@ -397,7 +378,6 @@ body {
     text-align: center;
 }
 
-/* --- ABOUT SECTION --- */
 .about-grid {
     display: grid;
     grid-template-columns: 1fr 1.2fr;
@@ -419,7 +399,6 @@ body {
     line-height: 1.8;
 }
 
-/* --- SERVICES SECTION (THÊM STAGGERED ANIMATION) --- */
 .services-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -432,7 +411,7 @@ body {
     border-radius: 15px;
     box-shadow: 0 8px 25px rgba(0,0,0,0.08);
     transition: transform 0.3s, box-shadow 0.3s;
-    opacity: 0; /* Sẽ animate bằng JS */
+    opacity: 0; 
 }
 .service-card.animate {
     animation: fadeInUp 0.6s ease-out forwards;
@@ -441,7 +420,7 @@ body {
 .service-card:nth-child(2).animate { animation-delay: 0.4s; }
 .service-card:nth-child(3).animate { animation-delay: 0.6s; }
 .service-card:hover {
-    transform: translateY(-10px) rotate(1deg); /* Thêm rotate nhẹ */
+    transform: translateY(-10px) rotate(1deg); 
     box-shadow: 0 12px 35px rgba(0,95,115,0.15);
 }
 .card-icon {
@@ -451,7 +430,7 @@ body {
     transition: transform 0.3s;
 }
 .service-card:hover .card-icon {
-    transform: scale(1.2) rotate(360deg); /* Spin icon khi hover */
+    transform: scale(1.2) rotate(360deg);
 }
 .service-card h4 {
     font-size: 22px;
@@ -461,7 +440,6 @@ body {
     color: var(--text-light);
 }
 
-/* --- CONTACT SECTION --- */
 .contact-info-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -490,7 +468,6 @@ body {
     margin: 0;
 }
 
-/* --- GOOGLE MAPS --- */
 .map-container {
     margin-top: 50px;
     border-radius: 15px;
@@ -504,56 +481,47 @@ body {
     border: 0;
 }
 
-/* =========================================
-   === FOOTER MỚI (MÀU VÀNG CAM NHẠT) === 
-   ========================================= */
 .site-footer {
-    /* ĐÃ THAY ĐỔI: Chuyển sang màu vàng cam nhạt theo yêu cầu */
     background-color: var(--light-orange);
-    color: var(--text-dark); /* ĐÃ THAY ĐỔI: Chữ màu tối */
+    color: var(--text-dark); 
     padding-top: 60px; 
     font-size: 15px;
     line-height: 1.7;
-    /* ĐÃ THAY ĐỔI: Shadow mờ màu cam */
     box-shadow: 0 -4px 20px rgba(255,145,0,0.1); 
 }
 
 .footer-top {
-    padding-bottom: 40px; /* Khoảng cách trước thanh copyright */
+    padding-bottom: 40px; 
 }
 
 .footer-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr); /* 4 cột trên desktop */
+    grid-template-columns: repeat(4, 1fr);
     gap: 30px;
 }
 
-/* Cột 1: Giới thiệu */
 .footer-column.about {
     grid-column: span 1; 
 }
 
-/* Cột 2 & 3: Links */
 .footer-column.links {
     grid-column: span 1;
 }
 
-/* Cột 4: Liên hệ */
 .footer-column.contact {
     grid-column: span 1;
 }
 
 .footer-logo {
-    height: 60px; /* Logo nhỏ hơn */
+    height: 150px; 
     margin-bottom: 20px;
-    /* ĐÃ THAY ĐỔI: Bỏ nền trắng vì footer đã sáng màu */
     background-color: transparent; 
     padding: 5px 10px;
     border-radius: 5px;
 }
 
 .footer-column p {
-    color: var(--text-light); /* ĐÃ THAY ĐỔI: Chữ màu xám nhạt */
+    color: var(--text-light);
     margin-bottom: 20px;
 }
 
@@ -570,7 +538,6 @@ body {
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    /* ĐÃ THAY ĐỔI: Nền cam nhạt, icon màu cam đậm */
     background-color: #ffe8cc; 
     color: var(--primary-blue);
     font-size: 16px;
@@ -578,16 +545,15 @@ body {
     transition: background-color 0.3s, transform 0.3s, color 0.3s;
 }
 .social-icon:hover {
-    /* ĐÃ THAY ĐỔI: Hover chuẩn */
     background-color: var(--primary-blue);
-    color: var(--white-color); /* Chữ trắng khi hover */
+    color: var(--white-color); 
     transform: translateY(-3px) scale(1.1);
 }
 
 .footer-column-title {
     font-size: 20px;
     font-weight: 700;
-    color: var(--text-dark); /* ĐÃ THAY ĐỔI: Chữ màu đen */
+    color: var(--text-dark); 
     margin-bottom: 25px;
     position: relative;
 }
@@ -606,60 +572,55 @@ body {
 .footer-nav-menu li a,
 .footer-contact-info li a {
     text-decoration: none;
-    color: var(--text-light); /* ĐÃ THAY ĐỔI: Chữ xám nhạt */
+    color: var(--text-light); 
     transition: color 0.3s, padding-left 0.3s;
 }
 
 .footer-nav-menu li a:hover {
-    color: var(--primary-blue); /* ĐÃ THAY ĐỔI: Hover ra màu cam */
-    padding-left: 5px; /* Hiệu ứng hover */
+    color: var(--primary-blue); 
+    padding-left: 5px;
 }
 
 .footer-contact-info li {
     display: flex;
     align-items: flex-start;
     margin-bottom: 15px;
-    color: var(--text-light); /* ĐÃ THAY ĐỔI: Chữ xám nhạt */
+    color: var(--text-light);
 }
 
 .footer-contact-info li i {
     margin-right: 12px;
     font-size: 16px;
-    margin-top: 4px; /* Căn icon cho đẹp */
+    margin-top: 4px;
     width: 20px; 
     text-align: center;
-    color: var(--primary-blue); /* Thêm màu cam cho icon */
+    color: var(--primary-blue);
 }
 .footer-contact-info li span {
-    flex: 1; /* Cho text tự xuống dòng */
+    flex: 1; 
 }
 .footer-contact-info li a:hover {
-    color: var(--primary-blue); /* ĐÃ THAY ĐỔI: Hover ra cam */
+    color: var(--primary-blue); 
 }
 
 /* Thanh Copyright */
 .footer-bottom {
-    background-color: rgba(255,145,0,0.05); /* Nền cam mờ */
+    background-color: rgba(255,145,0,0.05);
     text-align: center;
     padding: 20px 0;
     margin-top: 40px;
     font-size: 14px;
-    color: var(--text-light); /* Chữ xám */
-    border-top: 1px solid #ffe8cc; /* Border cam nhạt */
+    color: var(--text-light);
+    border-top: 1px solid #ffe8cc;
 }
 
 .footer-bottom p {
     margin: 0;
 }
-/* === HẾT CSS FOOTER MỚI === */
 
 
-/* ================================================================
---- CSS CHO DROPDOWN MENU MỚI ---
-================================================================
-*/
 .nav-item-dropdown {
-    position: relative; /* Quan trọng để định vị menu con */
+    position: relative; 
 }
 
 .nav-item-dropdown > a .fa-chevron-down {
@@ -671,9 +632,9 @@ body {
 .dropdown-menu {
     display: block;
     position: absolute;
-    top: 100%; /* Hiển thị ngay dưới mục cha */
+    top: 100%;
     left: 0;
-    min-width: 250px; /* Độ rộng tối thiểu của dropdown */
+    min-width: 250px;
     
     background-color: var(--white-color);
     box-shadow: 0 8px 16px rgba(0,0,0,0.1);
@@ -684,21 +645,18 @@ body {
     padding: 8px 0;
     z-index: 1100;
 
-    /* Ẩn dropdown mặc định */
     visibility: hidden;
     opacity: 0;
     transform: translateY(10px);
     transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
 }
 
-/* Hiển thị dropdown khi hover vào .nav-item-dropdown */
 .nav-item-dropdown:hover > .dropdown-menu {
     visibility: visible;
     opacity: 1;
     transform: translateY(0);
 }
 
-/* Xoay icon khi hover */
 .nav-item-dropdown:hover > a .fa-chevron-down {
     transform: rotate(180deg);
 }
@@ -711,13 +669,12 @@ body {
     display: block;
     padding: 10px 20px;
     color: var(--text-dark);
-    font-weight: 500; /* Nhẹ hơn nav chính */
+    font-weight: 500;
     font-size: 15px;
-    white-space: nowrap; /* Ngăn xuống dòng */
+    white-space: nowrap; 
     transition: background-color 0.2s, color 0.2s;
 }
 
-/* Bỏ gạch chân .active cho menu con */
 .dropdown-menu li a.active::after,
 .dropdown-menu li a::after {
     content: none;
@@ -725,15 +682,9 @@ body {
 
 .dropdown-menu li a:hover {
     background-color: var(--background-light);
-    color: var(--primary-blue); /* Giữ màu hover giống nav chính */
+    color: var(--primary-blue); 
 }
 
-/* ================================================================
---- RESPONSIVE (DÀNH CHO ĐIỆN THOẠI VÀ MÁY TÍNH BẢNG) ---
-================================================================
-*/
-
-/* Áp dụng cho màn hình nhỏ hơn 992px */
 @media (max-width: 992px) {
     .hero-grid, .about-grid {
         grid-template-columns: 1fr;
@@ -796,75 +747,90 @@ body {
         display: none;
     }
 
-    /* --- CSS cho dropdown trên mobile --- */
     .nav-item-dropdown {
-        position: static; /* Reset lại position */
+        position: static; 
         width: 100%;
         text-align: center;
     }
+    
+    /* Hiển thị lại icon chevron và thêm hiệu ứng */
     .nav-item-dropdown > a .fa-chevron-down {
-        display: none; /* Ẩn mũi tên trên mobile */
+        display: inline-block; 
+        transition: transform 0.3s ease;
+        margin-left: 8px;
+    }
+    
+    /* CSS cho icon khi xoay */
+    .nav-item-dropdown > a.submenu-active-link .fa-chevron-down {
+        transform: rotate(180deg);
     }
 
+    /* Ẩn dropdown-menu đi để làm menu accordion */
     .dropdown-menu {
         position: static;
-        display: block;
-        visibility: visible;
-        opacity: 1;
         transform: none;
         box-shadow: none;
         background-color: transparent;
         min-width: auto;
         width: 100%;
-        padding: 0 0 0 25px; /* Thụt lề các mục con */
+        
+        /* === PHẦN CHÍNH: Ẩn menu con mặc định === */
+        padding: 0 0 0 25px; /* Vẫn giữ thụt lề */
+        max-height: 0;
+        overflow: hidden;
+        opacity: 0;
+        visibility: hidden;
+        /* Thêm transition cho mượt */
+        transition: max-height 0.4s ease-out, opacity 0.3s ease-out, padding 0.3s ease-out;
+    }
+
+    /* Lớp để kích hoạt menu con */
+    .dropdown-menu.submenu-active {
+        max-height: 500px; /* Chiều cao đủ lớn để chứa các mục */
+        opacity: 1;
+        visibility: visible;
+        padding: 10px 0 10px 25px; /* Thêm padding khi mở */
     }
     
     .dropdown-menu li a {
         padding: 8px 15px;
-        font-size: 16px; /* Kích thước nhỏ hơn 1 chút */
+        font-size: 16px;
     }
-    /* --- Hết CSS cho dropdown trên mobile --- */
 
-    /* --- RESPONSIVE CHO FOOTER MỚI --- */
     .footer-grid {
-        grid-template-columns: repeat(2, 1fr); /* 2 cột trên tablet */
+        grid-template-columns: repeat(2, 1fr); 
         gap: 40px;
     }
     .footer-column.about {
-        grid-column: span 2; /* Cột 'about' chiếm toàn bộ chiều rộng */
+        grid-column: span 2; 
         text-align: center;
     }
     .footer-social-icons {
-        justify-content: center; /* Căn giữa icon social */
+        justify-content: center;
     }
     .footer-column.contact,
     .footer-column.links {
         grid-column: span 1;
     }
-    /* --- HẾT RESPONSIVE FOOTER --- */
 }
 
-/* Áp dụng cho màn hình nhỏ hơn 576px */
 @media (max-width: 768px) {
-    /* --- RESPONSIVE CHO FOOTER (MOBILE) --- */
     .footer-grid {
-        grid-template-columns: 1fr; /* 1 cột trên mobile */
+        grid-template-columns: 1fr;
     }
     .footer-column.about,
     .footer-column.links,
     .footer-column.contact {
-        grid-column: span 1; /* Tất cả về 1 cột */
+        grid-column: span 1; 
         text-align: center;
     }
     .footer-contact-info li {
-        justify-content: center; /* Căn giữa thông tin liên hệ */
-        text-align: left; /* Nhưng giữ text bên trái */
+        justify-content: center;
+        text-align: left; 
     }
-     /* --- HẾT RESPONSIVE FOOTER (MOBILE) --- */
 }
 
 
-/* Áp dụng cho màn hình nhỏ hơn 576px */
 @media (max-width: 576px) {
     .content-section {
         padding: 60px 0;
@@ -903,66 +869,52 @@ body {
     }
 }
 
-/* ================================================================
---- PHẦN CSS MỚI CHO ZALO POPUP ---
-================================================================
-*/
 
-/* --- SỬA CURSOR CHO NÚT ZALO --- */
 .fab-icon.zalo {
     cursor: pointer;
 }
 
-/* --- CSS CHO ZALO POPUP (MODAL TOÀN MÀN HÌNH) --- */
-
-/* Lớp phủ backdrop toàn màn hình */
 .zalo-popup-overlay {
     position: fixed;
-    top: 80px; /* Bắt đầu bên dưới navigation (80px) */
+    top: 80px; 
     left: 0;
     width: 100%;
-    height: calc(100vh - 80px); /* Chiều cao còn lại của màn hình */
-    background-color: rgba(0, 0, 0, 0.6); /* Nền đen mờ */
-    z-index: 999; /* Nằm trên nút nổi (990) và dưới nav (1000) */
+    height: calc(100vh - 80px);
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 999; 
     
-    /* Dùng flex để căn giữa box nội dung */
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 20px;
     
-    /* Mặc định ẩn */
     visibility: hidden;
     opacity: 0;
     transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
 }
 
-/* Trạng thái hiển thị */
 .zalo-popup-overlay.show {
     visibility: visible;
     opacity: 1;
 }
 
-/* Box nội dung ở giữa */
 .zalo-popup-content {
     width: 100%;
-    max-width: 450px; /* Giới hạn chiều rộng của box */
+    max-width: 450px; 
     background-color: var(--white-color);
     border-radius: 10px;
     box-shadow: 0 5px 20px rgba(0,0,0,0.2);
     
-    /* Hiệu ứng scale khi xuất hiện */
     transform: scale(0.95);
     opacity: 0;
     transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.2s;
-    overflow: hidden; /* Đảm bảo bo góc cho header */
+    overflow: hidden; 
 }
 
-/* Hiển thị box nội dung khi popup.show */
 .zalo-popup-overlay.show .zalo-popup-content {
     transform: scale(1);
     opacity: 1;
-    transition-delay: 0.05s; /* Xuất hiện sau khi nền mờ 1 chút */
+    transition-delay: 0.05s; 
 }
 
 .zalo-popup-header {
@@ -972,7 +924,6 @@ body {
     padding: 12px 15px;
     background-color: var(--primary-blue);
     color: var(--white-color);
-    /* Bỏ bo góc ở đây vì đã set ở .zalo-popup-content */
 }
 
 .zalo-popup-header span {
@@ -997,7 +948,7 @@ body {
     list-style: none;
     margin: 0;
     padding: 10px;
-    max-height: 60vh; /* Giới hạn chiều cao nếu danh sách quá dài */
+    max-height: 60vh;
     overflow-y: auto;
 }
 
