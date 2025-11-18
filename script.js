@@ -24,11 +24,11 @@ document.addEventListener('DOMContentLoaded', () => {
         link.addEventListener('click', function(e) {
             const href = this.getAttribute('href');
             if (href.startsWith('#')) {
-                // e.preventDefault(); // Tạm thời bỏ preventDefault để logic đóng menu bên dưới chạy
+                // e.preventDefault(); 
                 const targetId = href.substring(1);
                 const targetElement = document.getElementById(targetId);
                 if (targetElement) {
-                    e.preventDefault(); // Chỉ preventDefault nếu tìm thấy target
+                    e.preventDefault(); 
                     targetElement.scrollIntoView({
                         behavior: 'smooth',
                         block: 'start'
@@ -46,27 +46,18 @@ document.addEventListener('DOMContentLoaded', () => {
             navMenu.classList.toggle('active');
         });
 
-        // === PHẦN ĐÃ SỬA LỖI ===
         navLinks.forEach(link => {
             link.addEventListener('click', () => {
                 
-                // Kiểm tra xem link vừa bấm có phải là cha của dropdown không
                 const isDropdownParent = link.parentElement.classList.contains('nav-item-dropdown');
-
-                // Chỉ đóng menu nếu:
-                // 1. Chúng ta đang ở màn hình mobile (window.innerWidth <= 992)
-                // 2. VÀ link vừa bấm KHÔNG PHẢI là link cha (isDropdownParent === false)
                 if (window.innerWidth <= 992 && !isDropdownParent) {
                     if (navMenu.classList.contains('active')) {
                         navMenu.classList.remove('active');
                     }
                 }
                 
-                // Nếu là desktop, hoặc là link cha trên mobile, nó sẽ không làm gì cả
-                // (logic accordion ở dưới sẽ xử lý)
             });
         });
-        // === KẾT THÚC PHẦN SỬA LỖI ===
     }
 
     const zaloButton = document.getElementById('zaloFabButton');
@@ -91,32 +82,22 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Logic cho accordion (mở menu con)
     const dropdownLinks = document.querySelectorAll('.nav-menu .nav-item-dropdown > a');
 
     dropdownLinks.forEach(link => {
         link.addEventListener('click', function(e) {
-            // Chỉ chạy logic này trên màn hình mobile (khi nút hamburger hiển thị)
             if (window.innerWidth <= 992) {
-                e.preventDefault(); // Ngăn không cho click nhảy trang ngay lập tức
+                e.preventDefault(); 
                 
-                // Lấy menu con (là thẻ <ul> ngay sau thẻ <a> này)
                 const subMenu = this.nextElementSibling;
-
-                // Toggle lớp active cho link (để xoay icon)
                 this.classList.toggle('submenu-active-link');
-                
-                // Toggle lớp active cho menu con (để xổ nó ra)
                 if (subMenu) {
                     subMenu.classList.toggle('submenu-active');
                 }
             }
-            // Trên desktop (width > 992), event listener này không làm gì cả
-            // và link sẽ hoạt động bình thường (hover CSS và click để điều hướng)
         });
     });
 
-    // Logic cho animation
     const observerOptions = {
         threshold: 0.1,
         rootMargin: '0px 0px -50px 0px'
