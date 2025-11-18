@@ -122,6 +122,8 @@ async function handleSearch(code) {
         errorMessageLanding.classList.remove('hidden');
         return;
     }
+    const newUrl = `${window.location.pathname}?code=${code}`;
+    window.history.pushState({path: newUrl}, '', newUrl);
     errorMessageLanding.classList.add('hidden');
 
     showSkeletonState();
@@ -160,4 +162,16 @@ trackingFormHeader.addEventListener('submit', (e) => {
     handleSearch(code);
 });
 
-document.addEventListener('DOMContentLoaded', showSearchState);
+document.addEventListener('DOMContentLoaded', () => {
+    // 1. Lấy tham số từ URL trình duyệt
+    const urlParams = new URLSearchParams(window.location.search);
+    const codeFromUrl = urlParams.get('code');
+
+    // 2. Nếu có mã 'code' trên URL -> Tự động tìm kiếm
+    if (codeFromUrl) {
+        handleSearch(codeFromUrl);
+    } else {
+        // 3. Nếu không có -> Hiện ô nhập liệu như bình thường
+        showSearchState();
+    }
+});
