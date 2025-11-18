@@ -1,4 +1,4 @@
-const API_URL = '/api/track';
+const API_URL = 'https://213cmhft-3000.asse.devtunnels.ms/api/track';
 
 const searchSection = document.getElementById('search-section');
 const resultsPageWrapper = document.getElementById('results-page-wrapper');
@@ -43,6 +43,7 @@ function showSkeletonState() {
     partnersFooter.classList.add('hidden');
     resultsPageWrapper.classList.remove('hidden');
     
+    document.getElementById('skeleton-layout').classList.remove('hidden');
     skeletonLoader.classList.remove('hidden');
     resultContainer.classList.add('hidden');
     errorContainer.classList.add('hidden');
@@ -54,15 +55,16 @@ function showResultState() {
     skeletonLoader.classList.add('hidden');
     resultContainer.classList.remove('hidden');
     partnersFooter.classList.remove('hidden');
+    document.getElementById('skeleton-layout').classList.add('hidden');
 }
 
 function showErrorState(message) {
     skeletonLoader.classList.add('hidden');
     resultContainer.classList.add('hidden');
     partnersFooter.classList.remove('hidden');
-
     errorMessageResults.textContent = message;
     errorContainer.classList.remove('hidden');
+    document.getElementById('skeleton-layout').classList.add('hidden');
 }
 
 function populateResults(data) {
