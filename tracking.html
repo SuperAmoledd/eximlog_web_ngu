@@ -5,14 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Theo dõi vận đơn - EXIMLOG</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-    <link rel="stylesheet" href="/styles/tracking.css" />
+    <link rel="stylesheet" href="/tracking.css" />
 </head>
 
 <body>
     <div class="landing-bg"></div>
     <div class="main-container">
         <div id="search-section" class="search-section">
-            <img src="/img/eximlog_logo.png" alt="EXIMLOG EXPRESS" class="logo-image" />
+            <img src="./assets/images/eximlog_logo_xoa_nen.png" alt="EXIMLOG EXPRESS" class="logo-image" />
             <h2>Theo dõi kiện hàng của bạn</h2>
 
             <form id="form-on-tracking">
@@ -26,15 +26,18 @@
         <div id="results-page-wrapper" class="hidden">
             <header class="page-header">
                 <div class="header-container">
+
                     <form id="form-in-header">
                         <input type="text" id="trackingCodeInputHeader" placeholder="Nhập mã khác..." />
                         <button type="submit"><i class="fas fa-search"></i></button>
                     </form>
+
                     <div class="lang-select-dummy"></div>
                 </div>
             </header>
 
             <main class="content-wrapper">
+
                     <div id="skeleton-layout" class="skeleton-layout hidden">
     <div class="skeleton-side left-side">
         <img src="/public/assets/images/eximlog_logo.jpg" alt="">
@@ -47,10 +50,11 @@
         <div class="wrapper-cell"><div class="image animated-background"></div><div class="text"><div class="text-line animated-background"></div><div class="text-line animated-background"></div><div class="text-line animated-background"></div></div></div>
     </div>
 
-        <div class="skeleton-side right-side">
-            <img src="/public/assets/images/eximlog_logo.jpg" alt="">
-        </div>
+    <div class="skeleton-side right-side">
+        <img src="/public/assets/images/eximlog_logo.jpg" alt="">
     </div>
+</div>
+
 
                     <div class="wrapper-cell">
                         <div class="image animated-background"></div>
