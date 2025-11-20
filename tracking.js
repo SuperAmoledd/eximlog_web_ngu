@@ -1,5 +1,4 @@
 const API_URL = 'https://213cmhft-3000.asse.devtunnels.ms/api/track';
-
 const searchSection = document.getElementById('search-section');
 const resultsPageWrapper = document.getElementById('results-page-wrapper');
 const partnersFooter = document.querySelector('.partners');
@@ -84,7 +83,7 @@ function populateResults(data) {
     document.getElementById('info-send-date').textContent = formatDateTime(data.createdAt);
     document.getElementById('info-sub-tracking').textContent = data.history[0]?.subTracking || 'N/A';
     
-    document.getElementById('service-type').textContent = '--';
+    document.getElementById('service-type').textContent = 'KSN-SEA-USA-UPS';
     document.getElementById('service-term').textContent = 'Người gửi';
 
     document.getElementById('detail-packaging').textContent = 'Thùng carton';
@@ -110,7 +109,7 @@ function populateResults(data) {
     subTable.innerHTML = `
         <tr>
             <td>${data.code.slice(0, 8)}</td>
-            <td>--</td>
+            <td>1Z4E2W090318383823</td>
         </tr>
     `;
 }
