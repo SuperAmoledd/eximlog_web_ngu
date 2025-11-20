@@ -133,7 +133,7 @@ async function handleSearch(code) {
 
     setTimeout(async () => {
         try {
-            const res = await fetch(`${API_URL}?code=${code}`);
+            const res = await fetch(`${API_URL}?code=${code}EXIMLOG`);
 
             if (!res.ok) {
                 const errData = await res.json();
@@ -163,15 +163,12 @@ trackingFormHeader.addEventListener('submit', (e) => {
 });
 
 document.addEventListener('DOMContentLoaded', () => {
-    // 1. Lấy tham số từ URL trình duyệt
     const urlParams = new URLSearchParams(window.location.search);
     const codeFromUrl = urlParams.get('code');
 
-    // 2. Nếu có mã 'code' trên URL -> Tự động tìm kiếm
     if (codeFromUrl) {
         handleSearch(codeFromUrl);
     } else {
-        // 3. Nếu không có -> Hiện ô nhập liệu như bình thường
         showSearchState();
     }
 });

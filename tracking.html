@@ -4,17 +4,13 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Theo dõi vận đơn - EXIMLOG</title>
-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
     <link rel="stylesheet" href="/styles/tracking.css" />
 </head>
 
 <body>
-
     <div class="landing-bg"></div>
-
     <div class="main-container">
-
         <div id="search-section" class="search-section">
             <img src="/img/eximlog_logo.png" alt="EXIMLOG EXPRESS" class="logo-image" />
             <h2>Theo dõi kiện hàng của bạn</h2>
@@ -27,45 +23,34 @@
             <p id="error-message-landing" class="error-text hidden"></p>
         </div>
 
-        <!-- GIAO DIỆN KẾT QUẢ -->
         <div id="results-page-wrapper" class="hidden">
-
-            <!-- HEADER NHẬP MÃ -->
             <header class="page-header">
                 <div class="header-container">
-
                     <form id="form-in-header">
                         <input type="text" id="trackingCodeInputHeader" placeholder="Nhập mã khác..." />
                         <button type="submit"><i class="fas fa-search"></i></button>
                     </form>
-
                     <div class="lang-select-dummy"></div>
                 </div>
             </header>
 
-            <!-- NỘI DUNG -->
             <main class="content-wrapper">
-
-                <!-- SKELETON LOADER -->
-                <!-- <div id="skeletonLoader" class="wrapper hidden"> -->
                     <div id="skeleton-layout" class="skeleton-layout hidden">
     <div class="skeleton-side left-side">
         <img src="/public/assets/images/eximlog_logo.jpg" alt="">
     </div>
 
     <div id="skeletonLoader" class="wrapper">
-        <!-- giữ nguyên toàn bộ skeleton loader của bạn -->
         <div class="wrapper-cell"><div class="image animated-background"></div><div class="text"><div class="text-line animated-background"></div><div class="text-line animated-background"></div><div class="text-line animated-background"></div></div></div>
         <div class="wrapper-cell"><div class="image animated-background"></div><div class="text"><div class="text-line animated-background"></div><div class="text-line animated-background"></div><div class="text-line animated-background"></div></div></div>
         <div class="wrapper-cell"><div class="image animated-background"></div><div class="text"><div class="text-line animated-background"></div><div class="text-line animated-background"></div><div class="text-line animated-background"></div></div></div>
         <div class="wrapper-cell"><div class="image animated-background"></div><div class="text"><div class="text-line animated-background"></div><div class="text-line animated-background"></div><div class="text-line animated-background"></div></div></div>
     </div>
 
-    <div class="skeleton-side right-side">
-        <img src="/public/assets/images/eximlog_logo.jpg" alt="">
+        <div class="skeleton-side right-side">
+            <img src="/public/assets/images/eximlog_logo.jpg" alt="">
+        </div>
     </div>
-</div>
-
 
                     <div class="wrapper-cell">
                         <div class="image animated-background"></div>
@@ -104,7 +89,6 @@
                     </div>
                 </div>
 
-                <!-- FULL PAGE RESULT -->
                 <div id="resultContainer" class="result-grid hidden">
 
                     <div class="card" id="main-status">
@@ -177,7 +161,6 @@
 
                 </div>
 
-                <!-- ERROR -->
                 <div id="errorContainer" class="error-container hidden">
                     <p id="error-message-results"></p>
                 </div>
@@ -186,7 +169,6 @@
         </div>
     </div>
 
-    <!-- FOOTER LOGO ĐỐI TÁC -->
     <footer class="partners">
         <div class="container-footer" style="text-align:center;">
             <p>ĐỐI TÁC CỦA CHÚNG TÔI</p>
