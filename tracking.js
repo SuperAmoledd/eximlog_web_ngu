@@ -84,7 +84,7 @@ function populateResults(data) {
     document.getElementById('info-send-date').textContent = formatDateTime(data.createdAt);
     document.getElementById('info-sub-tracking').textContent = data.history[0]?.subTracking || 'N/A';
     
-    document.getElementById('service-type').textContent = 'KSN-SEA-USA-UPS';
+    document.getElementById('service-type').textContent = '--';
     document.getElementById('service-term').textContent = 'Người gửi';
 
     document.getElementById('detail-packaging').textContent = 'Thùng carton';
@@ -110,7 +110,7 @@ function populateResults(data) {
     subTable.innerHTML = `
         <tr>
             <td>${data.code.slice(0, 8)}</td>
-            <td>1Z4E2W090318383823</td>
+            <td>--</td>
         </tr>
     `;
 }
@@ -133,7 +133,7 @@ async function handleSearch(code) {
 
     setTimeout(async () => {
         try {
-            const res = await fetch(`${API_URL}?code=${code}EXIMLOG`);
+            const res = await fetch(`${API_URL}?code=${code}`);
 
             if (!res.ok) {
                 const errData = await res.json();
