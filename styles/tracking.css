@@ -116,7 +116,7 @@ body {
 }
 
 .page-header {
-    background-color: #102e46;
+    background-color: #f6c777;
     padding: 20px 0;
     position: sticky;
     top: 0;
@@ -150,9 +150,9 @@ body {
 }
 
 #form-in-header button {
-    background: #FFA500;
+    background: #e0a035; 
     border: none;
-    color: #000;
+    color: #fff; /* Chữ trắng đẹp hơn chữ đen trên nền này */
     padding: 0 30px;
     cursor: pointer;
     transition: all 0.3s ease;
@@ -160,7 +160,7 @@ body {
 }
 
 #form-in-header button:hover {
-    background: #FF8F00;
+    background: #e0a035; /* Màu hover đậm hơn chút */
 }
 
 .skeleton-layout {
@@ -236,10 +236,10 @@ body {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 20px;
-    padding: 20px;
-    max-width: 1400px;
+    padding: 20px 40px;
+    max-width: 100%;
     width: 100%;
-    margin: auto;
+    margin: 0;
 }
 
 .card {
@@ -258,7 +258,7 @@ body {
 
 .card h2,
 .card h3 {
-    color: #007D88;
+    color: #102e46;
     margin-bottom: 20px;
     font-weight: 700;
     text-transform: uppercase;
@@ -268,55 +268,70 @@ body {
 #main-status {
     grid-column: 1 / 2;
     grid-row: 1;
-    background: #007D88;
-    color: #fff;
+    background: #fff;
+    color: #102e46;
 }
 
+.status-header {
+    display: flex;       /* Dùng flex để xếp ngang */
+    align-items: center; /* Căn giữa theo chiều dọc */
+    flex-wrap: wrap;     /* Tự động xuống dòng nếu màn hình quá nhỏ */
+    gap: 15px;           /* Khoảng cách giữa các phần tử */
+}
+
+/* Chỉnh lại tiêu đề H2 */
 .status-header h2 {
-    color: #fff;
+    color: #102e46;     
     font-size: 1.2em;
-    margin-bottom: 15px;
+    margin: 0;           
+    white-space: nowrap;
 }
 
 .status-tag {
     display: inline-block;
-    padding: 8px 20px;
-    background: rgba(255, 255, 255, 0.2);
-    backdrop-filter: blur(10px);
+    padding: 6px 15px;
+    background: #3bd65a; /* MÀU MỚI: Nền vàng cam */
     border-radius: 50px;
     font-weight: 600;
-    font-size: 1.1em;
-    margin-right: 15px;
-    color: #fff;
+    font-size: 1em;
+    margin: 0;
+    color: #fff; /* Chữ trắng cho nổi */
+    box-shadow: 0 2px 5px rgba(248, 185, 77, 0.4); /* Bóng nhẹ màu cam */
 }
 
 .status-date {
-    display: block;
-    opacity: 0.9;
+    display: inline-block;
     font-size: 0.95em;
-    margin-top: 10px;
-    color: #fff;
+    margin: 0;           /* Bỏ margin cũ */
+    color: #555;         /* Màu chữ xám đậm */
+    font-weight: 500;
 }
 
 #main-code {
     grid-column: 2 / 3;
     grid-row: 1;
-    background: #FFA500;
-    color: #000;
+    background: #fff;
+    color: #102e46;
+    display: flex;       /* Căn giữa nội dung theo chiều dọc của Card */
+    align-items: center;
 }
 
 #main-code h2 {
-    color: #000;
+    color: #102e46;
     font-size: 1.2em;
-    margin-bottom: 10px;
+    margin: 0;           /* Bỏ margin dưới để không bị đẩy lệch */
+    display: flex;       /* Xếp chữ "MÃ THEO DÕI" và mã code nằm ngang */
+    align-items: center; 
+    gap: 15px;           /* Tạo khoảng cách giữa tiêu đề và mã */
+    flex-wrap: wrap;
 }
 
 #main-tracking-code {
-    display: block;
+    display: inline-block; /* Quan trọng: Đổi từ block sang inline để nằm ngang */
     font-weight: 800;
     letter-spacing: 2px;
-    font-size: 1.3em;
-    color: #000;
+    font-size: 1.4em;    /* Tăng kích thước font lên chút cho rõ */
+    color: #f8b94d;
 }
 
 #info {
@@ -342,7 +357,7 @@ body {
 }
 
 .info-label {
-    display: block;
+    display: block; 
     color: #7f8c8d;
     font-size: 0.9em;
     margin-bottom: 8px;
@@ -499,7 +514,7 @@ body {
 }
 
 #sub-details-table th {
-    background: #007D88;
+    background: #a8a8a9; /* MÀU MỚI: Header bảng màu xám */
     color: #fff;
     padding: 15px;
     text-align: left;
@@ -755,6 +770,104 @@ body {
         margin: 0 10px;
     }
 }
+
+/* --- START STYLE ICON XỊN --- */
+
+/* 1. Style chung cho icon trong tiêu đề Card */
+.card h3 i {
+    margin-right: 10px;
+    color: #f8b94d; /* Màu cam điểm nhấn */
+}
+
+.info-item {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    background: #fff;
+    /* Viền dùng màu Xám bạn yêu cầu, chỉnh mờ đi chút */
+    border: 1px solid rgba(168, 168, 169, 0.3); 
+    border-radius: 12px;
+    transition: all 0.2s ease;
+}
+
+.info-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    border-color: #f8b94d; /* Hover vào thì viền sáng màu cam */
+}
+
+/* Tạo hình tròn bao quanh icon */
+.icon-wrapper {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    /* Nền cam nhạt trong suốt */
+    background: rgba(248, 185, 77, 0.15); 
+    color: #f8b94d; /* Icon màu cam đậm */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+    margin-right: 15px;
+    flex-shrink: 0;
+}
+
+.info-content {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Chữ Label (Từ, Đến, Ngày gửi...) dùng màu Xám */
+.info-label {
+    margin-bottom: 4px;
+    font-size: 0.85em;
+    color: #a8a8a9; /* MÀU MỚI: Xám */
+    font-weight: 600; /* Tăng độ đậm chút vì màu xám hơi nhạt */
+}
+
+.info-item strong {
+    font-size: 1.05em;
+    color: #102e46;
+}
+
+/* 3. Style cho phần Chi tiết đóng gói (Details) */
+.detail-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.detail-row {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    background: #f8f9fa;
+    border-radius: 8px;
+}
+
+.detail-row p {
+    margin: 0;
+    padding: 0;
+    border: none;
+    flex-grow: 1;
+    display: flex;
+    justify-content: space-between;
+}
+
+.icon-mini {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    background: rgba(168, 168, 169, 0.15); /* Nền xám nhạt */
+    color: #f8b94d; /* Icon màu cam */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 15px;
+    font-size: 0.9rem;
+}
+
+/* --- END STYLE ICON XỊN --- */
 
 @media (max-width: 600px) {
     .header-container {

@@ -34,7 +34,6 @@ function showSearchState() {
     resultsPageWrapper.classList.add('hidden');
     partnersFooter.classList.remove('hidden');
     errorMessageLanding.classList.add('hidden');
-    
     mainContainer.style.justifyContent = 'center';
 }
 
@@ -43,7 +42,7 @@ function showSkeletonState() {
     partnersFooter.classList.add('hidden');
     resultsPageWrapper.classList.remove('hidden');
     
-    document.getElementById('skeleton-layout').classList.remove('hidden');
+    document.getElementById('skeleton-layout').classList.remove('hidden'); 
     skeletonLoader.classList.remove('hidden');
     resultContainer.classList.add('hidden');
     errorContainer.classList.add('hidden');
@@ -53,66 +52,65 @@ function showSkeletonState() {
 
 function showResultState() {
     skeletonLoader.classList.add('hidden');
+    document.getElementById('skeleton-layout').classList.add('hidden'); 
     resultContainer.classList.remove('hidden');
     partnersFooter.classList.remove('hidden');
-    document.getElementById('skeleton-layout').classList.add('hidden');
 }
 
 function showErrorState(message) {
     skeletonLoader.classList.add('hidden');
+    document.getElementById('skeleton-layout').classList.add('hidden');
     resultContainer.classList.add('hidden');
     partnersFooter.classList.remove('hidden');
+    
     errorMessageResults.textContent = message;
     errorContainer.classList.remove('hidden');
-    document.getElementById('skeleton-layout').classList.add('hidden');
 }
 
 function populateResults(data) {
     let latestStatus = { status: "Chưa có thông tin", date: data.createdAt };
     if (data.history && data.history.length > 0) {
-        data.history.sort((a, b) => new Date(b.date) - new Date(a.date));
-        latestStatus = data.history[0];
+        const sortedHistory = [...data.history].sort((a, b) => new Date(b.date) - new Date(a.date));
+        latestStatus = sortedHistory[0];
     }
 
     document.getElementById('status-text').textContent = latestStatus.status;
     document.getElementById('status-date').textContent = formatDateTime(latestStatus.date);
     document.getElementById('main-tracking-code').textContent = data.code;
-    
-    document.getElementById('info-from').textContent = data.fromCountry || 'N/A';
-    document.getElementById('info-carrier').textContent = 'UPS';
+
+    document.getElementById('info-from').textContent = data.fromCountry || 'Việt Nam';
     document.getElementById('info-to').textContent = data.toCountry || 'N/A';
     document.getElementById('info-send-date').textContent = formatDateTime(data.createdAt);
-    document.getElementById('info-sub-tracking').textContent = data.history[0]?.subTracking || 'N/A';
     
-    document.getElementById('service-type').textContent = 'KSN-SEA-USA-UPS';
-    document.getElementById('service-term').textContent = 'Người gửi';
+    document.getElementById('info-carrier').textContent = data.carrier || 'Chưa cập nhật';
+    document.getElementById('info-sub-tracking').textContent = data.subTracking || 'N/A';
+    
+    document.getElementById('service-type').textContent = data.serviceType || 'Standard Shipping';
+    document.getElementById('service-term').textContent = 'N/A'; 
 
-    document.getElementById('detail-packaging').textContent = 'Thùng carton';
-    document.getElementById('detail-pieces').textContent = `${data.packages || 0} Cái`;
+    document.getElementById('detail-packaging').textContent = data.packaging || 'Thùng carton';
+    document.getElementById('detail-pieces').textContent = `${data.packages || 0} Kiện`;
+    document.getElementById('detail-weight').textContent = `${data.weight || 0} Kg`;
 
     const historyList = document.getElementById('history-list');
     historyList.innerHTML = '';
     if (data.history && data.history.length > 0) {
-        data.history.forEach(entry => {
+        // Sắp xếp: Mới nhất lên đầu
+        const sortedHistory = [...data.history].sort((a, b) => new Date(b.date) - new Date(a.date));
+        
+        sortedHistory.forEach(entry => {
             const li = document.createElement('li');
             li.innerHTML = `
                 <span class="date">${formatDateTime(entry.date)}</span>
                 <span class="status">${entry.status}</span>
-                <span class="location">${data.toCountry || 'Đang xử lý'}</span>
+                <span class="location">${data.toCountry || ''}</span> 
             `;
             historyList.appendChild(li);
         });
     } else {
-        historyList.innerHTML = '<li>Không có lịch sử vận đơn.</li>';
+        historyList.innerHTML = '<li>Chưa có lịch sử vận đơn.</li>';
     }
     
-    const subTable = document.getElementById('sub-details-table').querySelector('tbody');
-    subTable.innerHTML = `
-        <tr>
-            <td>${data.code.slice(0, 8)}</td>
-            <td>1Z4E2W090318383823</td>
-        </tr>
-    `;
 }
 
 async function handleSearch(code) {
@@ -122,15 +120,21 @@ async function handleSearch(code) {
         errorMessageLanding.classList.remove('hidden');
         return;
     }
+    
+    // Cập nhật URL
     const newUrl = `${window.location.pathname}?code=${code}`;
     window.history.pushState({path: newUrl}, '', newUrl);
+    
     errorMessageLanding.classList.add('hidden');
 
+    // Chuyển sang màn hình Skeleton Loading
     showSkeletonState();
     
+    // Đồng bộ input
     trackingCodeInputLanding.value = code;
     trackingCodeInputHeader.value = code;
 
+    // Timeout giả lập loading 1.5 giây cho trải nghiệm mượt mà
     setTimeout(async () => {
         try {
             const res = await fetch(`${API_URL}?code=${code}`);
@@ -147,9 +151,10 @@ async function handleSearch(code) {
         } catch (err) {
             showErrorState(err.message || 'Không tìm thấy mã vận đơn.');
         }
-    }, 2000);
+    }, 1500);
 }
 
+// Event Listeners
 trackingFormLanding.addEventListener('submit', (e) => {
     e.preventDefault();
     const code = trackingCodeInputLanding.value.trim();
@@ -162,6 +167,7 @@ trackingFormHeader.addEventListener('submit', (e) => {
     handleSearch(code);
 });
 
+// Tự động tìm kiếm nếu có params ?code=...
 document.addEventListener('DOMContentLoaded', () => {
     const urlParams = new URLSearchParams(window.location.search);
     const codeFromUrl = urlParams.get('code');
