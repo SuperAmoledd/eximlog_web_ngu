@@ -234,7 +234,7 @@ body {
 
 #resultContainer {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1fr; 
     gap: 20px;
     padding: 20px 40px;
     max-width: 100%;
@@ -263,6 +263,67 @@ body {
     font-weight: 700;
     text-transform: uppercase;
     font-size: 1.2rem;
+}
+
+.card-group {
+    /* Áp dụng style card chung cho container nhóm */
+    background: none; 
+    border-radius: 0;
+    padding: 0;
+    box-shadow: none;
+    border-width: 0;
+    transition: none;
+    /* Thiết lập bố cục nội dung là flex để xếp các card con theo chiều dọc */
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Khoảng cách giữa Info và History, hoặc Service và Details */
+}
+
+.fit-content-card {
+    height: fit-content;
+}
+
+/* --- Yêu cầu: Card group chứa Info/History (scroll không thấy scrollbar) --- */
+.scrollable-card {
+    max-height: 500px; /* Đặt chiều cao tối đa cố định (có thể điều chỉnh) */
+    overflow-y: scroll; /* Kích hoạt thanh cuộn */
+}
+
+/* Ẩn scrollbar trên Chrome, Safari và Opera */
+.scrollable-card::-webkit-scrollbar {
+    display: none;
+    width: 0px; /* Tùy chọn: Đảm bảo độ rộng là 0 */
+}
+
+/* Ẩn scrollbar trên IE và Edge */
+.scrollable-card {
+    -ms-overflow-style: none;
+}
+
+/* Ẩn scrollbar trên Firefox */
+.scrollable-card {
+    scrollbar-width: none;
+}
+
+/* --- Cập nhật Media Query để đảm bảo bố cục 1 cột trên Mobile --- */
+@media (max-width: 900px) {
+    /* Giữ nguyên grid-template-columns: 1fr; */
+    #resultContainer {
+        grid-template-columns: 1fr;
+    }
+    
+    #main-status,
+    #main-code,
+    #infoHistoryContainer, /* THÊM */
+    #serviceDetailsContainer {
+        grid-column: 1 / -1 !important;
+        grid-row: auto !important
+    }
+    
+    /* Đảm bảo scrollbar hoạt động tốt trên mobile */
+    .scrollable-card {
+        max-height: none; /* Giảm chiều cao trên mobile để dễ cuộn */
+    }
 }
 
 #main-status {
@@ -394,6 +455,16 @@ body {
     font-weight: 600;
 }
 
+#infoHistoryContainer {
+    grid-column: 1 / 2;
+    grid-row: 2; /* Chiếm vị trí cột 1, hàng 2 */
+}
+
+#serviceDetailsContainer {
+    grid-column: 2 / 3;
+    grid-row: 2; /* Chiếm vị trí cột 2, hàng 2 */
+}
+
 #history {
     grid-column: 1 / 2;
     grid-row: 3 / 5;
@@ -401,80 +472,135 @@ body {
 
 #history-list {
     list-style: none;
-    padding: 0;
+    padding: 10px 0 0 0;
     position: relative;
-    padding: 1.5rem 0 1rem;
 }
 
 #history-list::before {
     content: '';
     position: absolute;
-    top: 30px;
-    left: 19px;
-    height: 95%;
-    width: 3px;
-    background: #b6b5b5;
-    border-radius: 0.25rem;
+    top: 15px;
+    bottom: 0;
+    left: 100px; /* Vị trí đường kẻ */
+    width: 2px;
+    background: #e0e0e0;
+    z-index: 1;
 }
 
 #history-list li {
     position: relative;
-    margin: 0 0 1rem;
-    padding-left: 50px;
+    margin-bottom: 25px;
+    display: flex;
+    align-items: flex-start;
+    z-index: 2;
 }
 
-#history-list li::before {
-    content: '';
-    position: absolute;
-    top: 20px;
-    left: 11px;
-    width: 18px;
-    height: 18px;
-    border-radius: 50%;
+#history-list .time-col {
+    width: 85px; /* Cố định chiều rộng */
+    text-align: right;
+    padding-right: 25px; /* Khoảng cách đến chấm tròn */
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
 }
 
-#history-list li::after {
-    content: '';
-    width: 10px;
-    height: 10px;
-    border-radius: 0.5rem;
-    position: absolute;
-    left: 15px;
-    top: 24px;
-    background: #b6b5b5;
+.time-col .date-part {
+    font-size: 0.85em;
+    color: #888;
+    font-weight: 500;
 }
 
-#history-list li:first-child::after {
-    background: black;
-}
-
-#history-list .date {
-    display: block;
+.time-col .time-part {
+    font-size: 1.1em;
     color: #102e46;
-    font-size: 18px;
-    font-weight: bold;
-    margin-bottom: 5px;
+    font-weight: 700;
 }
 
-#history-list .status {
+#history-list .dot {
+    position: absolute;
+    left: 100px; /* Trùng với đường kẻ */
+    transform: translateX(-50%);
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: #fff;
+    border: 3px solid #ccc; /* Mặc định xám */
+    margin-top: 5px; /* Căn chỉnh với dòng đầu của text */
+    z-index: 3;
+    transition: all 0.3s ease;
+}
+
+#history-list .content-col {
+    padding-left: 25px;
+    flex-grow: 1;
+}
+
+.content-col .status {
     display: block;
-    color: black;
-    font-weight: bold;
-    font-size: 13px;
+    color: #333;
+    font-weight: 700;
+    font-size: 1em;
     text-transform: uppercase;
     margin-bottom: 4px;
-    padding: 20px 0 0;
+    line-height: 1.4;
 }
 
-#history-list .status::before {
-    content: "- ";
-    margin-right: 5px;
-}
-
-#history-list .location {
+.content-col .location {
     display: block;
-    color: #666;
-    font-size: 13px;
+    color: #7f8c8d;
+    font-size: 0.9em;
+    font-style: normal;
+}
+
+#history-list li:first-child .dot {
+    border-color: #f8b94d; /* Màu cam */
+    background: #f8b94d;
+    box-shadow: 0 0 0 4px rgba(248, 185, 77, 0.2); /* Hiệu ứng tỏa sáng */
+    width: 18px;
+    height: 18px;
+}
+
+#history-list li:first-child .time-part {
+    color: #f8b94d; /* Giờ cũng màu cam */
+}
+
+#history-list li:first-child .status {
+    color: #102e46; /* Status đậm hơn */
+    font-size: 1.1em;
+}
+
+@media (max-width: 480px) {
+    #history-list::before {
+        left: 15px; /* Dời đường kẻ về sát trái */
+    }
+
+    #history-list li {
+        flex-direction: column; /* Xếp chồng lên nhau */
+        padding-left: 40px; /* Chừa chỗ cho đường kẻ */
+    }
+
+    #history-list .time-col {
+        width: 100%;
+        text-align: left;
+        padding-right: 0;
+        margin-bottom: 4px;
+        flex-direction: row; /* Ngày và giờ nằm ngang trên mobile */
+        gap: 10px;
+        align-items: center;
+    }
+    
+    .time-col .time-part {
+        font-size: 0.95em;
+    }
+    
+    #history-list .dot {
+        left: 15px;
+        margin-top: 2px;
+    }
+
+    #history-list .content-col {
+        padding-left: 0;
+    }
 }
 
 #details {
@@ -502,50 +628,6 @@ body {
     font-weight: 600;
 }
 
-#sub-details {
-    grid-column: 2 / 3;
-    grid-row: 4;
-}
-
-#sub-details-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 15px;
-}
-
-#sub-details-table th {
-    background: #a8a8a9; /* MÀU MỚI: Header bảng màu xám */
-    color: #fff;
-    padding: 15px;
-    text-align: left;
-    font-weight: 600;
-    text-transform: uppercase;
-    font-size: 0.85em;
-    letter-spacing: 1px;
-}
-
-#sub-details-table th:first-child {
-    border-radius: 8px 0 0 0;
-}
-
-#sub-details-table th:last-child {
-    border-radius: 0 8px 0 0;
-}
-
-#sub-details-table td {
-    padding: 15px;
-    border-bottom: 1px solid #ecf0f1;
-    color: #000;
-}
-
-#sub-details-table tr:last-child td {
-    border-bottom: none;
-}
-
-#sub-details-table tr:hover {
-    background: #f8f9fa;
-}
-
 .error-container {
     text-align: center;
     padding: 60px 40px;
@@ -563,56 +645,110 @@ body {
 }
 
 .partners {
-    background: #000;
-    color: #fff;
-    padding: 20px 0;
-    z-index: 2;
+    background: #fff;
+    padding: 10px 0;
+    width: 100%;
+    overflow: hidden; /* Ẩn phần logo trôi ra ngoài */
+}
+
+.container-footer {
+    text-align: center;
+    max-width: 1000px;
+    margin: 0 auto;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.footer-title {
+    color: #102e46;
+    font-weight: 700;
+    font-size: 0.9rem; /* Giảm cỡ chữ tiêu đề nhỏ lại */
+    letter-spacing: 2px;
+    margin-bottom: 10px; /* Kéo carousel lên sát tiêu đề hơn */
+    margin-top: 5px;
+    position: relative;
+    display: inline-block;
+}
+
+.footer-title::after {
+    content: '';
+    display: block;
+    width: 30px;
+    height: 2px;
+    background: #f8b94d;
+    margin: 4px auto 0;
+}
+
+.carousel-wrapper {
+    position: relative;
+    height: 50px; /* Chiều cao vùng hiển thị logo */
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.carousel-inner {
     position: relative;
     width: 100%;
-    overflow: hidden;
+    height: 100%;
 }
 
-.container-footer p {
-    margin-bottom: 20px;
-    font-size: 1em;
-    font-weight: 600;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-}
-
-.container-footer > div {
+.carousel-item {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.5);
+    opacity: 0;
+    transition: all 0.6s cubic-bezier(0.4, 0.0, 0.2, 1);
+    width: 100px; /* Giảm chiều rộng khung item */
     display: flex;
-    align-items: center;
     justify-content: center;
-    gap: 40px;
-    animation: scrollLogos 10s linear infinite;
+    align-items: center;
 }
 
-@keyframes scrollLogos {
-    0% {
-        transform: translateX(100%);
-    }
-    100% {
-        transform: translateX(-100%);
-    }
+.carousel-item img {
+    max-width: 100%;
+    max-height: 30px; /* Giảm từ 50px xuống 30px */
+    object-fit: contain;
+    filter: grayscale(100%);
+    transition: filter 0.3s;
 }
 
-.partner-logo {
-    width: 100px;
-    opacity: 0.8;
-    margin: 0 20px;
-    transition: all 0.3s ease;
-    flex-shrink: 0;
-}
-
-.partner-logo:hover {
+.carousel-item.active {
+    left: 50%;
+    transform: translate(-50%, -50%) scale(1.2); /* Scale nhỏ hơn chút (1.2) */
     opacity: 1;
-    transform: scale(1.1);
-    animation-play-state: paused;
+    z-index: 10;
+}
+.carousel-item.active img {
+    filter: grayscale(0%); /* Có màu */
 }
 
-.container-footer > div:hover {
-    animation-play-state: paused;
+/* 2. Vị trí BÊN TRÁI (Nhỏ hơn, mờ hơn) */
+.carousel-item.prev {
+    left: 25%; /* Kéo sát vào trung tâm hơn */
+    transform: translate(-50%, -50%) scale(0.8);
+    opacity: 0.3; /* Mờ hơn chút để tập trung vào giữa */
+    z-index: 5;
+}
+
+/* 3. Vị trí BÊN PHẢI (Nhỏ hơn, mờ hơn - Nơi logo chuẩn bị vào) */
+.carousel-item.next {
+    left: 75%; /* Kéo sát vào trung tâm hơn */
+    transform: translate(-50%, -50%) scale(0.8);
+    opacity: 0.3;
+    z-index: 5;
+}
+
+/* Mobile: Thu hẹp khoảng cách left/right để không bị tràn màn hình */
+@media (max-width: 600px) {
+    .partners {
+        padding: 5px 0; /* Mobile ép sát hơn nữa */
+    }
+    .carousel-item.prev { left: 15%; }
+    .carousel-item.next { left: 85%; }
 }
 
 @media (max-width: 900px) {
@@ -628,8 +764,7 @@ body {
     #info,
     #service,
     #details,
-    #history,
-    #sub-details {
+    #history {
         grid-column: 1 / -1 !important;
         grid-row: auto !important;
     }
@@ -760,11 +895,6 @@ body {
     #history-list .location {
         font-size: 11px;
     }
-    #sub-details-table th,
-    #sub-details-table td {
-        padding: 10px;
-        font-size: 0.8em;
-    }
     .partner-logo {
         width: 80px;
         margin: 0 10px;
@@ -796,7 +926,6 @@ body {
     border-color: #f8b94d; /* Hover vào thì viền sáng màu cam */
 }
 
-/* Tạo hình tròn bao quanh icon */
 .icon-wrapper {
     width: 45px;
     height: 45px;
@@ -817,7 +946,6 @@ body {
     flex-direction: column;
 }
 
-/* Chữ Label (Từ, Đến, Ngày gửi...) dùng màu Xám */
 .info-label {
     margin-bottom: 4px;
     font-size: 0.85em;
@@ -830,7 +958,6 @@ body {
     color: #102e46;
 }
 
-/* 3. Style cho phần Chi tiết đóng gói (Details) */
 .detail-list {
     display: flex;
     flex-direction: column;
@@ -865,6 +992,21 @@ body {
     align-items: center;
     margin-right: 15px;
     font-size: 0.9rem;
+}
+
+
+.dest-group {
+    display: flex;
+    align-items: center; 
+    gap: 6px; /* Khoảng cách giữa tên nước và dấu check */
+}
+
+.verified-icon {
+    width: 35px;  /* Kích thước vừa phải, không quá to */
+    height: 35px;
+    object-fit: contain;
+    display: inline-block;
+    margin-top: -2px; /* Tinh chỉnh nhẹ để khớp với dòng kẻ chữ */
 }
 
 /* --- END STYLE ICON XỊN --- */

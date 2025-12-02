@@ -32,14 +32,14 @@ function formatDateTime(isoString) {
 function showSearchState() {
     searchSection.classList.remove('hidden');
     resultsPageWrapper.classList.add('hidden');
-    partnersFooter.classList.remove('hidden');
+    partnersFooter.classList.remove('hidden'); 
     errorMessageLanding.classList.add('hidden');
     mainContainer.style.justifyContent = 'center';
 }
 
 function showSkeletonState() {
     searchSection.classList.add('hidden');
-    partnersFooter.classList.add('hidden');
+    partnersFooter.classList.add('hidden'); 
     resultsPageWrapper.classList.remove('hidden');
     
     document.getElementById('skeleton-layout').classList.remove('hidden'); 
@@ -54,14 +54,14 @@ function showResultState() {
     skeletonLoader.classList.add('hidden');
     document.getElementById('skeleton-layout').classList.add('hidden'); 
     resultContainer.classList.remove('hidden');
-    partnersFooter.classList.remove('hidden');
+    partnersFooter.classList.add('hidden'); 
 }
 
 function showErrorState(message) {
     skeletonLoader.classList.add('hidden');
     document.getElementById('skeleton-layout').classList.add('hidden');
     resultContainer.classList.add('hidden');
-    partnersFooter.classList.remove('hidden');
+    partnersFooter.classList.add('hidden'); 
     
     errorMessageResults.textContent = message;
     errorContainer.classList.remove('hidden');
@@ -80,7 +80,8 @@ function populateResults(data) {
 
     document.getElementById('info-from').textContent = data.fromCountry || 'Việt Nam';
     document.getElementById('info-to').textContent = data.toCountry || 'N/A';
-    document.getElementById('info-send-date').textContent = formatDateTime(data.createdAt);
+    // document.getElementById('info-send-date').textContent = formatDateTime(data.createdAt);
+    document.getElementById('info-send-date').textContent = new Date(data.createdAt).toLocaleDateString('vi-VN');
     
     document.getElementById('info-carrier').textContent = data.carrier || 'Chưa cập nhật';
     document.getElementById('info-sub-tracking').textContent = data.subTracking || 'N/A';
@@ -95,21 +96,47 @@ function populateResults(data) {
     const historyList = document.getElementById('history-list');
     historyList.innerHTML = '';
     if (data.history && data.history.length > 0) {
-        // Sắp xếp: Mới nhất lên đầu
         const sortedHistory = [...data.history].sort((a, b) => new Date(b.date) - new Date(a.date));
         
-        sortedHistory.forEach(entry => {
-            const li = document.createElement('li');
-            li.innerHTML = `
-                <span class="date">${formatDateTime(entry.date)}</span>
+        sortedHistory.forEach((entry, index) => {
+        const dateObj = new Date(entry.date);
+        const timeStr = dateObj.toLocaleTimeString('vi-VN', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+        const dateStr = dateObj.toLocaleDateString('vi-VN', { day: '2-digit', month: '2-digit', year: 'numeric' });
+
+        let locationDisplay = '';
+        
+        // Vì mảng đã sort Mới -> Cũ, nên phần tử cuối cùng (length - 1) là cái cũ nhất.
+        const isFirstStatus = (index === sortedHistory.length - 1);
+
+        if (entry.location && entry.location.trim() !== "") {
+            // 1. Nếu admin có nhập tay vị trí -> Ưu tiên hiển thị
+            locationDisplay = entry.location;
+        } else if (isFirstStatus) {
+            // 2. Nếu là dòng khởi tạo đầu tiên -> Mặc định là HCM
+            locationDisplay = 'Ho Chi Minh, VN'; 
+        } else {
+            // 3. Các trạng thái trung gian nếu không nhập vị trí -> Lấy nước đến
+            locationDisplay = data.toCountry || 'Đang vận chuyển';
+        }
+        // ---------------------
+
+        const li = document.createElement('li');
+        li.innerHTML = `
+            <div class="time-col">
+                <span class="time-part">${timeStr}</span>
+                <span class="date-part">${dateStr}</span>
+            </div>
+            <div class="dot"></div>
+            <div class="content-col">
                 <span class="status">${entry.status}</span>
-                <span class="location">${data.toCountry || ''}</span> 
-            `;
-            historyList.appendChild(li);
-        });
-    } else {
-        historyList.innerHTML = '<li>Chưa có lịch sử vận đơn.</li>';
-    }
+                <span class="location"><i class="fas fa-map-marker-alt"></i> ${locationDisplay}</span>
+            </div>
+        `;
+        historyList.appendChild(li);
+    });
+} else {
+    historyList.innerHTML = '<li>Chưa có lịch sử vận đơn.</li>';
+}
     
 }
 
@@ -134,7 +161,6 @@ async function handleSearch(code) {
     trackingCodeInputLanding.value = code;
     trackingCodeInputHeader.value = code;
 
-    // Timeout giả lập loading 1.5 giây cho trải nghiệm mượt mà
     setTimeout(async () => {
         try {
             const res = await fetch(`${API_URL}?code=${code}`);
@@ -151,10 +177,9 @@ async function handleSearch(code) {
         } catch (err) {
             showErrorState(err.message || 'Không tìm thấy mã vận đơn.');
         }
-    }, 1500);
+    }, 800);
 }
 
-// Event Listeners
 trackingFormLanding.addEventListener('submit', (e) => {
     e.preventDefault();
     const code = trackingCodeInputLanding.value.trim();
@@ -167,7 +192,6 @@ trackingFormHeader.addEventListener('submit', (e) => {
     handleSearch(code);
 });
 
-// Tự động tìm kiếm nếu có params ?code=...
 document.addEventListener('DOMContentLoaded', () => {
     const urlParams = new URLSearchParams(window.location.search);
     const codeFromUrl = urlParams.get('code');
@@ -177,4 +201,44 @@ document.addEventListener('DOMContentLoaded', () => {
     } else {
         showSearchState();
     }
+});
+
+// --- PARTNER CAROUSEL LOGIC ---
+document.addEventListener('DOMContentLoaded', () => {
+    const items = document.querySelectorAll('.carousel-item');
+    if (!items.length) return;
+
+    let currentIndex = 0;
+    const totalItems = items.length;
+
+    function updateCarousel() {
+        // Xóa hết class cũ
+        items.forEach(item => {
+            item.classList.remove('active', 'prev', 'next');
+        });
+
+        // Tính toán chỉ số (index) cho 3 vị trí
+        // 1. Active: Phần tử hiện tại
+        const activeIndex = currentIndex;
+        
+        // 2. Prev: Phần tử bên trái (lùi lại 1, nếu < 0 thì quay về cuối)  
+        let prevIndex = currentIndex - 1;
+        if (prevIndex < 0) prevIndex = totalItems - 1;
+
+        // 3. Next: Phần tử bên phải (tiến lên 1, nếu quá tổng thì quay về đầu)
+        let nextIndex = currentIndex + 1;
+        if (nextIndex >= totalItems) nextIndex = 0;
+
+        // Gán class
+        items[activeIndex].classList.add('active'); // Giữa
+        items[prevIndex].classList.add('prev');     // Trái
+        items[nextIndex].classList.add('next');     // Phải
+
+        currentIndex++;
+        if (currentIndex >= totalItems) currentIndex = 0;
+    }
+
+    updateCarousel();
+
+    setInterval(updateCarousel, 2000);
 });
