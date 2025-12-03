@@ -1,4 +1,4 @@
-const API_URL = 'https://test.eximlog.vn/api/track';
+const API_URL = 'https://dashboards.eximlog.vn/api/track';
 
 const searchSection = document.getElementById('search-section');
 const resultsPageWrapper = document.getElementById('results-page-wrapper');
