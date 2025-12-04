@@ -21,11 +21,16 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(to bottom, #FFA500, #ffcc80);
-    opacity: 0.15;
-    z-index: 0;
+    
+    background-image: url('./assets/images/1.png');
+    background-repeat: no-repeat;
+    background-position: center center; 
+    background-attachment: fixed;      
+    background-size: cover;             
+    
+    z-index: 0; 
+    opacity: 0.2;
 }
-
 .main-container {
     width: 100%;
     margin: 0 auto;
@@ -1033,5 +1038,188 @@ body {
     }
     .card {
         padding: 20px;
+    }
+}
+
+/* ==========================================================================
+   MOBILE & TABLET RESPONSIVE OVERRIDES (Thêm vào cuối file tracking.css)
+   ========================================================================== */
+
+/* 1. Tinh chỉnh Header (Thanh tìm kiếm dính ở trên) cho Mobile */
+@media (max-width: 768px) {
+    .page-header {
+        padding: 10px 0; /* Giảm padding */
+    }
+
+    .header-container {
+        padding: 0 10px;
+    }
+
+    #form-in-header {
+        max-width: 100%;
+        height: 45px; /* Chiều cao cố định nhỏ gọn */
+        border: 1px solid #e0e0e0;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    }
+
+    #form-in-header input {
+        font-size: 14px;
+        padding: 0 15px;
+    }
+
+    #form-in-header button {
+        padding: 0 20px;
+        font-size: 1rem;
+    }
+}
+
+/* 2. Tinh chỉnh Lưới hiển thị (Grid) trên Tablet & Mobile */
+@media (max-width: 900px) {
+    #resultContainer {
+        grid-template-columns: 1fr; /* Chuyển về 1 cột */
+        gap: 15px; /* Giảm khoảng cách giữa các card */
+        padding: 15px; /* Padding lề ngoài nhỏ lại */
+    }
+
+    /* Đảm bảo các phần tử chiếm full chiều rộng */
+    #main-status, #main-code, #infoHistoryContainer, #serviceDetailsContainer, #info, #service, #details, #history {
+        grid-column: 1 / -1 !important;
+        grid-row: auto !important;
+    }
+    
+    /* Trên tablet, Info Grid vẫn nên chia 2 cột cho đẹp, chỉ Mobile mới về 1 */
+    .info-grid {
+        grid-template-columns: repeat(2, 1fr); 
+    }
+}
+
+/* 3. MOBILE SPECIAL (Dưới 600px) - Xử lý chi tiết */
+@media (max-width: 600px) {
+    /* Logo và Landing search */
+    .search-section {
+        padding: 0 15px 30px;
+        transform: translateY(-20px);
+    }
+    
+    .logo-image {
+        width: 160px; /* Logo nhỏ lại chút */
+    }
+
+    .logo-title {
+        font-size: 1.8rem;
+    }
+
+    /* Các Card thông tin */
+    .card {
+        padding: 15px; /* Tiết kiệm diện tích */
+        border-radius: 12px; /* Bo góc mềm mại hơn */
+    }
+    
+    .info-grid {
+        grid-template-columns: 1fr; /* Về 1 cột để không bị bóp méo */
+        gap: 10px;
+    }
+
+    /* Style lại Item trong Info cho gọn */
+    .info-item {
+        padding: 10px;
+        flex-direction: row; /* Vẫn giữ icon bên trái */
+        align-items: center;
+    }
+    
+    .icon-wrapper {
+        width: 38px;
+        height: 38px;
+        font-size: 1rem;
+        margin-right: 12px;
+    }
+    
+    .info-item strong {
+        font-size: 0.95rem; /* Font chữ vừa vặn mobile */
+        word-break: break-word; /* Xuống dòng nếu tên quá dài */
+    }
+}
+
+
+@media (max-width: 600px) {
+    #history-list {
+        padding-top: 5px;
+    }
+
+    /* Kẻ dọc dời sát sang trái */
+    #history-list::before {
+        left: 14px; 
+    }
+
+    #history-list li {
+        flex-direction: column; /* Xếp chồng nội dung */
+        padding-left: 40px; /* Chừa chỗ cho chấm tròn */
+        margin-bottom: 25px;
+    }
+
+    /* Chấm tròn dời sang trái trùng đường kẻ */
+    #history-list .dot {
+        left: 14px;
+        top: 0; 
+        margin-top: 2px;
+        width: 12px;
+        height: 12px;
+    }
+    
+    /* Hiệu ứng chấm tròn đầu tiên */
+    #history-list li:first-child .dot {
+        width: 16px;
+        height: 16px;
+        left: 14px; 
+        transform: translateX(-50%);
+    }
+
+    /* Cột thời gian: Đẩy lên trên nội dung */
+    #history-list .time-col {
+        width: 100%;
+        text-align: left;
+        padding-right: 0;
+        margin-bottom: 5px;
+        flex-direction: row;
+        align-items: center;
+        gap: 8px;
+        border-bottom: 1px dashed #eee; /* Đường gạch nhẹ phân cách */
+        padding-bottom: 4px;
+    }
+
+    .time-col .time-part {
+        font-size: 1rem;
+        color: #102e46;
+    }
+
+    .time-col .date-part {
+        font-size: 0.85rem;
+    }
+
+    /* Cột nội dung */
+    #history-list .content-col {
+        padding-left: 0;
+    }
+
+    .content-col .status {
+        font-size: 0.95rem;
+    }
+    
+    .content-col .location {
+        font-size: 0.85rem;
+        margin-top: 2px;
+    }
+}
+
+/* 5. Footer Partners trên Mobile */
+@media (max-width: 600px) {
+    .partners {
+        padding: 15px 0;
+    }
+    .carousel-item img {
+        max-height: 25px; /* Logo nhỏ lại để không bị cắt */
+    }
+    .footer-title {
+        font-size: 0.8rem;
     }
 }
