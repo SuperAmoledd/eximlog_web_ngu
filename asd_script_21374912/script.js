@@ -119,4 +119,49 @@ document.addEventListener('DOMContentLoaded', () => {
         observer.observe(col);
     });
 
+    const feedbackTrack = document.querySelector('.feedback-track');
+    
+    if (feedbackTrack) {
+        const feedbackItems = feedbackTrack.innerHTML;
+        feedbackTrack.innerHTML = feedbackItems + feedbackItems; 
+        
+        if (window.innerWidth > 1600) {
+             feedbackTrack.innerHTML += feedbackItems;
+        }
+    }
+
+    const statsSection = document.getElementById('stats-counter');
+    const counters = document.querySelectorAll('.stat-number');
+    let started = false; 
+
+    if (statsSection && counters.length > 0) {
+        const statsObserver = new IntersectionObserver((entries) => {
+            if (entries[0].isIntersecting && !started) {
+                started = true;
+                
+                counters.forEach(counter => {
+                    const target = +counter.getAttribute('data-target'); 
+                    const duration = 3000; 
+                    const increment = target / (duration / 16); 
+                    
+                    let current = 0;
+                    
+                    const updateCounter = () => {
+                        current += increment;
+                        if (current < target) {
+                            counter.innerText = Math.ceil(current).toLocaleString('vi-VN'); 
+                            requestAnimationFrame(updateCounter);
+                        } else {
+                            counter.innerText = target.toLocaleString('vi-VN');
+                        }
+                    };
+                    
+                    updateCounter();
+                });
+            }
+        }, { threshold: 0.5 });
+
+        statsObserver.observe(statsSection);
+    }
+
 });
