@@ -1007,11 +1007,17 @@ body {
 }
 
 .verified-icon {
-    width: 35px;  /* Kích thước vừa phải, không quá to */
-    height: 35px;
-    object-fit: contain;
+    font-size: 1.1em;      
+    color: #1da1f2;        
+    
+    margin-left: 6px;      
     display: inline-block;
-    margin-top: -2px; /* Tinh chỉnh nhẹ để khớp với dòng kẻ chữ */
+    vertical-align: middle;
+    margin-top: -3px;      
+    
+    background: #fff;     
+    border-radius: 50%;    
+    box-shadow: 0 0 0 1px #fff;
 }
 
 /* --- END STYLE ICON XỊN --- */
