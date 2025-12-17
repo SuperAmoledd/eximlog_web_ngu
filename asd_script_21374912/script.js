@@ -164,4 +164,50 @@ document.addEventListener('DOMContentLoaded', () => {
         statsObserver.observe(statsSection);
     }
 
+
+    const contactForm = document.querySelector('.contact-form'); 
+
+    if (contactForm) {
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault(); 
+
+            const formData = {
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                phone: document.getElementById('phone').value,
+                message: document.getElementById('message').value
+            };
+
+            const submitBtn = contactForm.querySelector('.submit-btn');
+            const originalText = submitBtn.innerText;
+            submitBtn.innerText = 'Đang gửi...';
+            submitBtn.disabled = true;
+
+            fetch('https://dashboard.eximlog.vn/api/contact', { 
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json' 
+                },
+                body: JSON.stringify(formData) 
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    alert(data.message); 
+                    contactForm.reset(); 
+                } else {
+                    alert('Lỗi: ' + data.message); 
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Có lỗi xảy ra khi kết nối server!');
+            })
+            .finally(() => {
+                submitBtn.innerText = originalText;
+                submitBtn.disabled = false;
+            });
+        });
+    }
+
 });
