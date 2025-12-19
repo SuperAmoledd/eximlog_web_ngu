@@ -1011,125 +1011,133 @@ body {
 }
 
 @media (max-width: 992px) {
+    /* 1. LAYOUT CHUNG */
     .hero-grid, .about-grid {
         grid-template-columns: 1fr;
         gap: 40px;
         text-align: center;
     }
 
-    .hero-image-column {
-        order: -1;
-    }
-    
-    .feature-item {
-        justify-content: center;
-        text-align: left;
-    }
+    .hero-image-column { order: -1; }
+    .feature-item { justify-content: center; text-align: left; }
+    .main-headline { font-size: 36px; }
+    .services-grid, .contact-info-grid { grid-template-columns: 1fr; }
+    .contact-wrapper { grid-template-columns: 1fr; gap: 40px; }
+    .form-group-row { flex-direction: column; }
+    .submit-btn { width: 100%; }
 
-    .main-headline {
-        font-size: 36px;
-    }
+    /* 2. FOOTER TABLET */
+    .footer-grid { grid-template-columns: repeat(2, 1fr); gap: 40px; }
+    .footer-column.about { grid-column: span 2; text-align: center; }
+    .footer-social-icons { justify-content: center; }
+    .footer-column.contact, .footer-column.links { grid-column: span 1; }
 
-    .services-grid, .contact-info-grid {
-        grid-template-columns: 1fr;
-    }
-
+    /* 3. NAV MENU MOBILE (Code Mới) */
     .mobile-nav-toggle {
         display: block;
         background: none;
         border: none;
-        font-size: 28px;
-        color: var(--primary-blue);
+        font-size: 24px;
+        color: var(--text-dark);
         cursor: pointer;
-        z-index: 1001;
+        z-index: 1002;
+        padding: 5px;
+        order: 3;
     }
 
+    /* Logo - Tracking - Hamburger */
+    .main-navigation .flex-container {
+        justify-content: space-between;
+        flex-wrap: nowrap;
+    }
+    
+    .brand-logo {
+        order: 1;
+        margin-right: auto;
+        z-index: 1002;
+    }
+
+    /* Hiện lại nút Tracking */
+    .quote-button {
+        display: inline-block !important;
+        order: 2;
+        margin-left: auto;
+        margin-right: 15px;
+        padding: 8px 15px;
+        font-size: 13px;
+        z-index: 1002;
+    }
+
+    /* Menu trượt từ phải sang (280px) */
     .nav-menu {
         position: fixed;
         top: 0;
         right: -100%;
-        width: 80%;
-        max-width: 320px;
+        width: 280px;
         height: 100vh;
         background-color: var(--white-color);
         flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        gap: 40px;
-        transition: right 0.4s ease-in-out;
+        justify-content: flex-start;
+        align-items: flex-start;
+        padding: 80px 0 20px 0;
+        gap: 0;
+        transition: right 0.4s cubic-bezier(0.77, 0, 0.175, 1);
         box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+        z-index: 1001;
+        overflow-y: auto;
     }
 
     .nav-menu.active {
         right: 0;
     }
 
-    .nav-menu a {
-        font-size: 18px;
-    }
-    
-    .quote-button {
-        display: none;
+    .nav-menu li {
+        width: 100%;
+        border-bottom: 1px solid #eee;
     }
 
-    .nav-item-dropdown {
-        position: static; 
+    .nav-menu a {
+        font-size: 16px;
+        padding: 15px 20px;
+        display: block;
         width: 100%;
-        text-align: center;
+        text-align: left;
+    }
+
+    /* Dropdown Mobile */
+    .nav-item-dropdown {
+        position: static;
+        width: 100%;
+        text-align: left;
+    }
+    
+    .nav-item-dropdown .dropdown-menu {
+        position: static;
+        display: none; /* JS sẽ toggle */
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+        box-shadow: none;
+        border-top: none;
+        padding-left: 0;
+        background-color: #f8f9fa;
+        width: 100%;
+        max-height: none;
+    }
+
+    .nav-item-dropdown.active .dropdown-menu {
+        display: block;
     }
     
     .nav-item-dropdown > a .fa-chevron-down {
-        display: inline-block; 
-        transition: transform 0.3s ease;
-        margin-left: 8px;
+        float: right;
+        margin-top: 5px;
+        margin-left: 0;
+        transition: transform 0.3s;
     }
     
-    .nav-item-dropdown > a.submenu-active-link .fa-chevron-down {
+    .nav-item-dropdown.active > a .fa-chevron-down {
         transform: rotate(180deg);
-    }
-
-    .dropdown-menu {
-        position: static;
-        transform: none;
-        box-shadow: none;
-        background-color: transparent;
-        min-width: auto;
-        width: 100%;
-        
-        padding: 0 0 0 25px;
-        max-height: 0;
-        overflow: hidden;
-        opacity: 0;
-        visibility: hidden;
-        transition: max-height 0.4s ease-out, opacity 0.3s ease-out, padding 0.3s ease-out;
-    }
-
-    .dropdown-menu.submenu-active {
-        max-height: 500px; 
-        opacity: 1;
-        visibility: visible;
-        padding: 10px 0 10px 25px;
-    }
-    
-    .dropdown-menu li a {
-        padding: 8px 15px;
-        font-size: 16px;
-    }
-
-    .footer-grid {
-        grid-template-columns: repeat(2, 1fr); 
-        gap: 40px;
-    }
-    .footer-column.about {
-        grid-column: span 2; 
-        text-align: center;
-    }
-    .footer-social-icons {
-        justify-content: center;
-    }
-    .footer-column.contact,
-    .footer-column.links {
-        grid-column: span 1;
     }
 }
 

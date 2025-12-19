@@ -38,24 +38,52 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
-    const navMenu = document.querySelector('.nav-menu');
+    const toggleBtn = document.querySelector('.mobile-nav-toggle');
+    const navMenu = document.getElementById('navMenu');
+    const overlay = document.getElementById('overlay');
+    const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
+    
+    if (toggleBtn && navMenu && overlay) {
+        const icon = toggleBtn.querySelector('i');
 
-    if (mobileNavToggle && navMenu) {
-        mobileNavToggle.addEventListener('click', () => {
+        // 1. Hàm đóng/mở menu
+        function toggleMenu() {
             navMenu.classList.toggle('active');
+            overlay.classList.toggle('active');
+            
+            // Đổi icon hamburger <-> x
+            if (navMenu.classList.contains('active')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-xmark'); 
+                document.body.style.overflow = 'hidden'; // Chặn cuộn trang
+            } else {
+                icon.classList.remove('fa-xmark');
+                icon.classList.add('fa-bars');
+                document.body.style.overflow = '';
+            }
+        }
+
+        toggleBtn.addEventListener('click', toggleMenu);
+        overlay.addEventListener('click', toggleMenu);
+
+        // 2. Xử lý Dropdown trên Mobile (Click chữ BÁO GIÁ để mở menu con)
+        dropdownToggles.forEach(toggle => {
+            toggle.addEventListener('click', function(e) {
+                if (window.innerWidth <= 992) {
+                    e.preventDefault(); // Ngăn chuyển trang
+                    const parent = this.parentElement;
+                    parent.classList.toggle('active'); // Thêm class active để CSS hiển thị menu con
+                }
+            });
         });
 
+        // 3. Đóng menu khi click vào link bên trong (trừ link Báo giá)
+        const navLinks = navMenu.querySelectorAll('a:not(.dropdown-toggle)');
         navLinks.forEach(link => {
             link.addEventListener('click', () => {
-                
-                const isDropdownParent = link.parentElement.classList.contains('nav-item-dropdown');
-                if (window.innerWidth <= 992 && !isDropdownParent) {
-                    if (navMenu.classList.contains('active')) {
-                        navMenu.classList.remove('active');
-                    }
+                if (navMenu.classList.contains('active')) {
+                    toggleMenu();
                 }
-                
             });
         });
     }
@@ -81,22 +109,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
-
-    const dropdownLinks = document.querySelectorAll('.nav-menu .nav-item-dropdown > a');
-
-    dropdownLinks.forEach(link => {
-        link.addEventListener('click', function(e) {
-            if (window.innerWidth <= 992) {
-                e.preventDefault(); 
-                
-                const subMenu = this.nextElementSibling;
-                this.classList.toggle('submenu-active-link');
-                if (subMenu) {
-                    subMenu.classList.toggle('submenu-active');
-                }
-            }
-        });
-    });
 
     const observerOptions = {
         threshold: 0.1,

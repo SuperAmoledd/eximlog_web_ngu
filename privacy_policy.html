@@ -380,7 +380,7 @@
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
-                        entry.target.classList.add('animate'); // Thêm class animate để kích hoạt CSS trong style.css
+                        entry.target.classList.add('animate');
                         entry.target.style.opacity = 1;
                         entry.target.style.transform = 'translateY(0)';
                     }
