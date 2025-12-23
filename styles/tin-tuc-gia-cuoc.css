@@ -1,8 +1,114 @@
+:root {
+    --primary-blue: #ff9100;
+    --secondary-green: #e99e3c;
+    --accent-light-blue: #eaac5a;
+    --text-dark: #212529; 
+    --text-light: #495057;
+    --background-light: #f8f9fa;
+    --white-color: #ffffff;
+    --border-color: #dee2e6;
+    --light-orange: #fffaf0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* --- Khắc phục nội dung bị che bởi Fixed Header --- */
+main.container {
+    padding-top: 150px !important; /* 125px chiều cao header + 25px khoảng cách */
+}
+
+/* Điều chỉnh cho thiết bị di động */
+@media (max-width: 992px) {
+    main.container {
+        padding-top: 130px !important;
+    }
+}
+
+/* Khung bao ngoài */
+.toc-container {
+    border: 1px solid #ddd; /* Viền xám nhạt */
+    border-radius: 5px;     /* Bo góc */
+    padding: 15px 20px;
+    background-color: #fcfcfc; /* Nền trắng hơi xám nhẹ */
+    display: inline-block;  /* Ôm sát nội dung hoặc dùng block nếu muốn full dòng */
+    min-width: 300px;       /* Chiều rộng tối thiểu */
+    font-family: Arial, sans-serif;
+}
+
+/* Phần tiêu đề và nút icon */
+.toc-header {
+    display: flex;
+    justify-content: space-between; /* Đẩy tiêu đề và nút ra 2 bên */
+    align-items: center;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eee; /* Đường gạch ngang mờ (tùy chọn) */
+}
+
+.toc-header h3 {
+    margin: 0;
+    font-size: 20px;
+    font-weight: 600;
+    color: #333;
+}
+
+/* Nút icon bên phải */
+.toc-toggle {
+    background: #fff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 2px 8px;
+    cursor: pointer;
+    color: #666;
+    font-size: 16px;
+    line-height: 1;
+}
+
+/* Danh sách mục lục */
+.toc-list {
+    list-style: none; /* Bỏ dấu chấm tròn mặc định */
+    padding: 0;
+    margin: 0;
+}
+
+.toc-list li {
+    margin-bottom: 8px; /* Khoảng cách giữa các dòng */
+}
+
+/* Link liên kết */
+.toc-list a {
+    text-decoration: none; /* Bỏ gạch chân */
+    color: #333;
+    font-size: 15px;
+    transition: color 0.2s;
+}
+
+.toc-list a:hover {
+    color: #f8b94d; 
+}
+
+/* Base Layout from style.css */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.flex-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Table Styles */
 .price-table {
   width: 100%;
   border-collapse: collapse;
   font-family: Arial, sans-serif;
   border: 1px solid #b3b3b3;
+  margin: 20px 0;
 }
 
 .price-table thead th {
@@ -23,4 +129,129 @@
 
 .price-table tbody tr:hover {
   background-color: #f9f9f9;
+}
+
+h2[id], h3[id] {
+    scroll-margin-top: 140px; 
+}
+
+/* --- BỐ CỤC 2 CỘT: TRÁI (3/4) & PHẢI (1/4) --- */
+
+.main-layout-wrapper {
+    display: flex;
+    flex-wrap: wrap; 
+    gap: 30px;      
+    align-items: flex-start;
+    position: relative;
+    margin-bottom: 50px; /* Thêm khoảng cách dưới chân trang */
+}
+
+/* Cột Trái: Nội dung chính */
+.content-left {
+    /* 75% chiều rộng trừ đi 30px khoảng cách */
+    flex: 0 0 calc(75% - 30px); 
+    max-width: calc(75% - 30px);
+}
+
+/* Cột Phải: Sidebar tin tức */
+.sidebar-right {
+    flex: 0 0 25%; 
+    max-width: 25%;
+    
+    /* Sticky: Giúp sidebar đứng yên khi cuộn */
+    position: -webkit-sticky; /* Cho Safari */
+    position:absolute relative;
+    
+    top: 90px; 
+    
+    z-index: 10;
+    height: fit-content; 
+    
+    /* YÊU CẦU CỦA BẠN: Thêm padding-top để đẩy nội dung xuống */
+    padding-top: 50px; 
+}
+
+/* Style cho Widget Sidebar */
+.sidebar-widget {
+    background: #fff;
+    /* Loại bỏ border bao quanh nếu muốn giống hình, hoặc giữ lại tùy ý */
+    /* border: 1px solid #eee; */ 
+    padding: 0 0 20px 0; /* Bỏ padding 2 bên để ảnh tràn viền hoặc canh lề tùy chỉnh */
+    margin-bottom: 20px;
+}
+
+.widget-title {
+    font-size: 18px;
+    color: var(--text-dark);
+    border-bottom: 1px solid #ddd; /* Gạch chân mờ dưới tiêu đề */
+    padding-bottom: 10px;
+    margin-top: 0;
+    margin-bottom: 20px;
+    text-transform: none; /* Hoặc uppercase nếu muốn */
+    font-weight: 700;
+}
+
+.post-item {
+    display: block; /* Xếp dọc: Ảnh trên, chữ dưới */
+    margin-bottom: 25px;
+    text-decoration: none;
+    color: var(--text-dark);
+    transition: transform 0.2s;
+    border-bottom: 1px solid #eee; /* Gạch ngăn cách giữa các bài */
+    padding-bottom: 25px;
+}
+
+.post-item:last-child {
+    margin-bottom: 0;
+    border-bottom: none; /* Bỏ gạch ở bài cuối */
+}
+
+.post-item:hover .post-info h4 {
+    color: var(--primary-blue);
+}
+
+/* Khung ảnh lớn */
+.post-thumb {
+    width: 100%;    /* Chiều rộng 100% cột sidebar */
+    height: auto;   /* Chiều cao tự động theo tỷ lệ ảnh */
+    aspect-ratio: 4/3; /* Tỷ lệ khung hình chữ nhật (hoặc bỏ dòng này nếu muốn theo ảnh gốc) */
+    border-radius: 5px;
+    overflow: hidden;
+    margin-bottom: 12px; /* Khoảng cách giữa ảnh và tiêu đề */
+}
+
+.post-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Đảm bảo ảnh phủ kín khung */
+    transition: transform 0.3s ease;
+}
+
+.post-item:hover .post-thumb img {
+    transform: scale(1.05); /* Hiệu ứng zoom nhẹ khi di chuột */
+}
+
+.post-info h4 {
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.5;
+    font-weight: 700;
+    color: #333;
+    text-transform: uppercase; /* Chữ in hoa giống hình mẫu */
+    
+    /* Canh lề trái giống hình */
+    text-align: left; 
+}
+
+.post-date {
+    display: none; 
+}
+
+@media (max-width: 992px) {
+    .sidebar-right {
+        flex: 0 0 100%;
+        max-width: 100%;
+        position: static; /* Bỏ sticky trên mobile */
+        margin-top: 40px;
+    }
 }

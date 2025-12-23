@@ -66,7 +66,6 @@ document.addEventListener('DOMContentLoaded', () => {
         toggleBtn.addEventListener('click', toggleMenu);
         overlay.addEventListener('click', toggleMenu);
 
-        // 2. Xử lý Dropdown trên Mobile (Click chữ BÁO GIÁ để mở menu con)
         dropdownToggles.forEach(toggle => {
             toggle.addEventListener('click', function(e) {
                 if (window.innerWidth <= 992) {
@@ -130,17 +129,6 @@ document.addEventListener('DOMContentLoaded', () => {
     footerColumns.forEach(col => {
         observer.observe(col);
     });
-
-    const feedbackTrack = document.querySelector('.feedback-track');
-    
-    if (feedbackTrack) {
-        const feedbackItems = feedbackTrack.innerHTML;
-        feedbackTrack.innerHTML = feedbackItems + feedbackItems; 
-        
-        if (window.innerWidth > 1600) {
-             feedbackTrack.innerHTML += feedbackItems;
-        }
-    }
 
     const statsSection = document.getElementById('stats-counter');
     const counters = document.querySelectorAll('.stat-number');
@@ -222,4 +210,98 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+
+    const track = document.getElementById('newsTrack');
+    
+    if (track) {
+        const slides = Array.from(track.children);
+        const nextButton = document.getElementById('newsNextBtn');
+        const prevButton = document.getElementById('newsPrevBtn');
+        const dotsNav = document.getElementById('newsDots');
+
+        let currentIndex = 0;
+
+        // Cấu hình số lượng slide hiển thị
+        function getSlidesPerView() {
+            if (window.innerWidth < 576) return 1;
+            if (window.innerWidth < 992) return 2;
+            return 3;
+        }
+
+        // --- 1. TẠO DOTS ---
+        function createDots() {
+            const currentSlidesPerView = getSlidesPerView();
+            const totalSlides = slides.length;
+            const maxIndex = totalSlides - currentSlidesPerView;
+            
+            dotsNav.innerHTML = ''; // Xóa dots cũ
+
+            for (let i = 0; i <= maxIndex; i++) {
+                const dot = document.createElement('button');
+                dot.classList.add('news-dot');
+                if (i === 0) dot.classList.add('active-dot');
+                dotsNav.appendChild(dot);
+                
+                dot.addEventListener('click', () => {
+                    currentIndex = i;
+                    updateSlidePosition();
+                });
+            }
+        }
+        
+        // Gọi lần đầu
+        createDots();
+
+        // --- 2. HÀM DI CHUYỂN SLIDE ---
+        function updateSlidePosition() {
+            const slideWidth = slides[0].getBoundingClientRect().width;
+            track.style.transition = 'transform 0.4s ease-out'; // Animation mượt
+            track.style.transform = 'translateX(-' + (slideWidth * currentIndex) + 'px)';
+            
+            // Cập nhật trạng thái Dots
+            const dots = Array.from(dotsNav.children);
+            dots.forEach(d => d.classList.remove('active-dot'));
+            
+            // Highlight dot tương ứng
+            if(dots[currentIndex]) {
+                dots[currentIndex].classList.add('active-dot');
+            } else if (dots.length > 0) {
+                 dots[dots.length - 1].classList.add('active-dot');
+            }
+        }
+
+        // --- 3. XỬ LÝ NÚT BẤM (LOOP) ---
+        nextButton.addEventListener('click', () => {
+            const currentSlidesPerView = getSlidesPerView();
+            const maxIndex = slides.length - currentSlidesPerView;
+
+            if (currentIndex >= maxIndex) {
+                currentIndex = 0; // LOOP: Hết thì quay về đầu
+            } else {
+                currentIndex++;
+            }
+            updateSlidePosition();
+        });
+
+        prevButton.addEventListener('click', () => {
+            const currentSlidesPerView = getSlidesPerView();
+            const maxIndex = slides.length - currentSlidesPerView;
+
+            if (currentIndex <= 0) {
+                currentIndex = maxIndex; // LOOP: Đang ở đầu thì quay về cuối
+            } else {
+                currentIndex--;
+            }
+            updateSlidePosition();
+        });
+
+        // --- 5. RESIZE ---
+        window.addEventListener('resize', () => {
+            createDots(); // Tạo lại dots vì số lượng slide hiển thị thay đổi
+            updateSlidePosition(); // Cập nhật lại vị trí cho chuẩn
+        });
+        
+        // Khởi chạy
+        updateSlidePosition();
+    }
 });

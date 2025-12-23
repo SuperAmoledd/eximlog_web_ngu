@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hỗ trợ & Giải đáp</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #0f172a;
+        }
+        .glass {
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .faq-answer {
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .faq-item.active .faq-answer {
+            max-height: 300px;
+            opacity: 1;
+            padding-bottom: 1.5rem;
+        }
+        .faq-item.active .icon-plus {
+            transform: rotate(45deg);
+        }
+        .tab-btn.active {
+            background: rgba(99, 102, 241, 0.2);
+            color: #818cf8;
+            border-color: #6366f1;
+        }
+    </style>
+</head>
+<body class="text-slate-200 min-h-screen">
+
+    <!-- Background Decoration -->
+    <div class="fixed inset-0 overflow-hidden -z-10">
+        <div class="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-indigo-500/20 rounded-full blur-[120px]"></div>
+        <div class="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-purple-500/20 rounded-full blur-[120px]"></div>
+    </div>
+
+    <div class="container mx-auto px-4 py-16 max-w-4xl">
+        <!-- Header -->
+        <div class="text-center mb-16">
+            <span class="px-4 py-1.5 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 text-sm font-medium">Hỗ trợ khách hàng</span>
+            <h1 class="text-4xl md:text-5xl font-bold mt-6 mb-4 bg-clip-text text-transparent bg-gradient-to-r from-white to-slate-400">
+                Câu hỏi thường gặp
+            </h1>
+            <p class="text-slate-400 text-lg">Mọi thứ bạn cần biết về dịch vụ của chúng tôi.</p>
+        </div>
+
+        <!-- Search Bar -->
+        <div class="relative mb-12">
+            <i data-lucide="search" class="absolute left-4 top-1/2 -translate-y-1/2 text-slate-500 w-5 h-5"></i>
+            <input 
+                type="text" 
+                id="searchFAQ"
+                placeholder="Tìm kiếm vấn đề của bạn..." 
+                class="w-full glass py-4 pl-12 pr-6 rounded-2xl outline-none focus:ring-2 focus:ring-indigo-500/50 transition-all text-white"
+            >
+        </div>
+
+        <!-- Categories Tabs -->
+        <div class="flex flex-wrap justify-center gap-3 mb-12">
+            <button class="tab-btn active px-6 py-2.5 rounded-xl glass border border-transparent transition-all font-medium" data-category="all">Tất cả</button>
+            <button class="tab-btn px-6 py-2.5 rounded-xl glass border border-transparent transition-all font-medium" data-category="thanhtoan">Thanh toán</button>
+            <button class="tab-btn px-6 py-2.5 rounded-xl glass border border-transparent transition-all font-medium" data-category="account">Tài khoản</button>
+            <button class="tab-btn px-6 py-2.5 rounded-xl glass border border-transparent transition-all font-medium" data-category="kythuat">Kỹ thuật</button>
+        </div>
+
+        <!-- FAQ Content -->
+        <div class="space-y-4" id="faqList">
+            <!-- Item 1 -->
+            <div class="faq-item glass rounded-2xl px-6 transition-all duration-300" data-category="thanhtoan">
+                <button class="w-full py-6 flex items-center justify-between text-left focus:outline-none" onclick="toggleItem(this)">
+                    <span class="text-lg font-semibold pr-4">EXIMLOG chấp nhận các loại tiền tệ nào?</span>
+                    <div class="icon-plus w-6 h-6 flex items-center justify-center text-indigo-400 transition-transform">
+                        <i data-lucide="plus" class="w-6 h-6"></i>
+                    </div>
+                </button>
+                <div class="faq-answer text-slate-400 leading-relaxed">
+                    Chúng tôi hiện hỗ trợ VND, USD. Tỷ giá được cập nhật theo thời gian thực từ thị trường tài chính quốc tế.
+                </div>
+            </div>
+
+            <!-- Item 2 -->
+            <div class="faq-item glass rounded-2xl px-6 transition-all duration-300" data-category="thanhtoan">
+                <button class="w-full py-6 flex items-center justify-between text-left focus:outline-none" onclick="toggleItem(this)">
+                    <span class="text-lg font-semibold pr-4">Thanh toán theo phương thức nào?</span>
+                    <div class="icon-plus w-6 h-6 flex items-center justify-center text-indigo-400 transition-transform">
+                        <i data-lucide="plus" class="w-6 h-6"></i>
+                    </div>
+                </button>
+                <div class="faq-answer text-slate-400 leading-relaxed">
+                    <i class="fa-solid fa-credit-card"></i> <b>Phương thức chuyển khoản:</b> Quý khách có thể chuyển khoản qua Số tài khoản mà nhân viên gửi cho Quý khách thanh toán cước vận chuyển!
+                    <br>
+                    <br>
+                <i class="fa-solid fa-money-bill"></i> <b>Phương thức tiền mặt:</b> Các bạn nhân viên EXIMLOG sẽ dến tận nhà của Quý khách nhận tiền cước nếu Quý khách bận rộn công việc!
+                </div>
+            </div>
+
+            <!-- Item 3 -->
+            <div class="faq-item glass rounded-2xl px-6 transition-all duration-300" data-category="kythuat">
+                <button class="w-full py-6 flex items-center justify-between text-left focus:outline-none" onclick="toggleItem(this)">
+                    <span class="text-lg font-semibold pr-4">Đến nhà nhận hàng thì có giấy xác nhận gì không?</span>
+                    <div class="icon-plus w-6 h-6 flex items-center justify-center text-indigo-400 transition-transform">
+                        <i data-lucide="plus" class="w-6 h-6"></i>
+                    </div>
+                </button>
+                <div class="faq-answer text-slate-400 leading-relaxed">
+                    Có. Nhân viên EXIMLOG sẽ cung cấp Biên bản nhận hàng hoá để hai bên xác nhận ngay khi hoàn tất việc nhận hàng.
+                </div>
+            </div>
+
+            <!-- Item 4 -->
+            <div class="faq-item glass rounded-2xl px-6 transition-all duration-300" data-category="kythuat">
+                <button class="w-full py-6 flex items-center justify-between text-left focus:outline-none" onclick="toggleItem(this)">
+                    <span class="text-lg font-semibold pr-4">Làm sao tôi có thể tin công ty này chứ?</span>
+                    <div class="icon-plus w-6 h-6 flex items-center justify-center text-indigo-400 transition-transform">
+                        <i data-lucide="plus" class="w-6 h-6"></i>
+                    </div>
+                </button>
+                <div class="faq-answer text-slate-400 leading-relaxed">
+                    Vâng. Để đảm bảo sự tin tưởng, chúng tôi có đầy đủ các thông tin như sau: <br><br>
+                    <b>Pháp lý:</b> Công ty hoạt động chính quy với đầy đủ các giấy phép kinh doanh và mã số thuế. <a href="https://masothue.com/0317855290-cong-ty-tnhh-thuong-mai-dich-vu-van-tai-eximlog"><b><i> Xem tại đây</i></b></a>
+                    <br>
+                    <b>Hiện diện thực tế:</b> Địa chỉ văn phòng và kho hoạt động công khai, khách hàng có thể đến trực tiếp để giao dịch. <a href="https://maps.app.goo.gl/s1xnL3WPtDaiM2T3A"><b><i> Xem tại đây</i></b></a>
+                    <br>
+                    <b>Chứng từ giao nhận:</b> Mọi đơn hàng đều đi kèm hợp đồng vận chuyển và biên bản bàn giao hàng hóa có giá trị pháp lý.
+                    <br>
+                    <b>Hệ thống theo dõi kiện hàng của bạn:</b> Cung cấp mã vận đơn (Tracking) để khách hàng chủ động kiểm tra lộ trình hàng hóa 24/7 trên website chính thức. <a href="https://www.eximlog.vn/tracking"><b><i> Xem tại đây</i></b></a>
+                </div>
+            </div>
+
+            <!-- Item 5 -->
+            <div class="faq-item glass rounded-2xl px-6 transition-all duration-300" data-category="billing">
+                <button class="w-full py-6 flex items-center justify-between text-left focus:outline-none" onclick="toggleItem(this)">
+                    <span class="text-lg font-semibold pr-4">Chi phí công ty sao lại cao thế?</span>
+                    <div class="icon-plus w-6 h-6 flex items-center justify-center text-indigo-400 transition-transform">
+                        <i data-lucide="plus" class="w-6 h-6"></i>
+                    </div>
+                </button>
+                <div class="faq-answer text-slate-400 leading-relaxed">
+                    Tất nhiên. Hóa đơn điện tử sẽ được tự động gửi tới email của bạn trong vòng 24 giờ sau khi giao dịch thành công. Bạn cũng có thể tải về trong lịch sử thanh toán.
+                </div>
+            </div>
+
+            <!-- Item 6 -->
+            <div class="faq-item glass rounded-2xl px-6 transition-all duration-300" data-category="billing">
+                <button class="w-full py-6 flex items-center justify-between text-left focus:outline-none" onclick="toggleItem(this)">
+                    <span class="text-lg font-semibold pr-4">Hàng hoá có đảm bảo không?</span>
+                    <div class="icon-plus w-6 h-6 flex items-center justify-center text-indigo-400 transition-transform">
+                        <i data-lucide="plus" class="w-6 h-6"></i>
+                    </div>
+                </button>
+                <div class="faq-answer text-slate-400 leading-relaxed">
+                    Tất nhiên. Hóa đơn điện tử sẽ được tự động gửi tới email của bạn trong vòng 24 giờ sau khi giao dịch thành công. Bạn cũng có thể tải về trong lịch sử thanh toán.
+                </div>
+            </div>
+
+            <!-- Item 7 -->
+            <div class="faq-item glass rounded-2xl px-6 transition-all duration-300" data-category="billing">
+                <button class="w-full py-6 flex items-center justify-between text-left focus:outline-none" onclick="toggleItem(this)">
+                    <span class="text-lg font-semibold pr-4">Hàng hoá được vận chuyển bằng cách nào?</span>
+                    <div class="icon-plus w-6 h-6 flex items-center justify-center text-indigo-400 transition-transform">
+                        <i data-lucide="plus" class="w-6 h-6"></i>
+                    </div>
+                </button>
+                <div class="faq-answer text-slate-400 leading-relaxed">
+                    Tất nhiên. Hóa đơn điện tử sẽ được tự động gửi tới email của bạn trong vòng 24 giờ sau khi giao dịch thành công. Bạn cũng có thể tải về trong lịch sử thanh toán.
+                </div>
+            </div>
+
+            <!-- Item 8 -->
+            <div class="faq-item glass rounded-2xl px-6 transition-all duration-300" data-category="billing">
+                <button class="w-full py-6 flex items-center justify-between text-left focus:outline-none" onclick="toggleItem(this)">
+                    <span class="text-lg font-semibold pr-4">Hàng hoá được vận chuyển bằng cách nào?</span>
+                    <div class="icon-plus w-6 h-6 flex items-center justify-center text-indigo-400 transition-transform">
+                        <i data-lucide="plus" class="w-6 h-6"></i>
+                    </div>
+                </button>
+                <div class="faq-answer text-slate-400 leading-relaxed">
+                    Tất nhiên. Hóa đơn điện tử sẽ được tự động gửi tới email của bạn trong vòng 24 giờ sau khi giao dịch thành công. Bạn cũng có thể tải về trong lịch sử thanh toán.
+                </div>
+            </div>
+
+            <!-- Item 8 -->
+            <div class="faq-item glass rounded-2xl px-6 transition-all duration-300" data-category="billing">
+                <button class="w-full py-6 flex items-center justify-between text-left focus:outline-none" onclick="toggleItem(this)">
+                    <span class="text-lg font-semibold pr-4">Gửi kiện gỗ có an toàn không?</span>
+                    <div class="icon-plus w-6 h-6 flex items-center justify-center text-indigo-400 transition-transform">
+                        <i data-lucide="plus" class="w-6 h-6"></i>
+                    </div>
+                </button>
+                <div class="faq-answer text-slate-400 leading-relaxed">
+                    <video width="320" height="240" controls>
+  <source src="https://www.youtube.com/watch?v=Qq90hK-2zmQ" type="video/mp4">
+  <source src="https://www.youtube.com/watch?v=Qq90hK-2zmQ" type="video/ogg">
+  Your browser does not support the video tag.
+</video>
+                </div>
+            </div>
+        </div>
+
+        <!-- No Results -->
+        <div id="emptyState" class="hidden text-center py-20">
+            <i data-lucide="inbox" class="w-16 h-16 text-slate-600 mx-auto mb-4"></i>
+            <p class="text-slate-500">Không tìm thấy câu hỏi nào phù hợp.</p>
+        </div>
+
+        <!-- CTA Section -->
+        <div class="mt-20 p-8 rounded-3xl bg-indigo-600 text-center relative overflow-hidden group">
+            <div class="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(255,255,255,0.2),transparent)] opacity-0 group-hover:opacity-100 transition-opacity"></div>
+            <h3 class="text-2xl font-bold mb-2">Bạn vẫn chưa tìm được câu trả lời?</h3>
+            <p class="text-indigo-100 mb-6">Đội ngũ của chúng tôi luôn sẵn sàng hỗ trợ bạn 24/7.</p>
+            <button class="bg-white text-indigo-600 px-8 py-3 rounded-xl font-bold hover:bg-indigo-50 transition-all shadow-lg">Liên hệ ngay</button>
+        </div>
+    </div>
+
+    <script>
+        // Init Icons
+        lucide.createIcons();
+
+        // Toggle Accordion
+        function toggleItem(btn) {
+            const item = btn.parentElement;
+            const isActive = item.classList.contains('active');
+            
+            // Close others
+            document.querySelectorAll('.faq-item').forEach(el => el.classList.remove('active'));
+            
+            // Toggle current
+            if (!isActive) {
+                item.classList.add('active');
+            }
+        }
+
+        // Search & Tab Logic
+        const searchInput = document.getElementById('searchFAQ');
+        const tabBtns = document.querySelectorAll('.tab-btn');
+        const faqItems = document.querySelectorAll('.faq-item');
+        const emptyState = document.getElementById('emptyState');
+
+        let currentCategory = 'all';
+
+        function filterFAQ() {
+            const term = searchInput.value.toLowerCase();
+            let visibleCount = 0;
+
+            faqItems.forEach(item => {
+                const text = item.innerText.toLowerCase();
+                const category = item.getAttribute('data-category');
+                
+                const matchesSearch = text.includes(term);
+                const matchesCategory = currentCategory === 'all' || category === currentCategory;
+
+                if (matchesSearch && matchesCategory) {
+                    item.style.display = 'block';
+                    visibleCount++;
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+
+            emptyState.classList.toggle('hidden', visibleCount > 0);
+        }
+
+        searchInput.addEventListener('input', filterFAQ);
+
+        tabBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                tabBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                currentCategory = btn.getAttribute('data-category');
+                filterFAQ();
+            });
+        });
+    </script>
+</body>
+</html> 
