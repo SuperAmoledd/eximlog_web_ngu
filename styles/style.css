@@ -734,6 +734,24 @@ body {
     padding: 60px 0;
 }
 
+.stats-header {
+    text-align: center;
+    margin-bottom: 40px; /* Tạo khoảng cách với 3 ô bên dưới */
+    position: relative;
+}
+
+.stats-header p {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--white-color); /* Chữ màu trắng cho nổi trên nền ảnh tối */
+    text-transform: uppercase;
+    letter-spacing: 3px; /* Giãn chữ ra cho sang trọng */
+    margin: 0;
+    display: inline-block;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--secondary-green); /* Gạch chân màu cam/vàng thương hiệu */
+}
+
 .stats-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
