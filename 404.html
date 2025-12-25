@@ -1,79 +1,312 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-        <meta charset='UTF-8'>
-        <title>404 - EXIMLOG - Vận chuyển niềm tin, Nâng tầm giá trị</title>
-        <meta name='description' content='Eximlog -  Công ty dịch vụ về Vận chuyển hàng hoá quốc tế với độ UY TÍN - CHẤT LƯỢNG - TẬN TÂM - TIẾT KIỆM hàng đầu về Xuất - Nhập khẩu tại Việt Nam. '>
-        <meta name='keywords' content='eximlog, vận chuyển quốc tế tại TPHCM, xuất nhập khẩu eximlog, exim'>
-        <meta name='author' content='Công ty TNHH Thương Mại Dịch Vụ Vận Tải EXIMLOG'>
-        <meta name='robots' content='index, follow'>
-        <meta name='theme-color' content='#000000'>
-        <link rel='canonical' href='https://eximlog.vn/'>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EXIMLOG - 404 Không tìm thấy trang</title>
+    <meta name='description' content='Eximlog -  Công ty dịch vụ về Vận chuyển hàng hoá quốc tế với độ UY TÍN - CHẤT LƯỢNG - TẬN TÂM - TIẾT KIỆM hàng đầu về Xuất - Nhập khẩu tại Việt Nam. '>
+    <meta name='keywords' content='eximlog, vận chuyển quốc tế tại TPHCM, xuất nhập khẩu eximlog, exim'>
+    <meta name='author' content='Công ty TNHH Thương Mại Dịch Vụ Vận Tải EXIMLOG'>
+    <meta name='robots' content='index, follow'>
+    <meta name='theme-color' content='#000000'>
+    <link rel='canonical' href='https://eximlog.vn/'>
+    <meta property='og:title' content='EXIMLOG - Vận chuyển niềm tin, Nâng tầm giá trị'>
+    <meta property='og:description' content='Eximlog -  Công ty dịch vụ về Vận chuyển hàng hoá quốc tế với độ UY TÍN - CHẤT LƯỢNG - TẬN TÂM - TIẾT KIỆM hàng đầu về Xuất - Nhập khẩu tại Việt Nam. '>
+    <meta property='og:image' content='https://eximlog.vn/img/1200x630.jpg'>
+    <meta property='og:url' content='https://eximlog.vn/'>
+    <meta property='og:type' content='website'>
+    <meta property='og:locale' content='en_US'>
+    <meta name='twitter:card' content='summary_large_image'>
+    <meta name='twitter:title' content='EXIMLOG - Vận chuyển niềm tin, Nâng tầm giá trị'>
+    <meta name='twitter:description' content='Eximlog -  Công ty dịch vụ về Vận chuyển hàng hoá quốc tế với độ UY TÍN - CHẤT LƯỢNG - TẬN TÂM - TIẾT KIỆM hàng đầu về Xuất - Nhập khẩu tại Việt Nam. '>
+    <meta name='twitter:image' content='https://eximlog.vn/img/1200x630.jpg'>
+    <link rel='icon' href='/img/eximlog_logo.jpg' type='image/png'>
+    <link rel='apple-touch-icon' href='/apple-touch-icon.png'>
 
-        <meta property='og:title' content='EXIMLOG - Vận chuyển niềm tin, Nâng tầm giá trị'>
-        <meta property='og:description' content='Eximlog -  Công ty dịch vụ về Vận chuyển hàng hoá quốc tế với độ UY TÍN - CHẤT LƯỢNG - TẬN TÂM - TIẾT KIỆM hàng đầu về Xuất - Nhập khẩu tại Việt Nam. '>
-        <meta property='og:image' content='https://eximlog.vn/img/1200x630.jpg'>
-        <meta property='og:url' content='https://eximlog.vn/'>
-        <meta property='og:type' content='website'>
-        <meta property='og:locale' content='en_US'>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Inter Font for modern look -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="/styles/style.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+            color: #1e293b;
+        }
+        
+        /* Animation cho xe tải */
+        @keyframes drive {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100vw); }
+        }
+        .truck-anim {
+            animation: drive 15s linear infinite;
+        }
 
-        <meta name='twitter:card' content='summary_large_image'>
-        <meta name='twitter:title' content='EXIMLOG - Vận chuyển niềm tin, Nâng tầm giá trị'>
-        <meta name='twitter:description' content='Eximlog -  Công ty dịch vụ về Vận chuyển hàng hoá quốc tế với độ UY TÍN - CHẤT LƯỢNG - TẬN TÂM - TIẾT KIỆM hàng đầu về Xuất - Nhập khẩu tại Việt Nam. '>
-        <meta name='twitter:image' content='https://eximlog.vn/img/1200x630.jpg'>
+        /* Hover effect cho card */
+        .article-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .article-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+        }
 
-        <link rel='icon' href='/favicon.ico'>
-        <link rel='apple-touch-icon' href='/apple-touch-icon.png'>
+        /* Map Background Pattern */
+        .bg-map {
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%2394a3b8' fill-opacity='0.1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+    </style>
 </head>
-<style>
-    body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background-color: #f2f2f2;
-    color: #333;
-    font-family: Arial, sans-serif;
-    margin: 0;
-}
+<body class="flex flex-col min-h-screen bg-slate-50">
 
-.container {
-    text-align: center;
-}
+    <div class="overlay" id="overlay"></div>
 
-h1 {
-    font-size: 5em;
-}
+    <header>
+        <div class="top-header">
+            <div class="container flex-container">
+                <div class="contact-details">
+                    <span><i class="fa-solid fa-envelope"></i>info@eximlog.vn</span>
+                    <span><i class="fa-solid fa-phone"></i> Hotline: 0399 409 015</span>
+                </div>
+            </div>
+        </div>
+        
+        <nav class="main-navigation">
+            <div class="container flex-container">
+                <a href="#" class="brand-logo">
+                    <img src="img/eximlog_not_slogan.webp" alt="EXIMLOG Logo" fetchpriority="high">
+                </a>
 
-p {
-    font-size: 1.5em;
-}
+                <button class="mobile-nav-toggle" aria-label="Toggle navigation">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
 
-button {
-    padding: 10px 20px;
-    font-size: 1em;
-    border: none;
-    border-radius: 5px;
-    background-color: #007BFF;
-    color: white;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="#" class="active">TRANG CHỦ</a></li>
+                    <li><a href="#about">VỀ CHÚNG TÔI</a></li>
 
-button:hover {
-    background-color: #0056b3;
-}
+                    <li class="nav-item-dropdown">
+                        <a href="/dich-vu/price-quote" class="dropdown-toggle">DỊCH VỤ <i class="fa-solid fa-chevron-down"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/tin-tuc/gia-cuoc-di-my">Gửi hàng đi Mỹ</a></li>
+                            <li><a href="/tin-tuc/gia-cuoc-di-uc">Gửi hàng đi Úc</a></li>
+                            <li><a href="/tin-tuc/gia-cuoc-di-canada">Gửi hàng đi Canada</a></li>
+                            <li><a href="/tin-tuc/gia-cuoc-di-duc">Gửi hàng đi Đức</a></li>
+                            <li><a href="/tin-tuc/gia-cuoc-di-nhat-ban">Gửi hàng đi Nhật Bản</a></li>
+                            <li><a href="/tin-tuc/gia-cuoc-di-phap">Gửi hàng đi Pháp</a></li>
+                            <li><a href="/tin-tuc/gia-cuoc-di-han-quoc">Gửi hàng đi Hàn Quốc</a></li>
+                            <li><a href="/tin-tuc/gia-cuoc-di-thai-lan">Gửi hàng đi Thái Lan</a></li>
+                            <li><a href="/tin-tuc/gia-cuoc-di-malaysia">Gửi hàng đi Malaysia</a></li>
+                            <li><a href="/tin-tuc/gia-cuoc-di-uk">Gửi hàng đi UK</a></li>
+                        </ul>
+                    </li>
+                    
+                    <li class="nav-item-dropdown">
+                        <a  class="dropdown-toggle">BÁO GIÁ <i class="fa-solid fa-chevron-down"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/dich-vu/price-quote-air">Vận tải đường hàng không</a></li>
+                            <li><a href="/dich-vu/price-quote-sea">Vận tải đường biển</a></li>
+                        </ul>
+                    </li>
+                    
+                    <li><a href="#contact">LIÊN HỆ</a></li>
+                </ul>
+                
+                <a href="/tracking" target="_blank" class="quote-button">TRACKING</a>
+            </div>
+        </nav>
+    </header>
 
-</style>
-<body>
-    <div class="container">
-        <h1>404</h1>
-        <p>Xin lỗi, trang bạn tìm không tồn tại.</p>
-        <button id="homeButton">Quay về trang chủ</button>
-    </div>
+    <!-- Main 404 Content -->
+    <main class="flex-grow flex flex-col justify-center items-center text-center px-4 py-16 mt-[100px] relative overflow-hidden bg-map">
+        
+        <!-- Animated Background Element -->
+        <div class="absolute bottom-10 left-0 w-full opacity-20 pointer-events-none">
+            <div class="truck-anim text-6xl text-slate-400">
+                <i class="fa-solid fa-truck-fast"></i>
+            </div>
+        </div>
+
+        <div class="bg-white p-8 md:p-12 rounded-2xl shadow-xl max-w-2xl w-full relative z-10 border border-slate-100">
+            <!-- Icon 404 -->
+            <div class="relative inline-block mb-6">
+                <div class="text-9xl font-black text-slate-200">404</div>
+                <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+                    <i class="fa-solid fa-map-location-dot text-6xl text-orange-500 drop-shadow-lg"></i>
+                </div>
+            </div>
+
+            <h1 class="text-3xl md:text-4xl font-bold text-slate-800 mb-4">Lạc đường rồi!</h1>
+            <p class="text-slate-500 mb-8 text-lg leading-relaxed">
+                Trang bạn đang tìm kiếm không tồn tại hoặc đã được di chuyển. Hãy quay về trang chủ!
+            </p>
+
+            <!-- Search Bar -->
+            <div class="max-w-md mx-auto mb-8 relative">
+                <input type="text" placeholder="Nhập mã vận đơn hoặc từ khóa..." class="w-full pl-4 pr-12 py-3 border border-slate-300 rounded-lg focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all">
+                <button class="absolute right-2 top-1/2 transform -translate-y-1/2 text-blue-600 hover:bg-blue-50 p-2 rounded-md transition-colors">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </button>
+            </div>
+
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="/" id="homeButton" class="flex items-center justify-center gap-2 bg-slate-800 text-white px-6 py-3 rounded-lg font-semibold hover:bg-slate-900 transition-all">
+                    <i class="fa-solid fa-house"></i> Về Trang Chủ
+                </a>
+                <a href="#" class="flex items-center justify-center gap-2 bg-white border border-slate-300 text-slate-700 px-6 py-3 rounded-lg font-semibold hover:bg-slate-50 transition-all">
+                    <i class="fa-solid fa-headset"></i> Hỗ Trợ Khách Hàng
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <!-- Featured Articles (News Section) -->
+    <section class="py-16 bg-white border-t border-slate-200">
+        <div class="container mx-auto px-6">
+            <div class="flex justify-between items-end mb-10">
+                <div>
+                    <span class="text-blue-600 font-bold tracking-wider text-sm uppercase mb-2 block">Tin Tức & Sự Kiện</span>
+                    <h2 class="text-3xl font-bold text-slate-800">Thông tin Logistic Mới Nhất</h2>
+                </div>
+                <a href="#" class="hidden md:flex items-center gap-2 text-blue-600 font-semibold hover:underline">
+                    Xem tất cả <i class="fa-solid fa-arrow-right"></i>
+                </a>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Article 1 -->
+                <article class="article-card bg-white rounded-xl overflow-hidden border border-slate-100 shadow-sm cursor-pointer group h-full flex flex-col">
+                    <div class="h-48 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&q=80&w=600" alt="Warehouse" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute top-4 left-4 bg-orange-500 text-white text-xs font-bold px-3 py-1 rounded-full shadow-md">XU HƯỚNG</div>
+                    </div>
+                    <div class="p-6 flex-grow flex flex-col">
+                        <div class="text-slate-400 text-sm mb-3 flex items-center gap-2">
+                            <i class="fa-regular fa-calendar"></i> 25/12/2025
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-800 mb-3 group-hover:text-blue-600 transition-colors">Tối ưu hóa kho bãi với AI</h3>
+                        <p class="text-slate-500 text-sm line-clamp-3 mb-4 flex-grow">Cách công nghệ trí tuệ nhân tạo đang thay đổi cách quản lý hàng tồn kho và giảm chi phí vận hành logistic...</p>
+                        <span class="text-blue-600 font-semibold text-sm mt-auto inline-flex items-center gap-1 group-hover:gap-2 transition-all">
+                            Đọc thêm <i class="fa-solid fa-arrow-right-long"></i>
+                        </span>
+                    </div>
+                </article>
+
+                <!-- Article 2 -->
+                <article class="article-card bg-white rounded-xl overflow-hidden border border-slate-100 shadow-sm cursor-pointer group h-full flex flex-col">
+                    <div class="h-48 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&q=80&w=600" alt="Shipping" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <div class="p-6 flex-grow flex flex-col">
+                        <div class="text-slate-400 text-sm mb-3 flex items-center gap-2">
+                            <i class="fa-regular fa-calendar"></i> 24/12/2025
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-800 mb-3 group-hover:text-blue-600 transition-colors">Cập nhật giá cước vận tải biển</h3>
+                        <p class="text-slate-500 text-sm line-clamp-3 mb-4 flex-grow">Biến động giá cước vận chuyển quốc tế trong quý 4 và dự báo cho năm tài chính tiếp theo...</p>
+                        <span class="text-blue-600 font-semibold text-sm mt-auto inline-flex items-center gap-1 group-hover:gap-2 transition-all">
+                            Đọc thêm <i class="fa-solid fa-arrow-right-long"></i>
+                        </span>
+                    </div>
+                </article>
+
+                <!-- Article 3 -->
+                <article class="article-card bg-white rounded-xl overflow-hidden border border-slate-100 shadow-sm cursor-pointer group h-full flex flex-col">
+                    <div class="h-48 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1494412574643-35d324698422?auto=format&fit=crop&q=80&w=600" alt="Delivery" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <div class="p-6 flex-grow flex flex-col">
+                        <div class="text-slate-400 text-sm mb-3 flex items-center gap-2">
+                            <i class="fa-regular fa-calendar"></i> 22/12/2025
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-800 mb-3 group-hover:text-blue-600 transition-colors">Logistic Xanh: Tương lai bền vững</h3>
+                        <p class="text-slate-500 text-sm line-clamp-3 mb-4 flex-grow">Các giải pháp giảm thiểu khí thải carbon trong chuỗi cung ứng toàn cầu đang được áp dụng rộng rãi...</p>
+                        <span class="text-blue-600 font-semibold text-sm mt-auto inline-flex items-center gap-1 group-hover:gap-2 transition-all">
+                            Đọc thêm <i class="fa-solid fa-arrow-right-long"></i>
+                        </span>
+                    </div>
+                </article>
+            </div>
+            
+            <div class="mt-8 text-center md:hidden">
+                <a href="#" class="inline-flex items-center gap-2 text-blue-600 font-semibold hover:underline">
+                    Xem tất cả tin tức <i class="fa-solid fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="site-footer">
+        <div class="footer-top">
+            <div class="container footer-grid">
+                
+                <div class="footer-column about animate-on-scroll">
+                    <img src="img/eximlog_not_slogan.webp" alt="EXIMLOG Logo" class="footer-logo">
+                    <p>Eximlog cung cấp dịch vụ vận chuyển quốc tế và giải pháp logistics giá rẻ, uy tín. Vận chuyển niềm tin, nâng tầm giá trị.</p>
+                    <div class="footer-social-icons">
+                        <a href="https://www.facebook.com/profile.php?id=61579630050511" target="_blank" class="social-icon"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="https://m.me/61579630050511" target="_blank" class="social-icon"><i class="fa-brands fa-facebook-messenger"></i></a>
+                        <a href="tel:0353256039" class="social-icon"><i class="fa-solid fa-phone"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column links animate-on-scroll">
+                    <h4 class="footer-column-title">EXIMLOG</h4>
+                    <ul class="footer-nav-menu">
+                        <li><a href="#">Trang Chủ</a></li>
+                        <li><a href="#about">Về Chúng Tôi</a></li>
+                        <li><a href="#services">Dịch Vụ</a></li>
+                        <li><a href="price-quote ">Báo Giá</a></li>
+                        <li><a href="#contact">Liên Hệ</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column links animate-on-scroll">
+                    <h4 class="footer-column-title">Hỗ Trợ</h4>
+                    <ul class="footer-nav-menu">
+                        <li><a href="privacy_policy">Chính sách bảo mật</a></li>
+                        <li><a href="faq">Câu hỏi thường gặp</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column contact animate-on-scroll">
+                    <h4 class="footer-column-title">Thông Tin Liên Hệ</h4>
+                    <ul class="footer-contact-info">
+                        <li>
+                            <i class="fa-solid fa-location-dot"></i>
+                            <span><b>Trụ sở chính:</b> <a href="https://maps.app.goo.gl/qapw4ec8c4aNnYd56" target="_blank">Số 6, Đường số 4, P. Hiệp Bình Chánh, TP. Thủ Đức, TP.HCM</a> </span>
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-truck"></i>
+                            <span><b>Điểm gửi nhận hàng:</b> <a href="https://maps.app.goo.gl/cRLHcUFAYuMvjZCWA" target="_blank">Nhà nghỉ TRỌNG NGHĨA, qua cầu Mỹ lợi, Tiền Giang</a></span>
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-envelope"></i>
+                            <a href="mailto:info@eximlog.vn">info@eximlog.vn</a>
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-phone-volume"></i> 0399 409 015 </br> 070 689 1139 </br> 0835 215 394
+                        </li>
+                    </ul>
+                </div>
+                
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <div class="container">
+                <p>© 2025 Eximlog. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/script/script.3243942394.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script>
-        document.getElementById('homeButton').addEventListener('click', function() {
-    window.location.href = '/'; // Thay đổi đường dẫn nếu cần
+    document.getElementById('homeButton').addEventListener('click', function() {
+    window.location.href = '/'; 
 });
     </script>
 </body>

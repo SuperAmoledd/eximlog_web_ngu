@@ -34,7 +34,7 @@ main.container {
     background-color: #fcfcfc; /* Nền trắng hơi xám nhẹ */
     display: inline-block;  /* Ôm sát nội dung hoặc dùng block nếu muốn full dòng */
     min-width: 300px;       /* Chiều rộng tối thiểu */
-    font-family: Arial, sans-serif;
+    font-family: Verdana, Arial, sans-serif;
 }
 
 /* Phần tiêu đề và nút icon */
