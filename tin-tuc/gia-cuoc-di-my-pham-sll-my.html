@@ -25,8 +25,8 @@
         
         <nav class="main-navigation">
             <div class="container flex-container">
-                <a href="/" class="brand-logo">
-                    <img src="/img/eximlog_not_slogan.webp" alt="EXIMLOG Logo">
+                <a href="#" class="brand-logo">
+                    <img src="img/eximlog_not_slogan.webp" alt="EXIMLOG Logo" fetchpriority="high">
                 </a>
 
                 <button class="mobile-nav-toggle" aria-label="Toggle navigation">
@@ -34,21 +34,34 @@
                 </button>
 
                 <ul class="nav-menu" id="navMenu">
-                    <li><a href="/">TRANG CHỦ</a></li>
-                    <li><a href="/#about">VỀ CHÚNG TÔI</a></li>
-                    <li><a href="/#services">DỊCH VỤ</a></li>
-                    
+                    <li><a href="#" class="active">TRANG CHỦ</a></li>
+                    <li><a href="#about">VỀ CHÚNG TÔI</a></li>
+
                     <li class="nav-item-dropdown">
-                        <a href="/dich-vu/price-quote" class="dropdown-toggle active">BÁO GIÁ <i class="fa-solid fa-chevron-down"></i></a>
+                        <a href="/dich-vu/price-quote" class="dropdown-toggle">DỊCH VỤ <i class="fa-solid fa-chevron-down"></i></a>
                         <ul class="dropdown-menu">
-                            <li><a href="/dich-vu/price-quote-air">Vận tải đường hàng không</a></li>
-                            <li><a href="/dich-vu/price-quote-sea">Vận tải đường biển</a></li>
-                            <li><a href="/dich-vu/price-quote-road">Vận tải đường bộ</a></li>
-                            <li><a href="/dich-vu/price-quote-trucking">Trucking</a></li>
+                            <li><a href="/tin-tuc/gia-cuoc-di-my">Gửi hàng đi Mỹ</a></li>
+                            <li><a href="/tin-tuc/gia-cuoc-di-uc">Gửi hàng đi Úc</a></li>
+                            <li><a href="/tin-tuc/gia-cuoc-di-canada">Gửi hàng đi Canada</a></li>
+                            <li><a href="/tin-tuc/gia-cuoc-di-duc">Gửi hàng đi Đức</a></li>
+                            <li><a href="/tin-tuc/gia-cuoc-di-nhat-ban">Gửi hàng đi Nhật Bản</a></li>
+                            <li><a href="/tin-tuc/gia-cuoc-di-phap">Gửi hàng đi Pháp</a></li>
+                            <li><a href="/tin-tuc/gia-cuoc-di-han-quoc">Gửi hàng đi Hàn Quốc</a></li>
+                            <li><a href="/tin-tuc/gia-cuoc-di-thai-lan">Gửi hàng đi Thái Lan</a></li>
+                            <li><a href="/tin-tuc/gia-cuoc-di-malaysia">Gửi hàng đi Malaysia</a></li>
+                            <li><a href="/tin-tuc/gia-cuoc-di-uk">Gửi hàng đi UK</a></li>
                         </ul>
                     </li>
                     
-                    <li><a href="/#contact">LIÊN HỆ</a></li>
+                    <li class="nav-item-dropdown">
+                        <a  class="dropdown-toggle">BÁO GIÁ <i class="fa-solid fa-chevron-down"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/dich-vu/price-quote-air">Vận tải đường hàng không</a></li>
+                            <li><a href="/dich-vu/price-quote-sea">Vận tải đường biển</a></li>
+                        </ul>
+                    </li>
+                    
+                    <li><a href="#contact">LIÊN HỆ</a></li>
                 </ul>
                 
                 <a href="/tracking" target="_blank" class="quote-button">TRACKING</a>
