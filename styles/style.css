@@ -736,20 +736,20 @@ body {
 
 .stats-header {
     text-align: center;
-    margin-bottom: 40px; /* Tạo khoảng cách với 3 ô bên dưới */
+    margin-bottom: 40px;
     position: relative;
 }
 
 .stats-header p {
     font-size: 20px;
     font-weight: 700;
-    color: var(--white-color); /* Chữ màu trắng cho nổi trên nền ảnh tối */
+    color: var(--white-color);
     text-transform: uppercase;
-    letter-spacing: 3px; /* Giãn chữ ra cho sang trọng */
+    letter-spacing: 3px; 
     margin: 0;
     display: inline-block;
     padding-bottom: 10px;
-    border-bottom: 2px solid var(--secondary-green); /* Gạch chân màu cam/vàng thương hiệu */
+    border-bottom: 2px solid var(--secondary-green); 
 }
 
 .stats-grid {
@@ -781,7 +781,6 @@ body {
     line-height: 1.2;
 }
 
-/* Thêm dấu cộng (+) sau con số bằng CSS giả lập */
 .stat-number::after {
     content: "+";
     font-size: 30px;
@@ -800,7 +799,6 @@ body {
 }
 
 
-/* --- Contact Section Layout Mới --- */
 
 .contact-wrapper {
     display: grid;
