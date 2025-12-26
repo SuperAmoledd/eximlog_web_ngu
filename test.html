@@ -217,10 +217,12 @@
         const smoother = ScrollSmoother.create({
             wrapper: "#smooth-wrapper",
             content: "#smooth-content",
-            smooth: 1.5,      // Thời gian (giây) để nội dung đuổi kịp thanh cuộn (càng cao càng mượt nhưng càng "bay")
-            effects: true,    // Bật tính năng data-speed và data-lag
-            smoothTouch: 0.1, // Giữ scroll tự nhiên trên mobile (đặt 0.1 hoặc false)
-            normalizeScroll: true // Giúp scroll mượt hơn trên một số thiết bị cảm ứng
+            smooth: 1.5,      // Smooth trên PC (số càng lớn càng êm)
+            effects: true,    // Bật hiệu ứng parallax
+            
+            // CẤU HÌNH CHO MOBILE
+            smoothTouch: false,   // QUAN TRỌNG: false = Tắt smooth trên thiết bị cảm ứng (dùng native scroll)
+            normalizeScroll: false // false = Không can thiệp vào sự kiện cuộn/kéo gốc của trình duyệt
         });
     </script>
 </body>
