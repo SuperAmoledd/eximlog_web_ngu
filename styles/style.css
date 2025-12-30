@@ -1326,25 +1326,6 @@ header {
     }
 }
 
-/* --- BẮT BUỘC CHO SCROLLSMOOTHER --- */
-#smooth-wrapper {
-    overflow: hidden;
-    position: fixed;
-    height: 100%;
-    width: 100%;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: 1; /* Đảm bảo wrapper nằm dưới các popup overlay nếu có */
-}
-
-#smooth-content {
-    overflow: visible;
-    width: 100%;
-    will-change: transform;
-}
-
 @media (max-width: 768px) {
     .footer-grid {
         grid-template-columns: 1fr;

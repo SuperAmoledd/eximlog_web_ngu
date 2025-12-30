@@ -49,9 +49,7 @@
 
             </div>
         </div>
-
-    <div class="overlay" id="overlay"></div>
-    <div id="smooth-wrapper">
+</div>
     <header>
         <div class="top-header">
             <div class="container flex-container">
@@ -64,16 +62,15 @@
         
         <nav class="main-navigation">
             <div class="container flex-container">
-                <a href="#" class="brand-logo">
+                <a href="/" class="brand-logo">
                     <img src="img/eximlog_not_slogan.webp" alt="EXIMLOG Logo" fetchpriority="high">
                 </a>
-
                 <button class="mobile-nav-toggle" aria-label="Toggle navigation">
                     <i class="fa-solid fa-bars"></i>
                 </button>
 
                 <ul class="nav-menu" id="navMenu">
-                    <li><a href="#" class="active">TRANG CHỦ</a></li>
+                    <li><a href="/" class="active">TRANG CHỦ</a></li>
                     <li><a href="#about">GIỚI THIỆU</a></li>
 
                     <li class="nav-item-dropdown">
@@ -108,13 +105,11 @@
         </nav>
     </header>
 
-    <div id="smooth-content">
-
     <main>
         <section class="hero">
             <div class="container hero-grid">
                 <div class="hero-image-column">
-                    <img src="img/anh_cang_maybay_log.webp" alt="Air and Sea Freight Services">
+                    <img src="img/anh_maybay_log_trucking.webp" alt="Air and Sea Freight Services">
                 </div>
                 <div class="hero-content-column">
                     <h1 class="main-headline">Eximlog - Giải pháp vận chuyển quốc tế tối ưu</h1>
@@ -433,8 +428,7 @@
             </div>
         </div>
     </footer>
-
-    </div> <div class="floating-contact-buttons">
+    <div class="floating-contact-buttons">
         <a id="zaloFabButton" class="fab-icon zalo" role="button" tabindex="0">
             <img src="img/zl.png" alt="Zalo Logo" class="zalo-img-icon"></a>
         <a href="https://www.facebook.com/profile.php?id=100090564686682" target="_blank" class="fab-icon facebook"><i class="fa-brands fa-facebook-f"></i></a>
@@ -489,24 +483,6 @@
     document.addEventListener("DOMContentLoaded", (event) => {
         $(".preload-eximlog").delay(1600).fadeOut("slow");
     });
-    </script>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-    
-    <script src="https://assets.codepen.io/16327/ScrollSmoother.min.js"></script>
-
-    <script>
-        gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
-
-        ScrollSmoother.create({
-            wrapper: "#smooth-wrapper",
-            content: "#smooth-content",
-            smooth: 1.5,      // Độ mượt (số càng lớn càng êm)
-            effects: true,    // Bật hiệu ứng parallax nếu có
-            smoothTouch: 0.1, // Cho phép mượt nhẹ trên mobile (hoặc để false nếu muốn tắt)
-        });
     </script>
 
 </body>
