@@ -24,7 +24,6 @@
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
         .faq-item.active .faq-answer {
-            max-height: 300px;
             opacity: 1;
             padding-bottom: 1.5rem;
         }
@@ -71,7 +70,7 @@
         <div class="flex flex-wrap justify-center gap-3 mb-12">
             <button class="tab-btn active px-6 py-2.5 rounded-xl glass border border-transparent transition-all font-medium" data-category="all">Tất cả</button>
             <button class="tab-btn px-6 py-2.5 rounded-xl glass border border-transparent transition-all font-medium" data-category="thanhtoan">Thanh toán</button>
-            <button class="tab-btn px-6 py-2.5 rounded-xl glass border border-transparent transition-all font-medium" data-category="account">Tài khoản</button>
+            <button class="tab-btn px-6 py-2.5 rounded-xl glass border border-transparent transition-all font-medium" data-category="dichvu">Dịch vụ</button>
             <button class="tab-btn px-6 py-2.5 rounded-xl glass border border-transparent transition-all font-medium" data-category="kythuat">Kỹ thuật</button>
         </div>
 
@@ -135,12 +134,12 @@
                     <br>
                     <b>Chứng từ giao nhận:</b> Mọi đơn hàng đều đi kèm hợp đồng vận chuyển và biên bản bàn giao hàng hóa có giá trị pháp lý.
                     <br>
-                    <b>Hệ thống theo dõi kiện hàng của bạn:</b> Cung cấp mã vận đơn (Tracking) để khách hàng chủ động kiểm tra lộ trình hàng hóa 24/7 trên website chính thức. <a href="https://www.eximlog.vn/tracking"><b><i> Xem tại đây</i></b></a>
+                    <b>Hệ thống theo dõi kiện hàng của bạn:</b> Cung cấp mã vận đơn (Tracking) để khách hàng chủ động kiểm tra lộ trình hàng hóa 24/7 trên website chính thức. <a href="/tracking"><b><i> Xem tại đây</i></b></a>
                 </div>
             </div>
 
             <!-- Item 5 -->
-            <div class="faq-item glass rounded-2xl px-6 transition-all duration-300" data-category="billing">
+            <div class="faq-item glass rounded-2xl px-6 transition-all duration-300" data-category="dichvu">
                 <button class="w-full py-6 flex items-center justify-between text-left focus:outline-none" onclick="toggleItem(this)">
                     <span class="text-lg font-semibold pr-4">Chi phí công ty sao lại cao thế?</span>
                     <div class="icon-plus w-6 h-6 flex items-center justify-center text-indigo-400 transition-transform">
@@ -148,12 +147,20 @@
                     </div>
                 </button>
                 <div class="faq-answer text-slate-400 leading-relaxed">
-                    Tất nhiên. Hóa đơn điện tử sẽ được tự động gửi tới email của bạn trong vòng 24 giờ sau khi giao dịch thành công. Bạn cũng có thể tải về trong lịch sử thanh toán.
+                    Cấu trúc chi phí của chúng tôi được xây dựng dựa trên 4 yếu tố cốt lõi nhằm bảo vệ quyền lợi khách hàng:
+                    <br>
+                    <br>
+                    <ul>
+                        <li><b>Tuyến vận chuyển độc quyền:</b> Chúng tôi khai thác tuyến riêng để chủ động kiểm soát thời gian và đảm bảo tính an toàn cao nhất, không phụ thuộc vào các đơn vị ghép hàng giá rẻ.</li>
+                        <li><b>Tốc độ và sự an toàn:</b> Quy trình vận hành được thiết kế để ưu tiên sự nhanh chóng và nguyên vẹn của hàng hóa.</li>
+                        <li><b>Dịch vụ hỗ trợ (Customer Service):</b> Chi phí bao gồm đội ngũ nhân sự theo sát đơn hàng 1:1, đảm bảo thông tin thông suốt và giải quyết sự cố kịp thời.</li>
+                        <li><b>Cam kết chất lượng:</b> Công ty kiên quyết không cắt giảm các quy trình kiểm soát an toàn để hạ giá thành (phá giá), nhằm duy trì sự uy tín và ổn định lâu dài cho đối tác.</li>
+                    </ul>
                 </div>
             </div>
 
             <!-- Item 6 -->
-            <div class="faq-item glass rounded-2xl px-6 transition-all duration-300" data-category="billing">
+            <div class="faq-item glass rounded-2xl px-6 transition-all duration-300" data-category="dichvu">
                 <button class="w-full py-6 flex items-center justify-between text-left focus:outline-none" onclick="toggleItem(this)">
                     <span class="text-lg font-semibold pr-4">Hàng hoá có đảm bảo không?</span>
                     <div class="icon-plus w-6 h-6 flex items-center justify-center text-indigo-400 transition-transform">
@@ -161,38 +168,12 @@
                     </div>
                 </button>
                 <div class="faq-answer text-slate-400 leading-relaxed">
-                    Tất nhiên. Hóa đơn điện tử sẽ được tự động gửi tới email của bạn trong vòng 24 giờ sau khi giao dịch thành công. Bạn cũng có thể tải về trong lịch sử thanh toán.
+                    Hàng hóa được đảm bảo an toàn tối đa nhờ vào quy trình vận hành khép kín của chúng tôi. Vì đi theo tuyến riêng (không gom hàng đại trà) và có đội ngũ nhân sự theo sát từng khâu (take care 1:1), chúng tôi kiểm soát được rủi ro thất lạc hay hư hỏng tốt hơn nhiều so với các dịch vụ giá rẻ. Sự an toàn của hàng hóa chính là lý do cốt lõi khiến chi phí dịch vụ của chúng tôi cao hơn mặt bằng chung.
                 </div>
             </div>
 
             <!-- Item 7 -->
-            <div class="faq-item glass rounded-2xl px-6 transition-all duration-300" data-category="billing">
-                <button class="w-full py-6 flex items-center justify-between text-left focus:outline-none" onclick="toggleItem(this)">
-                    <span class="text-lg font-semibold pr-4">Hàng hoá được vận chuyển bằng cách nào?</span>
-                    <div class="icon-plus w-6 h-6 flex items-center justify-center text-indigo-400 transition-transform">
-                        <i data-lucide="plus" class="w-6 h-6"></i>
-                    </div>
-                </button>
-                <div class="faq-answer text-slate-400 leading-relaxed">
-                    Tất nhiên. Hóa đơn điện tử sẽ được tự động gửi tới email của bạn trong vòng 24 giờ sau khi giao dịch thành công. Bạn cũng có thể tải về trong lịch sử thanh toán.
-                </div>
-            </div>
-
-            <!-- Item 8 -->
-            <div class="faq-item glass rounded-2xl px-6 transition-all duration-300" data-category="billing">
-                <button class="w-full py-6 flex items-center justify-between text-left focus:outline-none" onclick="toggleItem(this)">
-                    <span class="text-lg font-semibold pr-4">Hàng hoá được vận chuyển bằng cách nào?</span>
-                    <div class="icon-plus w-6 h-6 flex items-center justify-center text-indigo-400 transition-transform">
-                        <i data-lucide="plus" class="w-6 h-6"></i>
-                    </div>
-                </button>
-                <div class="faq-answer text-slate-400 leading-relaxed">
-                    Tất nhiên. Hóa đơn điện tử sẽ được tự động gửi tới email của bạn trong vòng 24 giờ sau khi giao dịch thành công. Bạn cũng có thể tải về trong lịch sử thanh toán.
-                </div>
-            </div>
-
-            <!-- Item 8 -->
-            <div class="faq-item glass rounded-2xl px-6 transition-all duration-300" data-category="billing">
+            <div class="faq-item glass rounded-2xl px-6 transition-all duration-300" data-category="dichvu">
                 <button class="w-full py-6 flex items-center justify-between text-left focus:outline-none" onclick="toggleItem(this)">
                     <span class="text-lg font-semibold pr-4">Gửi kiện gỗ có an toàn không?</span>
                     <div class="icon-plus w-6 h-6 flex items-center justify-center text-indigo-400 transition-transform">
@@ -200,11 +181,14 @@
                     </div>
                 </button>
                 <div class="faq-answer text-slate-400 leading-relaxed">
-                    <video width="320" height="240" controls>
-  <source src="https://www.youtube.com/watch?v=Qq90hK-2zmQ" type="video/mp4">
-  <source src="https://www.youtube.com/watch?v=Qq90hK-2zmQ" type="video/ogg">
-  Your browser does not support the video tag.
-</video>
+                    Tất nhiên sẽ an toàn. EXIMLOG có dịch vụ đóng kiện gỗ chuyên nghiệp, đảm bảo kiện hàng được bảo vệ tối ưu trong suốt quá trình vận chuyển. <br> Dưới đây là video feedback từ khách hàng sau khi sử dụng dịch vụ đóng kiện gỗ của chúng tôi: 
+                    <br>
+                    <br>
+                    <video width="auto" height="200" controls loop muted>
+                    <source src="/img/mp4/kiengomp4.mp4" type="video/mp4">
+                    <source src="/img/mp4/kiengomp4.mp4" type="video/ogg">
+                    Your browser does not support the video tag.
+                    </video>
                 </div>
             </div>
         </div>
@@ -229,18 +213,28 @@
         lucide.createIcons();
 
         // Toggle Accordion
-        function toggleItem(btn) {
-            const item = btn.parentElement;
-            const isActive = item.classList.contains('active');
-            
-            // Close others
-            document.querySelectorAll('.faq-item').forEach(el => el.classList.remove('active'));
-            
-            // Toggle current
-            if (!isActive) {
-                item.classList.add('active');
-            }
+        // Thay thế hàm toggleItem cũ bằng hàm này
+function toggleItem(btn) {
+    const item = btn.parentElement;
+    const answer = item.querySelector('.faq-answer');
+    const isActive = item.classList.contains('active');
+    
+    // 1. Đóng tất cả các item khác
+    document.querySelectorAll('.faq-item').forEach(el => {
+        el.classList.remove('active');
+        const elAnswer = el.querySelector('.faq-answer');
+        if(elAnswer) {
+            elAnswer.style.maxHeight = null; // Thu gọn lại
         }
+    });
+    
+    // 2. Mở item hiện tại nếu chưa mở
+    if (!isActive) {
+        item.classList.add('active');
+        // Tính toán chiều cao thực tế + 24px (tương đương 1.5rem padding-bottom)
+        answer.style.maxHeight = (answer.scrollHeight + 24) + "px";
+    }
+}
 
         // Search & Tab Logic
         const searchInput = document.getElementById('searchFAQ');
