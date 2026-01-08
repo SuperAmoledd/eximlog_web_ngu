@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <title>Chính Sách Vận Chuyển - EXIMLOG</title>
+    <meta name='description' content='Chính sách vận chuyển hàng hóa quốc tế và nội địa tại Eximlog.'>
+    <meta name='robots' content='index, follow'>
+    <meta name='theme-color' content='#ff9100'>
+    
+    <!-- Placeholder cho favicon -->
+    <link rel='icon' href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y=".9em" font-size="90">🚛</text></svg>' type='image/svg+xml'>
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+        /* --- CORE VARIABLES & RESET --- */
+        :root {
+            --primary-blue: #004b93;
+            --primary-orange: #ff9100;
+            --secondary-green: #28a745;
+            --text-dark: #333333;
+            --text-light: #555555;
+            --white-color: #ffffff;
+            --bg-light: #f8f9fa;
+            --border-color: #e9ecef;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; color: var(--text-dark); line-height: 1.6; background-color: #fcfcfc; }
+        a { text-decoration: none; color: inherit; transition: 0.3s; }
+        ul { list-style: none; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 15px; }
+        .flex-container { display: flex; justify-content: space-between; align-items: center; }
+
+        /* --- HEADER STYLES --- */
+        header { width: 100%; box-shadow: 0 2px 10px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 1000; background: #fff; }
+        
+        .top-header { background-color: var(--primary-blue); color: #fff; padding: 10px 0; font-size: 0.9rem; }
+        .contact-details span { margin-right: 20px; }
+        .contact-details i { margin-right: 8px; color: var(--primary-orange); }
+
+        .main-navigation { padding: 15px 0; background: #fff; }
+        .brand-logo img { height: 50px; width: auto; }
+
+        .nav-menu { display: flex; gap: 30px; align-items: center; }
+        .nav-menu li { position: relative; }
+        .nav-menu a { font-weight: 600; color: var(--text-dark); font-size: 0.95rem; }
+        .nav-menu a:hover, .nav-menu a.active { color: var(--primary-orange); }
+        .nav-menu .dropdown-toggle i { font-size: 0.8rem; margin-left: 5px; }
+
+        /* Dropdown */
+        .dropdown-menu {
+            position: absolute; top: 100%; left: 0; background: #fff; 
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1); min-width: 220px;
+            display: none; border-top: 3px solid var(--primary-orange);
+            padding: 10px 0;
+        }
+        .nav-item-dropdown:hover .dropdown-menu { display: block; animation: fadeIn 0.3s; }
+        .dropdown-menu li a { display: block; padding: 10px 20px; font-weight: 400; font-size: 0.9rem; }
+        .dropdown-menu li a:hover { background: var(--bg-light); color: var(--primary-orange); }
+
+        .quote-button {
+            background: var(--primary-orange); color: #fff; padding: 10px 25px;
+            border-radius: 25px; font-weight: bold; letter-spacing: 1px;
+            box-shadow: 0 4px 15px rgba(255, 145, 0, 0.3);
+        }
+        .quote-button:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(255, 145, 0, 0.4); }
+
+        .mobile-nav-toggle { display: none; font-size: 1.5rem; background: none; border: none; cursor: pointer; color: var(--primary-blue); }
+
+        /* --- PAGE SPECIFIC STYLES (Reverted to Old Tone) --- */
+        .page-header {
+            /* Dùng background tối giả lập lớp phủ đen trên ảnh như file gốc */
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), #2c3e50; 
+            background-size: cover;
+            background-position: center;
+            color: var(--white-color);
+            padding: 100px 0;
+            text-align: center;
+            margin-bottom: 60px;
+            border-radius: 0 0 20px 20px;
+            position: relative;
+        }
+
+        .page-header h1 { font-size: 3rem; margin-bottom: 15px; color: var(--white-color); }
+        .page-header p { font-size: 1.2rem; opacity: 0.9; max-width: 800px; margin: 0 auto; }
+
+        .policy-card {
+            background: var(--white-color);
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            margin-bottom: 30px;
+            border-left: 5px solid var(--primary-blue);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .policy-card:hover { transform: translateY(-5px); box-shadow: 0 15px 40px rgba(255, 145, 0, 0.15); }
+
+        .policy-card h2 { color: var(--primary-blue); font-size: 1.8rem; margin-bottom: 25px; display: flex; align-items: center; }
+        
+        /* Chỉnh lại màu nền icon giống file cũ (#fff3e0 - cam nhạt) */
+        .policy-card h2 i {
+            margin-right: 15px; 
+            background: #fff3e0; 
+            width: 50px; height: 50px;
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            font-size: 1.2rem; color: var(--primary-blue);
+        }
+
+        .policy-list { list-style: none; padding: 0; }
+        .policy-list li { position: relative; padding-left: 35px; margin-bottom: 15px; color: var(--text-light); line-height: 1.6; }
+        .policy-list li::before {
+            content: '\f00c'; font-family: 'Font Awesome 6 Free'; font-weight: 900;
+            position: absolute; left: 0; top: 3px; color: var(--secondary-green); font-size: 1.1rem;
+        }
+
+        /* Parallax Break - Quay lại style tối */
+        .parallax-break {
+            height: 350px; background-attachment: fixed; background-position: center;
+            background-repeat: no-repeat; background-size: cover; position: relative;
+            margin: 60px 0; display: flex; align-items: center; justify-content: center;
+            background-color: #333;
+        }
+        
+        .parallax-break::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0,0,0,0.6); /* Lớp phủ đen mờ */
+        }
+
+        .parallax-content { position: relative; z-index: 2; color: white; text-align: center; padding: 0 20px; }
+        .parallax-content h3 { font-size: 2.2rem; margin-bottom: 15px; color: #fff; }
+        .parallax-content p { font-size: 1.1rem; opacity: 0.9; }
+
+        /* Mock images background */
+        .bg-transport { background-image: linear-gradient(#444, #222); } 
+        .bg-process { background-image: linear-gradient(#444, #222); }
+
+        .policy-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px; }
+
+        .shipping-table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        .shipping-table th, .shipping-table td { padding: 12px 15px; border: 1px solid #eee; text-align: left; }
+        .shipping-table th { background-color: var(--primary-blue); color: white; font-weight: 600; }
+        .shipping-table tr:nth-child(even) { background-color: #f8f9fa; }
+
+        /* --- FOOTER STYLES --- */
+        .site-footer { background-color: #f8f9fa; color: #333; font-size: 0.9rem; margin-top: 60px; border-top: 5px solid var(--primary-orange); } /* Footer sáng màu như web cũ nếu cần, hoặc giữ tối */
+        /* Tuy nhiên file gốc footer tối màu, giữ nguyên footer tối */
+        .site-footer { background-color: #1a1a1a; color: #b0b0b0; border-top: none; }
+
+        .footer-top { padding: 70px 0 50px; }
+        .footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1.5fr; gap: 40px; }
+        .footer-logo { max-width: 150px; margin-bottom: 20px; filter: brightness(0) invert(1); }
+        .footer-column-title { color: #fff; font-size: 1.1rem; margin-bottom: 25px; position: relative; padding-bottom: 10px; }
+        .footer-column-title::after { content: ''; position: absolute; bottom: 0; left: 0; width: 40px; height: 2px; background: var(--primary-orange); }
+        
+        .footer-nav-menu li, .footer-contact-info li { margin-bottom: 15px; }
+        .footer-nav-menu a:hover, .footer-contact-info a:hover { color: var(--primary-orange); padding-left: 5px; }
+        .footer-contact-info li { display: flex; gap: 15px; align-items: flex-start; }
+        .footer-contact-info i { color: var(--primary-orange); margin-top: 4px; }
+        
+        .social-icon { display: inline-flex; width: 35px; height: 35px; background: #333; color: #fff; align-items: center; justify-content: center; border-radius: 50%; margin-right: 10px; transition: 0.3s; }
+        .social-icon:hover { background: var(--primary-orange); }
+
+        .footer-bottom { border-top: 1px solid #333; padding: 20px 0; text-align: center; background: #111; }
+
+        @media (max-width: 992px) {
+            .footer-grid { grid-template-columns: 1fr 1fr; }
+        }
+        @media (max-width: 768px) {
+            .mobile-nav-toggle { display: block; }
+            .nav-menu { 
+                position: fixed; top: 0; right: -100%; width: 80%; height: 100vh;
+                background: #fff; flex-direction: column; padding-top: 80px;
+                transition: 0.4s; box-shadow: -5px 0 15px rgba(0,0,0,0.1); z-index: 999;
+            }
+            .nav-menu.active { right: 0; }
+            .page-header h1 { font-size: 2rem; }
+            .parallax-break { height: 250px; background-attachment: scroll; } 
+            .policy-grid { grid-template-columns: 1fr; }
+            .footer-grid { grid-template-columns: 1fr; }
+            .quote-button { display: none; } 
+        }
+        
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    </style>
+</head>
+<body>
+
+    <!-- === HEADER === -->
+    <header>
+        <div class="top-header">
+            <div class="container flex-container">
+                <div class="contact-details">
+                    <span><i class="fa-solid fa-envelope"></i>info@eximlog.vn</span>
+                    <span><i class="fa-solid fa-phone"></i> Hotline: 0399 409 015</span>
+                </div>
+            </div>
+        </div>
+        
+        <nav class="main-navigation">
+            <div class="container flex-container">
+                <a href="/" class="brand-logo">
+                    <div style="font-weight:900; font-size: 24px; color: var(--primary-blue); display: flex; align-items: center;">
+                        <span style="color:var(--primary-orange)">EXIM</span>LOG
+                    </div>
+                </a>
+
+                <button class="mobile-nav-toggle" id="mobileToggle" aria-label="Toggle navigation">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="/" class="active">TRANG CHỦ</a></li>
+                    <li><a href="#about">GIỚI THIỆU</a></li>
+
+                    <li class="nav-item-dropdown">
+                        <a href="/dich-vu" class="dropdown-toggle">DỊCH VỤ <i class="fa-solid fa-chevron-down"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/tin-tuc/gia-cuoc-di-my">Gửi hàng đi Mỹ</a></li>
+                            <li><a href="/tin-tuc/gia-cuoc-di-uc">Gửi hàng đi Úc</a></li>
+                            <li><a href="/tin-tuc/gia-cuoc-di-canada">Gửi hàng đi Canada</a></li>
+                            <li><a href="/tin-tuc/gia-cuoc-di-duc">Gửi hàng đi Đức</a></li>
+                            <li><a href="/tin-tuc/gia-cuoc-di-nhat-ban">Gửi hàng đi Nhật Bản</a></li>
+                        </ul>
+                    </li>
+                    
+                    <li class="nav-item-dropdown">
+                        <a href="/news" class="dropdown-toggle">TIN TỨC <i class="fa-solid fa-chevron-down"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/tin-tuc/van-tai-air">Tin tức Hàng không</a></li>
+                            <li><a href="/tin-tuc/van-tai-sea">Tin tức Đường biển</a></li>
+                        </ul>
+                    </li>
+                    
+                    <li><a href="#contact">LIÊN HỆ</a></li>
+                </ul>
+                
+                <a href="/tracking" target="_blank" class="quote-button">TRACKING</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- === MAIN CONTENT: SHIPPING POLICY === -->
+    <main>
+        <section class="page-header animate-on-scroll">
+            <div class="container">
+                <h1>Chính Sách Vận Chuyển</h1>
+                <p>Quy trình minh bạch, thời gian chính xác và cam kết an toàn hàng hóa</p>
+            </div>
+        </section>
+
+        <section class="container">
+            <!-- Grid 1: Phương thức & Thời gian -->
+            <div class="policy-grid">
+                <div class="policy-card animate-on-scroll">
+                    <h2><i class="fa-solid fa-plane-departure"></i> 1. Phương Thức Vận Chuyển</h2>
+                    <p>EXIMLOG cung cấp đa dạng các phương thức vận chuyển để đáp ứng nhu cầu của khách hàng:</p>
+                    <ul class="policy-list">
+                        <li><strong>Vận chuyển đường hàng không (Air Cargo):</strong> Dành cho hàng mẫu, hàng gấp, quà tặng cá nhân. Thời gian nhanh chóng.</li>
+                        <li><strong>Vận chuyển đường biển (Sea Freight):</strong> Dành cho hàng số lượng lớn, hàng công nghiệp. Tiết kiệm chi phí tối đa.</li>
+                        <li><strong>Dịch vụ Door-to-Door:</strong> Nhận hàng tại nhà, giao hàng tận tay người nhận ở nước ngoài.</li>
+                        <li><strong>Chuyển phát nhanh (Express):</strong> Hợp tác với DHL, FedEx, UPS, TNT.</li>
+                    </ul>
+                </div>
+                
+                <div class="policy-card animate-on-scroll" style="animation-delay: 0.2s;">
+                    <h2><i class="fa-solid fa-clock"></i> 2. Thời Gian Giao Hàng</h2>
+                    <p>Thời gian dự kiến tùy thuộc vào quốc gia và gói cước:</p>
+                    <table class="shipping-table">
+                        <thead>
+                            <tr>
+                                <th>Khu vực</th>
+                                <th>Express (Ngày)</th>
+                                <th>Economy (Ngày)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Mỹ / Canada</td>
+                                <td>3 - 5</td>
+                                <td>7 - 10</td>
+                            </tr>
+                            <tr>
+                                <td>Úc / New Zealand</td>
+                                <td>3 - 4</td>
+                                <td>6 - 8</td>
+                            </tr>
+                            <tr>
+                                <td>Châu Âu (EU)</td>
+                                <td>4 - 6</td>
+                                <td>8 - 12</td>
+                            </tr>
+                            <tr>
+                                <td>Châu Á (Nhật, Hàn)</td>
+                                <td>2 - 3</td>
+                                <td>4 - 6</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p style="margin-top:10px; font-size: 0.85rem; font-style: italic;">*Lưu ý: Thời gian không bao gồm ngày lễ, t7, CN và thời gian thông quan kiểm hóa (nếu có).</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Parallax Break 1 -->
+        <div class="parallax-break bg-transport animate-on-scroll">
+            <div class="parallax-content">
+                <h3><i class="fa-solid fa-globe"></i> Mạng Lưới Toàn Cầu</h3>
+                <p>Kết nối hơn 220 quốc gia và vùng lãnh thổ với quy trình chuyên nghiệp</p>
+            </div>
+        </div>
+
+        <section class="container">
+            <div class="policy-card animate-on-scroll">
+                <h2><i class="fa-solid fa-box-open"></i> 3. Quy Định Đóng Gói & Hàng Hóa</h2>
+                <div class="policy-grid">
+                    <div>
+                        <h4 style="margin-bottom: 15px; color: var(--text-dark);">Quy chuẩn đóng gói:</h4>
+                        <ul class="policy-list">
+                            <li>Hàng hóa phải được đóng trong thùng carton cứng, chèn xốp hoặc mút bong bóng.</li>
+                            <li>Hàng dễ vỡ phải có kiện gỗ hoặc đóng gói đặc biệt.</li>
+                            <li>Hàng thực phẩm phải có nhãn mác, hút chân không sạch sẽ.</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 style="margin-bottom: 15px; color: var(--text-dark);">Hàng cấm vận chuyển:</h4>
+                        <ul class="policy-list" style="list-style: none;">
+                            <li style="color: #d32f2f;"><i class="fa-solid fa-ban" style="margin-right:8px;"></i> Chất cháy nổ, vũ khí, đạn dược.</li>
+                            <li style="color: #d32f2f;"><i class="fa-solid fa-ban" style="margin-right:8px;"></i> Ma túy, chất kích thích, văn hóa phẩm đồi trụy.</li>
+                            <li style="color: #d32f2f;"><i class="fa-solid fa-ban" style="margin-right:8px;"></i> Thực phẩm tươi sống hay động vật sống/ch</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="policy-card animate-on-scroll">
+                <h2><i class="fa-solid fa-shield-cat"></i> 4. Bảo Hiểm & Trách Nhiệm</h2>
+                <div class="policy-grid">
+                    <div style="background: #f0f7ff; padding: 25px; border-radius: 12px; border: 1px solid #cce5ff;">
+                        <h4 style="color: var(--primary-blue); margin-bottom: 10px;">Bảo Hiểm Hàng Hóa</h4>
+                        <p style="margin-bottom: 10px;">Chúng tôi khuyến khích khách hàng mua bảo hiểm cho các lô hàng giá trị cao.</p>
+                        <ul class="policy-list">
+                            <li>Đền bù <strong>100%</strong> giá trị khai báo nếu mất mát khi có bảo hiểm (Phí 2-5% giá trị).</li>
+                        </ul>
+                    </div>
+                    <div style="background: #fff5f5; padding: 25px; border-radius: 12px; border: 1px solid #ffc9c9;">
+                        <h4 style="color: #d32f2f; margin-bottom: 10px;">Miễn Trừ Trách Nhiệm</h4>
+                        <p style="margin: 0;">EXIMLOG miễn trừ trách nhiệm trong các trường hợp: Thiên tai, chiến tranh, hàng hóa bị tịch thu do vi phạm pháp luật nước sở tại, hoặc đóng gói không đúng quy cách dẫn đến hư hỏng nội bộ.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Parallax Break 2 -->
+        <div class="parallax-break bg-process animate-on-scroll">
+            <div class="parallax-content">
+                <h3><i class="fa-solid fa-truck-fast"></i> Cam Kết Tiến Độ</h3>
+                <p>Hệ thống Tracking thời gian thực giúp bạn an tâm về lộ trình</p>
+            </div>
+        </div>
+
+        <section class="container" style="margin-bottom: 80px;">
+            <div class="policy-grid">
+                <div class="policy-card animate-on-scroll">
+                    <h2><i class="fa-solid fa-file-invoice-dollar"></i> 5. Chính Sách Giá & Phụ Phí</h2>
+                    <p style="color: var(--text-light); margin-bottom: 15px;">Giá cước vận chuyển được tính dựa trên trọng lượng thực tế hoặc trọng lượng quy đổi (Volume Weight), tùy theo giá trị nào lớn hơn.</p>
+                    <p style="background: #eee; padding: 10px; border-radius: 5px; display: inline-block;"><strong>Công thức:</strong> (Dài x Rộng x Cao) / 5000 = Số kg tính cước (cm)</p>
+                    <p style="margin-top: 15px; font-size: 0.9rem;">* Các phụ phí xăng dầu, vùng sâu vùng xa (Remote Area) có thể áp dụng tùy thời điểm.</p>
+                </div>
+                
+                <div class="policy-card animate-on-scroll">
+                    <h2><i class="fa-solid fa-headset"></i> 6. Khiếu Nại & Hỗ Trợ</h2>
+                    <p style="margin-bottom: 20px;">Mọi vấn đề về đơn hàng vui lòng liên hệ trong vòng 48h sau khi nhận hàng:</p>
+                    <ul class="policy-list">
+                        <li><strong>Bộ phận CSKH EXIMLOG</strong></li>
+                        <li><i class="fa-solid fa-phone" style="margin-right: 10px;"></i> 070 689 1139 (Zalo/Viber)</li>
+                        <li><i class="fa-solid fa-envelope" style="margin-right: 10px;"></i> claims@eximlog.vn</li>
+                        <li><i class="fa-solid fa-clock" style="margin-right: 10px;"></i> Thứ 2 - Thứ 7: 8:00 - 17:30</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- === FOOTER === -->
+    <footer class="site-footer">
+        <div class="footer-top">
+            <div class="container footer-grid">
+                
+                <div class="footer-column about animate-on-scroll">
+                    <!-- Text logo thay thế cho ảnh -->
+                    <h2 style="color:#fff; margin-bottom: 20px;">EXIM<span style="color:var(--primary-orange)">LOG</span></h2>
+                    <p>Eximlog cung cấp dịch vụ vận chuyển quốc tế và giải pháp logistics giá rẻ, uy tín. Vận chuyển niềm tin, nâng tầm giá trị.</p>
+                    <div class="footer-social-icons">
+                        <a href="#" class="social-icon"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#" class="social-icon"><i class="fa-brands fa-facebook-messenger"></i></a>
+                        <a href="#" class="social-icon"><i class="fa-solid fa-phone"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column links animate-on-scroll">
+                    <h4 class="footer-column-title">EXIMLOG</h4>
+                    <ul class="footer-nav-menu">
+                        <li><a href="/">Trang Chủ</a></li>
+                        <li><a href="/#about">Giới Thiệu</a></li>
+                        <li><a href="/#services">Dịch Vụ</a></li>
+                        <li><a href="/news">Tin Tức</a></li>
+                        <li><a href="/#contact">Liên Hệ</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column links animate-on-scroll">
+                    <h4 class="footer-column-title">Hỗ Trợ</h4>
+                    <ul class="footer-nav-menu">
+                        <li><a href="shipping_policy.html">Chính sách vận chuyển</a></li>
+                        <li><a href="privacy_policy.html">Chính sách bảo mật</a></li>
+                        <li><a href="faq">Câu hỏi thường gặp</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column contact animate-on-scroll">
+                    <h4 class="footer-column-title">Thông Tin Liên Hệ</h4>
+                    <ul class="footer-contact-info">
+                        <li>
+                            <i class="fa-solid fa-location-dot"></i>
+                            <span><b>Trụ sở chính:</b> Số 6, Đường số 4, P. Hiệp Bình Chánh, TP. Thủ Đức, TP.HCM</span>
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-truck"></i>
+                            <span><b>Điểm gửi nhận hàng:</b> Nhà nghỉ TRỌNG NGHĨA, qua cầu Mỹ lợi, Tiền Giang</span>
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-envelope"></i>
+                            <a href="mailto:info@eximlog.vn">info@eximlog.vn</a>
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-phone-volume"></i> 
+                            <div>0399 409 015 <br> 070 689 1139 <br> 0835 215 394</div>
+                        </li>
+                    </ul>
+                </div>
+                
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <div class="container">
+                <p>© 2025 Eximlog. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        document.addEventListener("DOMContentLoaded", (event) => {
+            // 1. Scroll Animation Logic
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate');
+                        entry.target.style.opacity = 1;
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            });
+
+            document.querySelectorAll('.animate-on-scroll').forEach((el) => {
+                el.style.opacity = 0;
+                el.style.transform = 'translateY(30px)';
+                el.style.transition = 'all 0.6s ease-out';
+                observer.observe(el);
+            });
+
+            // 2. Mobile Menu Toggle Logic
+            const mobileToggle = document.getElementById('mobileToggle');
+            const navMenu = document.getElementById('navMenu');
+
+            if (mobileToggle && navMenu) {
+                mobileToggle.addEventListener('click', () => {
+                    navMenu.classList.toggle('active');
+                    // Change icon
+                    const icon = mobileToggle.querySelector('i');
+                    if (navMenu.classList.contains('active')) {
+                        icon.classList.remove('fa-bars');
+                        icon.classList.add('fa-xmark');
+                    } else {
+                        icon.classList.remove('fa-xmark');
+                        icon.classList.add('fa-bars');
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>
