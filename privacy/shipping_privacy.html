@@ -4,7 +4,7 @@
     <meta charset='UTF-8'>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <title>Chính Sách Vận Chuyển - EXIMLOG</title>
-    <meta name='description' content='Chính sách vận chuyển hàng hóa quốc tế và nội địa tại Eximlog.'>
+    <meta name='description' content='Chính sách vận chuyển hàng hóa quốc tế tại Eximlog.'>
     <meta name='robots' content='index, follow'>
     <meta name='theme-color' content='#ff9100'>
     
@@ -42,7 +42,6 @@
         .contact-details i { margin-right: 8px; color: var(--primary-orange); }
 
         .main-navigation { padding: 15px 0; background: #fff; }
-        .brand-logo img { height: 50px; width: auto; }
 
         .nav-menu { display: flex; gap: 30px; align-items: center; }
         .nav-menu li { position: relative; }
@@ -100,7 +99,6 @@
 
         .policy-card h2 { color: var(--primary-blue); font-size: 1.8rem; margin-bottom: 25px; display: flex; align-items: center; }
         
-        /* Chỉnh lại màu nền icon giống file cũ (#fff3e0 - cam nhạt) */
         .policy-card h2 i {
             margin-right: 15px; 
             background: #fff3e0; 
@@ -116,7 +114,6 @@
             position: absolute; left: 0; top: 3px; color: var(--secondary-green); font-size: 1.1rem;
         }
 
-        /* Parallax Break - Quay lại style tối */
         .parallax-break {
             height: 350px; background-attachment: fixed; background-position: center;
             background-repeat: no-repeat; background-size: cover; position: relative;
@@ -204,9 +201,8 @@
         <nav class="main-navigation">
             <div class="container flex-container">
                 <a href="/" class="brand-logo">
-                    <div style="font-weight:900; font-size: 24px; color: var(--primary-blue); display: flex; align-items: center;">
-                        <span style="color:var(--primary-orange)">EXIM</span>LOG
-                    </div>
+                    <div class="logo-wrapper">
+                        <i class="fa-solid fa-star sparkle"></i><span class="logo-exim"><i class="fa-solid fa-e"></i><i class="fa-solid fa-x"></i><i class="fa-solid fa-i"></i><i class="fa-solid fa-m"></i></span><span class="logo-log"><i class="fa-solid fa-l"></i><i class="fa-solid fa-o"></i><i class="fa-solid fa-g"></i></span></div>
                 </a>
 
                 <button class="mobile-nav-toggle" id="mobileToggle" aria-label="Toggle navigation">
@@ -215,27 +211,24 @@
 
                 <ul class="nav-menu" id="navMenu">
                     <li><a href="/" class="active">TRANG CHỦ</a></li>
-                    <li><a href="#about">GIỚI THIỆU</a></li>
+                    <li><a href="/gioi-thieu/">GIỚI THIỆU</a></li>
 
                     <li class="nav-item-dropdown">
-                        <a href="/dich-vu" class="dropdown-toggle">DỊCH VỤ <i class="fa-solid fa-chevron-down"></i></a>
+                        <a href="/dich-vu/" class="dropdown-toggle">DỊCH VỤ <i class="fa-solid fa-chevron-down"></i></a>
                         <ul class="dropdown-menu">
-                            <li><a href="/tin-tuc/gia-cuoc-di-my">Gửi hàng đi Mỹ</a></li>
-                            <li><a href="/tin-tuc/gia-cuoc-di-uc">Gửi hàng đi Úc</a></li>
-                            <li><a href="/tin-tuc/gia-cuoc-di-canada">Gửi hàng đi Canada</a></li>
-                            <li><a href="/tin-tuc/gia-cuoc-di-duc">Gửi hàng đi Đức</a></li>
-                            <li><a href="/tin-tuc/gia-cuoc-di-nhat-ban">Gửi hàng đi Nhật Bản</a></li>
+                            <li><a href="/dich-vu/gia-cuoc-di-my">Gửi hàng đi Mỹ</a></li>
+                            <li><a href="/dich-vu/gia-cuoc-di-uc">Gửi hàng đi Úc</a></li>
+                            <li><a href="/dich-vu/gia-cuoc-di-canada">Gửi hàng đi Canada</a></li>
+                            <li><a href="/dich-vu/gia-cuoc-di-duc">Gửi hàng đi Đức</a></li>
+                            <li><a href="/dich-vu/gia-cuoc-di-nhat-ban">Gửi hàng đi Nhật Bản</a></li>
+                            <li><a href="/dich-vu/gia-cuoc-di-phap">Gửi hàng đi Pháp</a></li>
+                            <li><a href="/dich-vu/gia-cuoc-di-han-quoc">Gửi hàng đi Hàn Quốc</a></li>
+                            <li><a href="/dich-vu/gia-cuoc-di-singapore">Gửi hàng đi Singapore</a></li>
+                            <li><a href="/dich-vu/gia-cuoc-di-uk">Gửi hàng đi UK</a></li>
                         </ul>
                     </li>
-                    
-                    <li class="nav-item-dropdown">
-                        <a href="/news" class="dropdown-toggle">TIN TỨC <i class="fa-solid fa-chevron-down"></i></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="/tin-tuc/van-tai-air">Tin tức Hàng không</a></li>
-                            <li><a href="/tin-tuc/van-tai-sea">Tin tức Đường biển</a></li>
-                        </ul>
-                    </li>
-                    
+
+                    <li><a href="/tin-tuc/">TIN TỨC</a></li>
                     <li><a href="#contact">LIÊN HỆ</a></li>
                 </ul>
                 
@@ -406,9 +399,9 @@
                     <h4 class="footer-column-title">EXIMLOG</h4>
                     <ul class="footer-nav-menu">
                         <li><a href="/">Trang Chủ</a></li>
-                        <li><a href="/#about">Giới Thiệu</a></li>
-                        <li><a href="/#services">Dịch Vụ</a></li>
-                        <li><a href="/news">Tin Tức</a></li>
+                        <li><a href="/gioi-thieu/">Giới Thiệu</a></li>
+                        <li><a href="/dich-vu/">Dịch Vụ</a></li>
+                        <li><a href="/tin-tuc/">Tin Tức</a></li>
                         <li><a href="/#contact">Liên Hệ</a></li>
                     </ul>
                 </div>

@@ -7,8 +7,12 @@
     <meta name='description' content='Bảng giá dịch vụ vận chuyển hàng hóa đi ÚC uy tín, tiết kiệm tại EXIMLOG.'>
     <link rel='icon' href='/img/img_logo/eximlog_logo.jpg' type='image/png'>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
     <link rel="stylesheet" href="/styles/style.css">
-    <link rel="stylesheet" href="/styles/tin-tuc-gia-cuoc.css">
+    <link rel="stylesheet" href="/styles/rps_dich_vu.css">
 </head>
 <body>
     <div class="overlay" id="overlay"></div>
@@ -26,7 +30,8 @@
         <nav class="main-navigation">
             <div class="container flex-container">
                 <a href="/" class="brand-logo">
-                    <img src="/img/img_logo/eximlog_not_slogan.webp" alt="EXIMLOG Logo" fetchpriority="high">
+                    <div class="logo-wrapper">
+                        <i class="fa-solid fa-star sparkle"></i><span class="logo-exim"><i class="fa-solid fa-e"></i><i class="fa-solid fa-x"></i><i class="fa-solid fa-i"></i><i class="fa-solid fa-m"></i></span><span class="logo-log"><i class="fa-solid fa-l"></i><i class="fa-solid fa-o"></i><i class="fa-solid fa-g"></i></span></div>
                 </a>
 
                 <button class="mobile-nav-toggle" aria-label="Toggle navigation">
@@ -35,32 +40,24 @@
 
                 <ul class="nav-menu" id="navMenu">
                     <li><a href="/" class="active">TRANG CHỦ</a></li>
-                    <li><a href="#about">GIỚI THIỆU</a></li>
+                    <li><a href="/gioi-thieu/">GIỚI THIỆU</a></li>
 
                     <li class="nav-item-dropdown">
-                        <a href="/dich-vu/price-quote" class="dropdown-toggle">DỊCH VỤ <i class="fa-solid fa-chevron-down"></i></a>
+                        <a href="/dich-vu/" class="dropdown-toggle">DỊCH VỤ <i class="fa-solid fa-chevron-down"></i></a>
                         <ul class="dropdown-menu">
-                            <li><a href="/tin-tuc/gia-cuoc-di-my">Gửi hàng đi Mỹ</a></li>
-                            <li><a href="/tin-tuc/gia-cuoc-di-uc">Gửi hàng đi Úc</a></li>
-                            <li><a href="/tin-tuc/gia-cuoc-di-canada">Gửi hàng đi Canada</a></li>
-                            <li><a href="/tin-tuc/gia-cuoc-di-duc">Gửi hàng đi Đức</a></li>
-                            <li><a href="/tin-tuc/gia-cuoc-di-nhat-ban">Gửi hàng đi Nhật Bản</a></li>
-                            <li><a href="/tin-tuc/gia-cuoc-di-phap">Gửi hàng đi Pháp</a></li>
-                            <li><a href="/tin-tuc/gia-cuoc-di-han-quoc">Gửi hàng đi Hàn Quốc</a></li>
-                            <li><a href="/tin-tuc/gia-cuoc-di-singapore">Gửi hàng đi Singapore</a></li>
-                            <li><a href="/tin-tuc/gia-cuoc-di-malaysia">Gửi hàng đi Malaysia</a></li>
-                            <li><a href="/tin-tuc/gia-cuoc-di-uk">Gửi hàng đi UK</a></li>
+                            <li><a href="/dich-vu/gia-cuoc-di-my.html">Gửi hàng đi Mỹ</a></li>
+                            <li><a href="/dich-vu/gia-cuoc-di-uc.html">Gửi hàng đi Úc</a></li>
+                            <li><a href="/dich-vu/gia-cuoc-di-canada.html">Gửi hàng đi Canada</a></li>
+                            <li><a href="/dich-vu/gia-cuoc-di-duc.html">Gửi hàng đi Đức</a></li>
+                            <li><a href="/dich-vu/gia-cuoc-di-nhat-ban.html">Gửi hàng đi Nhật Bản</a></li>
+                            <li><a href="/dich-vu/gia-cuoc-di-phap.html">Gửi hàng đi Pháp</a></li>
+                            <li><a href="/dich-vu/gia-cuoc-di-han-quoc.html">Gửi hàng đi Hàn Quốc</a></li>
+                            <li><a href="/dich-vu/gia-cuoc-di-singapore.html">Gửi hàng đi Singapore</a></li>
+                            <li><a href="/dich-vu/gia-cuoc-di-uk.html">Gửi hàng đi UK</a></li>
                         </ul>
                     </li>
                     
-                    <li class="nav-item-dropdown">
-                        <a href="/news" class="dropdown-toggle">Tin Tức <i class="fa-solid fa-chevron-down"></i></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="/dich-vu/price-quote-air">Vận tải đường hàng không</a></li>
-                            <li><a href="/dich-vu/price-quote-sea">Vận tải đường biển</a></li>
-                        </ul>
-                    </li>
-                    
+                    <li><a href="/tin-tuc/">TIN TỨC</a></li>
                     <li><a href="#contact">LIÊN HỆ</a></li>
                 </ul>
                 
@@ -264,9 +261,9 @@
                     <h4 class="footer-column-title">EXIMLOG</h4>
                     <ul class="footer-nav-menu">
                         <li><a href="/">Trang Chủ</a></li>
-                        <li><a href="/#about">Giới Thiệu</a></li>
-                        <li><a href="/#services">Dịch Vụ</a></li>
-                        <li><a href="/news">Tin tức</a></li>
+                        <li><a href="/gioi-thieu/">Giới Thiệu</a></li>
+                        <li><a href="/dich-vu/">Dịch Vụ</a></li>
+                        <li><a href="/tin-tuc/">Tin tức</a></li>
                         <li><a href="/#contact">Liên Hệ</a></li>
                     </ul>
                 </div>
@@ -310,25 +307,8 @@
         </div>
     </footer>
 
-    <script src="/asd_script_21374912/script.js"></script>
+    <script src="/script/script.3243942394.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const toggleBtn = document.querySelector('.toc-toggle');
-            const tocList = document.querySelector('.toc-list');
-            if(toggleBtn && tocList) {
-                toggleBtn.addEventListener('click', function() {
-                    if (tocList.style.display === "none") {
-                        tocList.style.display = "block";
-                        toggleBtn.innerHTML = '<span class="icon-list">☰</span>'; 
-                    } else {
-                        tocList.style.display = "none";
-                        toggleBtn.innerHTML = '<span class="icon-list">▼</span>';
-                    }
-                });
-            }
-        });
-    </script>
+    <script src="/script/rps_dich_vu.239472.js"></script>
 </body>
 </html>

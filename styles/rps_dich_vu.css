@@ -1,0 +1,226 @@
+/* --- 1. CẤU HÌNH CƠ BẢN (Reset & Typography) --- */
+:root {
+    --primary-color: #d32f2f;
+    --text-color: #222; /* Màu chữ đậm hơn để dễ đọc */
+    --bg-light: #f9f9f9;
+    --font-reading: 'Be Vietnam Pro', sans-serif; /* Font dễ đọc */
+}
+
+/* Fix lỗi padding quá lớn từ code cũ */
+main.container {
+    padding-top: 140px !important; /* Đẩy nội dung xuống vừa đủ dưới header */
+}
+
+/* Ảnh tự động co giãn full chiều ngang trên mobile */
+.content-left img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 20px auto;
+    border-radius: 8px; /* Bo góc nhẹ cho đẹp */
+}
+
+/* --- 2. LAYOUT CHÍNH (PC & MOBILE) --- */
+.main-layout-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    margin-bottom: 50px;
+}
+
+/* Cột nội dung bên trái */
+.content-left {
+    flex: 3; /* Chiếm 75% trên PC */
+    font-size: 18px; /* Chữ to chuẩn báo chí */
+    line-height: 1.7; /* Dãn dòng thoáng */
+    color: #333;
+    text-align: justify; /* Canh đều 2 bên như báo */
+}
+
+/* Cột Sidebar bên phải */
+.sidebar-right {
+    flex: 1; /* Chiếm 25% trên PC */
+}
+
+/* --- 3. MOBILE RESPONSIVE (GIAO DIỆN BÁO CHÍ) --- */
+@media (max-width: 992px) {
+    /* Reset padding header cho mobile */
+    main.container {
+        padding-top: 110px !important;
+        padding-left: 15px !important; /* Tận dụng tối đa chiều rộng màn hình */
+        padding-right: 15px !important;
+    }
+
+    .main-layout-wrapper {
+        flex-direction: column; /* Chuyển thành cột dọc */
+        gap: 30px;
+    }
+
+    .content-left {
+        flex: none;
+        width: 100%;
+        font-size: 17px; /* Mobile chữ vừa phải */
+        text-align: left; /* Mobile canh trái dễ đọc hơn canh đều */
+    }
+
+    /* Đẩy Sidebar xuống dưới cùng */
+    .sidebar-right {
+        flex: none;
+        width: 100%;
+        order: 2; /* Đẩy xuống dưới content */
+        border-top: 5px solid #eee; /* Kẻ vạch phân cách */
+        padding-top: 30px;
+    }
+}
+
+/* --- 4. STYLE CÁC THÀNH PHẦN BÀI VIẾT --- */
+
+/* Tiêu đề H1 */
+.content-left h1 {
+    font-size: 28px;
+    font-weight: 800;
+    line-height: 1.3;
+    margin-bottom: 10px;
+    color: #000;
+}
+
+/* Tiêu đề H2, H3 */
+.content-left h2 {
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-top: 30px;
+    margin-bottom: 15px;
+    border-left: 4px solid var(--primary-color); /* Điểm nhấn đầu dòng */
+    padding-left: 10px;
+}
+
+.content-left h3 {
+    font-size: 19px;
+    font-weight: 600;
+    margin-top: 25px;
+}
+
+/* Đoạn văn */
+.content-left p {
+    margin-bottom: 15px;
+}
+
+/* Danh sách (ul, ol) */
+.content-left ul, .content-left ol {
+    padding-left: 20px;
+    margin-bottom: 20px;
+}
+
+.content-left li {
+    margin-bottom: 8px;
+}
+
+/* --- 5. MỤC LỤC (TOC) --- */
+.toc-container {
+    background: #f4f6f8;
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid #e0e0e0;
+    margin: 20px 0;
+}
+
+.toc-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.toc-list {
+    list-style: none;
+    padding: 0;
+    margin-top: 10px;
+    border-top: 1px solid #ddd;
+    padding-top: 10px;
+}
+
+.toc-list li a {
+    text-decoration: none;
+    color: #007bff;
+    display: block;
+    padding: 5px 0;
+    font-size: 16px;
+}
+
+/* --- 6. BẢNG GIÁ (TABLE) --- */
+/* Wrapper để cuộn ngang trên mobile */
+.table-responsive-wrapper {
+    overflow-x: auto;
+    margin: 20px 0;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.price-table {
+    width: 100%;
+    min-width: 500px; /* Đảm bảo không bị co rúm */
+    border-collapse: collapse;
+}
+
+.price-table th {
+    background-color: #ff9100;
+    color: white;
+    padding: 12px;
+    text-align: center;
+    white-space: nowrap;
+}
+
+.price-table td {
+    padding: 10px;
+    border: 1px solid #eee;
+    text-align: center;
+}
+
+.price-table tr:nth-child(even) {
+    background-color: #f9f9f9; /* Màu so le cho dễ nhìn */
+}
+
+/* --- 7. SIDEBAR (TIN LIÊN QUAN) --- */
+.sidebar-widget h3 {
+    font-size: 20px;
+    border-bottom: 2px solid #ff9100;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+.post-item {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+    text-decoration: none;
+    align-items: flex-start;
+}
+
+.post-thumb {
+    width: 80px;
+    height: 80px;
+    flex-shrink: 0;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.post-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    margin: 0; /* Override margin của ảnh bài viết */
+}
+
+.post-info h4 {
+    font-size: 15px;
+    color: #333;
+    margin: 0;
+    line-height: 1.4;
+    font-weight: 600;
+}
+
+.post-item:hover .post-info h4 {
+    color: #ff9100;
+}
