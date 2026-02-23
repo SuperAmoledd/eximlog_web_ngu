@@ -8,6 +8,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
 
         * {
@@ -60,6 +61,42 @@
             border: 1px solid rgba(248, 185, 77, 0.5);
         }
 
+        .btn-link-fb {
+            background: linear-gradient(120deg, #ffffff, #0b63fc, #ffffff);
+            background-size: 200% 200%;
+            animation: gradientMove 3s ease infinite;
+            color: #003366 !important; 
+            box-shadow: 0 4px 6px rgba(0, 51, 102, 0.2);
+            transition: box-shadow 0.3s, filter 0.3s, transform 0.3s;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(248, 185, 77, 0.5);
+        }
+
+        .btn-link-wa {
+            background: linear-gradient(120deg, #ffffff, #33db52, #ffffff);
+            background-size: 200% 200%;
+            animation: gradientMove 3s ease infinite;
+            color: #003366 !important; 
+            box-shadow: 0 4px 6px rgba(0, 51, 102, 0.2);
+            transition: box-shadow 0.3s, filter 0.3s, transform 0.3s;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(248, 185, 77, 0.5);
+        }
+
+        .btn-link-zl {
+            background: linear-gradient(120deg, #ffffff, #709cfc, #ffffff);
+            background-size: 200% 200%;
+            animation: gradientMove 3s ease infinite;
+            color: #003366 !important; 
+            box-shadow: 0 4px 6px rgba(0, 51, 102, 0.2);
+            transition: box-shadow 0.3s, filter 0.3s, transform 0.3s;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(248, 185, 77, 0.5);
+        }
+
         .btn-link:hover {
             transform: translateY(-2px);
             box-shadow: 0 10px 25px rgba(0, 51, 102, 0.15);
@@ -76,24 +113,6 @@
             100% {
                 background-position: 0% 50%;
             }
-        }
-
-        .btn-tiktok {
-            background: #3c3c3c !important; 
-            color: #ffffff !important;
-            
-            animation: none !important;
-            
-            box-shadow: 0 4px 15px rgb(168, 168, 169);
-            border: none; 
-            transition: box-shadow 0.3s, transform 0.3s;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .btn-tiktok:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
         }
 
         .bg-pattern {
@@ -144,7 +163,7 @@
         <h1 class="text-3xl mt-4 tracking-tight"><span style="color: #f8b94d; font-weight: bold;">EXIM</span><span style="color: #000000; font-weight: bold;">LOG</span></h1>
         
         <div class="flex justify-center gap-4 mt-3">
-            <a href="#" class="text-[#003366] hover:scale-110 transition-transform">
+            <a href="mailto:bin.vo@eximlog.vn" class="text-[#003366] hover:scale-110 transition-transform">
                 <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
                     <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
                 </svg>
@@ -157,20 +176,17 @@
     </div>
 
     <div class="w-full max-w-md space-y-4" id="links-container">
-        <a href="https://www.eximlog.vn/" class="btn-link bg-[#f8b94d] flex items-center justify-center text-center px-8 py-4 rounded-xl text-white font-bold text-sm tracking-wide uppercase min-h-[64px]">
+        <a href="/" class="btn-link bg-[#f8b94d] flex items-center justify-center text-center px-8 py-4 rounded-xl text-white font-bold text-sm tracking-wide uppercase min-h-[64px]">
     EXIMLOG - Vận chuyển niềm tin, nâng tầm giá trị
 </a>
-        <a href="https://www.facebook.com/profile.php?id=100092405586244" class="btn-link flex items-center justify-center text-center px-6 py-4 rounded-2xl text-white font-bold text-sm tracking-wide uppercase">
-            GỬI HÀNG NƯỚC NGOÀI EXIM EXPRESS | HO CHI MINH CITY
+        <a href="https://www.facebook.com/eximlog15" class="btn-link-fb flex items-center justify-center text-center px-6 py-4 rounded-2xl text-white font-bold text-sm tracking-wide uppercase">
+            <i class="fab fa-facebook" style="color: #1877F2; font-size: 24px; margin-right: 10px;"></i> FACEBOOK 
         </a>
-        <a href="https://www.facebook.com/eximlog15" class="btn-link flex items-center justify-center text-center px-6 py-4 rounded-2xl text-white font-bold text-sm tracking-wide uppercase">
-            EXIMLOG - VẬN CHUYỂN QUỐC TẾ | HO CHI MINH CITY
+        <a href="https://api.whatsapp.com/send/?phone=0399409015&text&type=phone_number&app_absent=0" class="btn-link-wa flex items-center justify-center text-center px-6 py-4 rounded-2xl text-white font-bold text-sm tracking-wide uppercase">
+            <i class="fab fa-whatsapp" style="color: #25D366; font-size: 24px; margin-right: 10px;"></i> WHATSAPP
         </a>
-        <a href="https://www.facebook.com/profile.php?id=100090564686682" class="btn-link flex items-center justify-center text-center px-6 py-4 rounded-2xl text-white font-bold text-sm tracking-wide uppercase">
-            EXIM LOG - GỬI HÀNG QUỐC TẾ NHANH, RẺ, AN TOÀN | HO CHI MINH CITY
-        </a>
-        <a href="https://www.tiktok.com/@vantaiquocteexim" class="btn-tiktok flex items-center justify-center text-center px-6 py-4 rounded-2xl font-bold text-sm tracking-wide uppercase shadow-md">
-            TIKTOK
+        <a href="https://zalo.me/vothienthuat015?fbclid=IwY2xjawQI-4dleHRuA2FlbQIxMABicmlkETJQOUpJNFFKNXlmMzRyRkpyc3J0YwZhcHBfaWQQMjIyMDM5MTc4ODIwMDg5MgABHjbkAYPOtXjWlThpdWEu80ZHu2_eMGyUiV9aljGTQ2MbIAMdAMM4VCjAhDCf_aem_rteptHDa1izkk1P2TDztxw" class="btn-link-zl flex items-center justify-center text-center px-6 py-4 rounded-2xl text-white font-bold text-sm tracking-wide uppercase">
+            <img src="/img/img_khac/zl.png" alt="Zalo Icon" style="width: 16px; height: 16px; vertical-align: middle;font-size: 24px; margin-right: 10px;"> ZALO
         </a>
     </div>
 
