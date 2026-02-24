@@ -95,6 +95,10 @@ main.container {
     padding-left: 10px;
 }
 
+#khong-co-solid-dau {
+    border-left: none;
+}
+
 .content-left h3 {
     font-size: 19px;
     font-weight: 600;
@@ -224,3 +228,76 @@ main.container {
 .post-item:hover .post-info h4 {
     color: #ff9100;
 }
+
+/* kẻ đường thẳng của dịch vụ của chúng tôi */
+
+.dich-vu-ke-duong {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #c48b10; /* Mã màu tương đồng trong ảnh */
+    font-weight: bold;
+    font-family: sans-serif;
+    margin: 40px 0;
+}
+
+.dich-vu-ke-duong::before,
+.dich-vu-ke-duong::after {
+    content: '';
+    flex: 1;
+    border-bottom: 3px solid #e0e0e0; /* Độ dày và màu của đường kẻ */
+    margin: 0 20px; /* Khoảng cách giữa đường kẻ và chữ */
+}
+
+/* hết kẻ đường thẳng của dịch vụ của chúng tôi*/
+
+/* cái này là cái href <a> của mấy cái card */
+
+.link-chu-a {
+    text-decoration: none;
+    color: #212326;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+/* HẾT href <a> của mấy cái card */
+
+/* mục lục */
+
+        .mucluc-link {
+            text-decoration: none;
+            font-size: 15px;
+            color: gray;    
+        }
+
+        .mucluc-link:hover {
+            color: #212326;
+        }
+
+        .mucluc-link-tiep-theo {
+            text-decoration: none; 
+            font-size: 16px; 
+            font-weight: bold; 
+            color: #212326;
+        }
+
+        /* hết mục lục */
+
+        /* div 3 hàng ngang mục lục dịch vụ*/
+
+        .table-div-dich-vu-all {
+            display: flex;
+            gap: 20px;
+            margin-top: 30px;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+            flex-wrap: wrap;
+        }
+
+        .card-dich-vu {
+            background-color: white;
+            width: 300px;
+            text-align: center;
+            margin: 2px;
+        }
