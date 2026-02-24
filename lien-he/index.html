@@ -34,9 +34,9 @@
     <link rel="stylesheet" href="/styles/rps_dich_vu.css">
 </head>
 <body>
-    <div id="overlay"></div>
+     <div id="overlay"></div>
 
-<!-- header -->
+     <!-- header -->
 
     <header>
         <div class="top-header">
@@ -63,7 +63,7 @@
                     <li><a href="/gioi-thieu/">GIỚI THIỆU</a></li>
 
                     <li class="nav-item-dropdown">
-                        <a href="/dich-vu/" class="dropdown-toggle active" >DỊCH VỤ <i class="fa-solid fa-chevron-down"></i></a>
+                        <a href="/dich-vu/" class="dropdown-toggle" >DỊCH VỤ <i class="fa-solid fa-chevron-down"></i></a>
                         <ul class="dropdown-menu">
                             <li><a href="/dich-vu/gia-cuoc-di-my">Gửi hàng đi Mỹ</a></li>
                             <li><a href="/dich-vu/gia-cuoc-di-uc">Gửi hàng đi Úc</a></li>
@@ -78,7 +78,7 @@
                     </li>
 
                     <li><a href="/tin-tuc/">TIN TỨC</a></li>
-                    <li><a href="/lien-he/">LIÊN HỆ</a></li>
+                    <li><a href="#" class="active">LIÊN HỆ</a></li>
                 </ul>
                 
                 <a href="/tracking" target="_blank" class="quote-button">TRACKING</a>
@@ -93,70 +93,69 @@
     <main class="container">
         <div class="main-layout-wrapper">
             <div class="content-left">
-    <p><a href="/" class="mucluc-link">Trang chủ</a> <span class="mucluc-link">/</span> <a class="mucluc-link-tiep-theo">DỊCH VỤ</a></p> 
 
-    <h1 style="font-size: 20px;">DỊCH VỤ GỬI HÀNG QUỐC TẾ</h1>
-
-    <p>Quý khách đang đau đầu vì không biết chọn dịch vụ gửi hàng quốc tế nào phù hợp với mình, chất lượng dịch vụ có đảm bảo không, giá cả có hợp lý không? Hãy để Eximlog giúp bạn giải quyết những nỗi lo đó với các dịch vụ gửi hàng quốc tế uy tín, chất lượng và giá cả phải chăng nhất hiện nay.</p>
-    
+    <section id="contact" class="content-section">
+    <div class="container">
     <h2 id="khong-co-solid-dau" class="dich-vu-ke-duong">DỊCH VỤ CỦA CHÚNG TÔI</h2>
 
-        <div class="table-div-dich-vu-all">
-            <div class="card-dich-vu">        
-                <a href="/dich-vu/gia-cuoc-di-my" class="link-chu-a"><img src="/img/co-quoc-gia-cac-nuoc/usa.jpg" alt="Dịch vụ gửi hàng quốc tế">
-                <p>Gửi hàng đi Mỹ</p></a>
+        <p class="section-subtitle text-center">Sẵn sàng hỗ trợ tư vấn và cung cấp báo giá tốt nhất cho bạn.</p>
+        
+        <div class="contact-wrapper">
+            <div class="contact-left">
+                <div class="contact-info-box">
+                    <div class="info-icon">
+                        <i class="fa-solid fa-location-dot"></i>
+                    </div>
+                    <div class="info-text">
+                        <h4>Địa Chỉ</h4>
+                        <p><a href="https://maps.app.goo.gl/Zndb5XVExMiYCvq99" target="_blank">Số 6, Đường số 4, P. Hiệp Bình Chánh, TP. Thủ Đức, TP.HCM</a></p>
+                    </div>
+                </div>
 
-            </div>
-            
-            <div class="card-dich-vu">        
-                <a href="/dich-vu/gia-cuoc-di-uc" class="link-chu-a"><img src="/img/co-quoc-gia-cac-nuoc/aus.jpg" alt="Dịch vụ gửi hàng quốc tế">
-                <p>Gửi hàng đi Úc</p></a>
-            </div>
-            <div class="card-dich-vu">        
-                <a href="/dich-vu/gia-cuoc-di-canada" class="link-chu-a"><img src="/img/co-quoc-gia-cac-nuoc/canada.jpg" alt="Dịch vụ gửi hàng quốc tế">
-                <p>Gửi hàng đi Canada</p></a>
-            </div>
-            <div class="card-dich-vu">        
-                <a href="/dich-vu/gia-cuoc-di-nhat-ban" class="link-chu-a"><img src="/img/co-quoc-gia-cac-nuoc/jp.jpg" alt="Dịch vụ gửi hàng quốc tế">
-                <p>Gửi hàng đi Nhật Bản</p></a>
-            </div>
-            
-            <div class="card-dich-vu">        
-                <a href="/dich-vu/gia-cuoc-di-han-quoc" class="link-chu-a"><img src="/img/co-quoc-gia-cac-nuoc/kr.jpg" alt="Dịch vụ gửi hàng quốc tế">
-                <p>Gửi hàng đi Hàn Quốc</p></a>
-            </div>
-            <div class="card-dich-vu">        
-                <a href="/dich-vu/gia-cuoc-di-trung-quoc" class="link-chu-a"><img src="/img/co-quoc-gia-cac-nuoc/cn.jpg" alt="Dịch vụ gửi hàng quốc tế">
-                <p>Gửi hàng đi Trung Quốc</p></a>
-            </div>
-            <div class="card-dich-vu">        
-                <a href="/dich-vu/gia-cuoc-di-duc" class="link-chu-a"><img src="/img/co-quoc-gia-cac-nuoc/duc.jpg" alt="Dịch vụ gửi hàng quốc tế">
-                <p>Gửi hàng đi Đức</p></a>
-            </div>
-            
-            <div class="card-dich-vu">        
-                <a href="/dich-vu/gia-cuoc-di-phap" class="link-chu-a"><img src="/img/co-quoc-gia-cac-nuoc/phap.jpg" alt="Dịch vụ gửi hàng quốc tế">
-                <p>Gửi hàng đi Pháp</p></a>
-            </div>
-            <div class="card-dich-vu">        
-                <a href="/dich-vu/gia-cuoc-di-uk" class="link-chu-a"><img src="/img/co-quoc-gia-cac-nuoc/uk.jpg" alt="Dịch vụ gửi hàng quốc tế">
-                <p>Gửi hàng đi Anh Quốc</p></a>
-            </div>
-            <div class="card-dich-vu">        
-                <a href="/dich-vu/gia-cuoc-di-singapore" class="link-chu-a"><img src="/img/co-quoc-gia-cac-nuoc/singapore.jpg" alt="Dịch vụ gửi hàng quốc tế">
-                <p>Gửi hàng đi Singapore</p></a>
-            </div>
-            
-            <div class="card-dich-vu">        
-                <a href="/dich-vu/gia-cuoc-di-new-zealand" class="link-chu-a"><img src="/img/co-quoc-gia-cac-nuoc/new-zealand.jpg" alt="Dịch vụ gửi hàng quốc tế">
-                <p>Gửi hàng đi New Zealand</p></a>
-            </div>
-            <div class="card-dich-vu">        
-                <a href="/dich-vu/gia-cuoc-di-dai-loan" class="link-chu-a"><img src="/img/co-quoc-gia-cac-nuoc/dai-loan.jpg" alt="Dịch vụ gửi hàng quốc tế">
-                <p>Gửi hàng đi Đài Loan</p></a>
+                <div class="contact-info-box">
+                    <div class="info-icon">
+                        <i class="fa-solid fa-envelope"></i>
+                    </div>
+                    <div class="info-text">
+                        <h4>Email</h4>
+                        <a href="mailto:info@eximlog.vn">info@eximlog.vn</a>
+                    </div>
+                </div>
+
+                <div class="contact-info-box">
+                    <div class="info-icon">
+                        <i class="fa-solid fa-phone-volume"></i>
+                    </div>
+                    <div class="info-text">
+                        <h4>Hotline</h4>
+                        <p>090 477 8386</p>
+                    </div>
+                </div>
             </div>
 
+            <div class="contact-right">
+                <form class="contact-form" action="#" method="POST">
+                    <div class="form-group">
+                        <input type="text" id="name" name="name" placeholder="Tên của bạn" required>
+                    </div>
+                    <div class="form-group-row">
+                        <input type="email" id="email" name="email" placeholder="Email" required>
+                        <input type="tel" id="phone" name="phone" placeholder="Số điện thoại" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea id="message" name="message" rows="5" placeholder="Nội dung cần tư vấn..." required></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">GỬI TIN NHẮN</button>
+                </form>
+            </div>
         </div>
+
+        <div class="map-container">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6590.694465436942!2d106.72385431895827!3d10.822760213280503!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x317528969fd87535%3A0xf13a4504a5d37d0f!2zQ8O0bmcgVHkgVE5ISCBUaMawxqFuZyBN4bqhaSBE4buLY2ggVuG7pSBW4bqtbiBU4bqjaSBFeGltTG9n!5e0!3m2!1svi!2s!4v1765850637388!5m2!1svi!2s" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+    </div>
+</section>
+
     </div>
 </div>
 </main>
@@ -184,8 +183,8 @@
                         <li><a href="/">Trang Chủ</a></li>
                         <li><a href="/gioi-thieu/">Giới Thiệu</a></li>
                         <li><a href="/dich-vu/">Dịch Vụ</a></li>
-                        <li><a href="/news">Tin Tức</a></li>
-                        <li><a href="/lien-he/">Liên Hệ</a></li>
+                        <li><a href="/tin-tuc/">Tin Tức</a></li>
+                        <li><a href="#">Liên Hệ</a></li>
                     </ul>
                 </div>
 
