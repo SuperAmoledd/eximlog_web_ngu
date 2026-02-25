@@ -1,16 +1,66 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hỗ trợ & Giải đáp</title>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <title>EXIMLOG - HỖ TRỢ & GIẢI ĐÁP THẮC MẮC</title>
+    <meta name='description' content='Eximlog -  Công ty dịch vụ về Vận chuyển hàng hoá quốc tế với độ UY TÍN - CHẤT LƯỢNG - TẬN TÂM - TIẾT KIỆM hàng đầu về Xuất - Nhập khẩu tại Việt Nam.'>
+    <meta name='keywords' content='eximlog, vận chuyển quốc tế tại TPHCM, xuất nhập khẩu eximlog, exim'>
+    <meta name='author' content='Công ty TNHH Thương Mại Dịch Vụ Vận Tải EXIMLOG'>
+    <meta name='robots' content='index, follow'>
+    <meta name='theme-color' content='#000000'>
+    <link rel='canonical' href='https://www.eximlog.vn/'>
+
+    <meta property='og:title' content='EXIMLOG - Vận chuyển niềm tin, Nâng tầm giá trị'>
+    <meta property='og:description' content='Eximlog -  Công ty dịch vụ về Vận chuyển hàng hoá quốc tế với độ UY TÍN - CHẤT LƯỢNG - TẬN TÂM - TIẾT KIỆM hàng đầu về Xuất - Nhập khẩu tại Việt Nam.'>
+    <meta property='og:image' content='https://www.eximlog.vn/img/img_logo/1200x630.jpg'>
+    <meta property='og:url' content='https://www.eximlog.vn/'>
+    <meta property='og:type' content='website'>
+    <meta property='og:locale' content='en_US'>
+
+    <meta name='twitter:card' content='summary_large_image'>
+    <meta name='twitter:title' content='EXIMLOG - Vận chuyển niềm tin, Nâng tầm giá trị'>
+    <meta name='twitter:description' content='Eximlog -  Công ty dịch vụ về Vận chuyển hàng hoá quốc tế với độ UY TÍN - CHẤT LƯỢNG - TẬN TÂM - TIẾT KIỆM hàng đầu về Xuất - Nhập khẩu tại Việt Nam.'>
+    <meta name='twitter:image' content='https://www.eximlog.vn/img/img_logo/1200x630.jpg'>
+
+    <link rel='icon' href='/img/img_logo/eximlog_logo.jpg' type='image/png'>
+    <link rel='apple-touch-icon' href='/apple-touch-icon.png'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
+
+    <link rel="stylesheet" href="/styles/style.css">
+    <link rel="stylesheet" href="/styles/rps_dich_vu.css">
+    
     <style>
-        body {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            background-color: #0f172a;
+        .faq-categories {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 48px;
+            margin-top: 24px;
+        }
+        .tab-btn {
+            padding: 10px 24px;
+            border-radius: 12px;
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: #e2e8f0;
+            transition: all 0.3s;
+            font-weight: 500;
+            cursor: pointer;
+            font-family: inherit;
+        }
+        .tab-btn.active {
+            background: rgba(99, 102, 241, 0.2);
+            color: #818cf8;
+            border-color: #6366f1;
         }
         .glass {
             background: rgba(30, 41, 59, 0.7);
@@ -30,53 +80,75 @@
         .faq-item.active .icon-plus {
             transform: rotate(45deg);
         }
-        .tab-btn.active {
-            background: rgba(99, 102, 241, 0.2);
-            color: #818cf8;
-            border-color: #6366f1;
-        }
     </style>
 </head>
-<body class="text-slate-200 min-h-screen">
+<body>
+    <div id="overlay"></div>
 
-    <!-- Background Decoration -->
-    <div class="fixed inset-0 overflow-hidden -z-10">
-        <div class="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-indigo-500/20 rounded-full blur-[120px]"></div>
-        <div class="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-purple-500/20 rounded-full blur-[120px]"></div>
-    </div>
+    <header>
+        <div class="top-header">
+            <div class="container flex-container">
+                <div class="contact-details">
+                    <span><i class="fa-solid fa-envelope"></i>info@eximlog.vn</span>
+                    <span><i class="fa-solid fa-phone"></i> Hotline: 090 477 8386</span>
+                </div>
+            </div>
+        </div>
+        
+        <nav class="main-navigation">
+            <div class="container flex-container">
+                <a href="/" class="brand-logo">
+                    <div class="logo-wrapper">
+                        <i class="fa-solid fa-star sparkle"></i><span class="logo-exim"><i class="fa-solid fa-e"></i><i class="fa-solid fa-x"></i><i class="fa-solid fa-i"></i><i class="fa-solid fa-m"></i></span><span class="logo-log"><i class="fa-solid fa-l"></i><i class="fa-solid fa-o"></i><i class="fa-solid fa-g"></i></span></div>
+                </a>
+                <button class="mobile-nav-toggle" aria-label="Toggle navigation">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
 
-    <div class="container mx-auto px-4 py-16 max-w-4xl">
-        <!-- Header -->
-        <div class="text-center mb-16">
-            <span class="px-4 py-1.5 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 text-sm font-medium">Hỗ trợ khách hàng</span>
-            <h1 class="text-4xl md:text-5xl font-bold mt-6 mb-4 bg-clip-text text-transparent bg-gradient-to-r from-white to-slate-400">
-                Câu hỏi thường gặp
-            </h1>
-            <p class="text-slate-400 text-lg">Mọi thứ bạn cần biết về dịch vụ của chúng tôi.</p>
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="/">TRANG CHỦ</a></li>
+                    <li><a href="/gioi-thieu/">GIỚI THIỆU</a></li>
+
+                    <li class="nav-item-dropdown">
+                        <a href="/dich-vu/" class="dropdown-toggle active" >DỊCH VỤ <i class="fa-solid fa-chevron-down"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/dich-vu/gia-cuoc-di-my">Gửi hàng đi Mỹ</a></li>
+                            <li><a href="/dich-vu/gia-cuoc-di-uc">Gửi hàng đi Úc</a></li>
+                            <li><a href="/dich-vu/gia-cuoc-di-canada">Gửi hàng đi Canada</a></li>
+                            <li><a href="/dich-vu/gia-cuoc-di-duc">Gửi hàng đi Đức</a></li>
+                            <li><a href="/dich-vu/gia-cuoc-di-nhat-ban">Gửi hàng đi Nhật Bản</a></li>
+                            <li><a href="/dich-vu/gia-cuoc-di-phap">Gửi hàng đi Pháp</a></li>
+                            <li><a href="/dich-vu/gia-cuoc-di-han-quoc">Gửi hàng đi Hàn Quốc</a></li>
+                            <li><a href="/dich-vu/gia-cuoc-di-singapore">Gửi hàng đi Singapore</a></li>
+                            <li><a href="/dich-vu/gia-cuoc-di-uk">Gửi hàng đi UK</a></li>
+                        </ul>
+                    </li>
+
+                    <li><a href="/tin-tuc/">TIN TỨC</a></li>
+                    <li><a href="/lien-he/">LIÊN HỆ</a></li>
+                </ul>
+                
+                <a href="/tracking" target="_blank" class="quote-button">TRACKING</a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container">
+        <div class="main-layout-wrapper">
+            <div class="content-left text-slate-200">
+    <p><a href="/" class="mucluc-link">Trang chủ</a> <span class="mucluc-link">/</span> <a class="mucluc-link-tiep-theo">FAQ</a></p> 
+
+    <h1 style="font-size: 20px;">CÁC CÂU HỎI THƯỜNG GẶP</h1>
+        <p></p>
+        
+        <div class="faq-categories">
+            <button class="tab-btn active" data-category="all">Tất cả</button>
+            <button class="tab-btn" data-category="thanhtoan">Thanh toán</button>
+            <button class="tab-btn" data-category="dichvu">Dịch vụ</button>
+            <button class="tab-btn" data-category="kythuat">Kỹ thuật</button>
         </div>
 
-        <!-- Search Bar -->
-        <div class="relative mb-12">
-            <i data-lucide="search" class="absolute left-4 top-1/2 -translate-y-1/2 text-slate-500 w-5 h-5"></i>
-            <input 
-                type="text" 
-                id="searchFAQ"
-                placeholder="Tìm kiếm vấn đề của bạn..." 
-                class="w-full glass py-4 pl-12 pr-6 rounded-2xl outline-none focus:ring-2 focus:ring-indigo-500/50 transition-all text-white"
-            >
-        </div>
-
-        <!-- Categories Tabs -->
-        <div class="flex flex-wrap justify-center gap-3 mb-12">
-            <button class="tab-btn active px-6 py-2.5 rounded-xl glass border border-transparent transition-all font-medium" data-category="all">Tất cả</button>
-            <button class="tab-btn px-6 py-2.5 rounded-xl glass border border-transparent transition-all font-medium" data-category="thanhtoan">Thanh toán</button>
-            <button class="tab-btn px-6 py-2.5 rounded-xl glass border border-transparent transition-all font-medium" data-category="dichvu">Dịch vụ</button>
-            <button class="tab-btn px-6 py-2.5 rounded-xl glass border border-transparent transition-all font-medium" data-category="kythuat">Kỹ thuật</button>
-        </div>
-
-        <!-- FAQ Content -->
         <div class="space-y-4" id="faqList">
-            <!-- Item 1 -->
             <div class="faq-item glass rounded-2xl px-6 transition-all duration-300" data-category="thanhtoan">
                 <button class="w-full py-6 flex items-center justify-between text-left focus:outline-none" onclick="toggleItem(this)">
                     <span class="text-lg font-semibold pr-4">EXIMLOG chấp nhận các loại tiền tệ nào?</span>
@@ -89,7 +161,6 @@
                 </div>
             </div>
 
-            <!-- Item 2 -->
             <div class="faq-item glass rounded-2xl px-6 transition-all duration-300" data-category="thanhtoan">
                 <button class="w-full py-6 flex items-center justify-between text-left focus:outline-none" onclick="toggleItem(this)">
                     <span class="text-lg font-semibold pr-4">Thanh toán theo phương thức nào?</span>
@@ -105,7 +176,6 @@
                 </div>
             </div>
 
-            <!-- Item 3 -->
             <div class="faq-item glass rounded-2xl px-6 transition-all duration-300" data-category="kythuat">
                 <button class="w-full py-6 flex items-center justify-between text-left focus:outline-none" onclick="toggleItem(this)">
                     <span class="text-lg font-semibold pr-4">Đến nhà nhận hàng thì có giấy xác nhận gì không?</span>
@@ -118,7 +188,6 @@
                 </div>
             </div>
 
-            <!-- Item 4 -->
             <div class="faq-item glass rounded-2xl px-6 transition-all duration-300" data-category="kythuat">
                 <button class="w-full py-6 flex items-center justify-between text-left focus:outline-none" onclick="toggleItem(this)">
                     <span class="text-lg font-semibold pr-4">Làm sao tôi có thể tin công ty này chứ?</span>
@@ -138,7 +207,6 @@
                 </div>
             </div>
 
-            <!-- Item 5 -->
             <div class="faq-item glass rounded-2xl px-6 transition-all duration-300" data-category="dichvu">
                 <button class="w-full py-6 flex items-center justify-between text-left focus:outline-none" onclick="toggleItem(this)">
                     <span class="text-lg font-semibold pr-4">Chi phí công ty sao lại cao thế?</span>
@@ -159,7 +227,6 @@
                 </div>
             </div>
 
-            <!-- Item 6 -->
             <div class="faq-item glass rounded-2xl px-6 transition-all duration-300" data-category="dichvu">
                 <button class="w-full py-6 flex items-center justify-between text-left focus:outline-none" onclick="toggleItem(this)">
                     <span class="text-lg font-semibold pr-4">Hàng hoá có đảm bảo không?</span>
@@ -172,7 +239,6 @@
                 </div>
             </div>
 
-            <!-- Item 7 -->
             <div class="faq-item glass rounded-2xl px-6 transition-all duration-300" data-category="dichvu">
                 <button class="w-full py-6 flex items-center justify-between text-left focus:outline-none" onclick="toggleItem(this)">
                     <span class="text-lg font-semibold pr-4">Gửi kiện gỗ có an toàn không?</span>
@@ -193,69 +259,97 @@
             </div>
         </div>
 
-        <!-- No Results -->
         <div id="emptyState" class="hidden text-center py-20">
             <i data-lucide="inbox" class="w-16 h-16 text-slate-600 mx-auto mb-4"></i>
             <p class="text-slate-500">Không tìm thấy câu hỏi nào phù hợp.</p>
         </div>
 
-        <!-- CTA Section -->
-        <div class="mt-20 p-8 rounded-3xl bg-indigo-600 text-center relative overflow-hidden group">
-            <div class="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(255,255,255,0.2),transparent)] opacity-0 group-hover:opacity-100 transition-opacity"></div>
-            <h3 class="text-2xl font-bold mb-2">Bạn vẫn chưa tìm được câu trả lời?</h3>
-            <p class="text-indigo-100 mb-6">Đội ngũ của chúng tôi luôn sẵn sàng hỗ trợ bạn 24/7.</p>
-            <button class="bg-white text-indigo-600 px-8 py-3 rounded-xl font-bold hover:bg-indigo-50 transition-all shadow-lg">Liên hệ ngay</button>
+
+
         </div>
     </div>
+</main>
+<footer class="site-footer">
+        <div class="footer-top">
+            <div class="container footer-grid">
+                
+                <div class="footer-column about animate-on-scroll">
+                    <img src="/img/img_logo/eximlog_not_slogan.webp" alt="EXIMLOG Logo" class="footer-logo">
+                    <p>Eximlog cung cấp dịch vụ vận chuyển quốc tế và giải pháp logistics giá rẻ, uy tín. Vận chuyển niềm tin, nâng tầm giá trị.</p>
+                    <div class="footer-social-icons">
+                        <a href="https://www.facebook.com/profile.php?id=100090564686682" target="_blank" class="social-icon"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="https://m.me/61579630050511" target="_blank" class="social-icon"><i class="fa-brands fa-facebook-messenger"></i></a>
+                        <a href="tel:0353256039" class="social-icon"><i class="fa-solid fa-phone"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column links animate-on-scroll">
+                    <h4 class="footer-column-title">EXIMLOG</h4>
+                    <ul class="footer-nav-menu">
+                        <li><a href="/">Trang Chủ</a></li>
+                        <li><a href="/gioi-thieu/">Giới Thiệu</a></li>
+                        <li><a href="/dich-vu/">Dịch Vụ</a></li>
+                        <li><a href="/tin-tuc/">Tin Tức</a></li>
+                        <li><a href="/lien-he/">Liên Hệ</a></li>
+                    </ul>
+                </div>
 
+                <div class="footer-column links animate-on-scroll">
+                    <h4 class="footer-column-title">Hỗ Trợ</h4>
+                    <ul class="footer-nav-menu">
+                        <li><a href="/privacy/privacy_policy">Chính sách bảo mật</a></li>
+                        <li><a href="/faq/">Câu hỏi thường gặp</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column contact animate-on-scroll">
+                    <h4 class="footer-column-title">Thông Tin Liên Hệ</h4>
+                    <ul class="footer-contact-info">
+                        <li>
+                            <i class="fa-solid fa-location-dot"></i>
+                            <span><b>Trụ sở chính:</b> <a href="https://maps.app.goo.gl/qapw4ec8c4aNnYd56" target="_blank">Số 6, Đường số 4, P. Hiệp Bình Chánh, TP. Thủ Đức, TP.HCM</a> </span>
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-truck"></i>
+                            <span><b>Điểm gửi nhận hàng:</b> <a href="https://maps.app.goo.gl/dgKPuHYuc1hQhY9Y9" target="_blank">Nhà nghỉ TRỌNG NGHĨA, qua cầu Mỹ lợi, Tiền Giang</a></span>
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-envelope"></i>
+                            <a href="mailto:info@eximlog.vn">info@eximlog.vn</a>
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-phone-volume"></i> 0399 409 015 </br> 070 689 1139 </br> 0835 215 394
+                        </li>
+                    </ul>
+                </div>
+                
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <div class="container">
+                <p>© 2025 Eximlog. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+    <script src="/script/script.3243942394.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script>
-        // Init Icons
         lucide.createIcons();
-
-        // Toggle Accordion
-        // Thay thế hàm toggleItem cũ bằng hàm này
-function toggleItem(btn) {
-    const item = btn.parentElement;
-    const answer = item.querySelector('.faq-answer');
-    const isActive = item.classList.contains('active');
-    
-    // 1. Đóng tất cả các item khác
-    document.querySelectorAll('.faq-item').forEach(el => {
-        el.classList.remove('active');
-        const elAnswer = el.querySelector('.faq-answer');
-        if(elAnswer) {
-            elAnswer.style.maxHeight = null; // Thu gọn lại
-        }
-    });
-    
-    // 2. Mở item hiện tại nếu chưa mở
-    if (!isActive) {
-        item.classList.add('active');
-        // Tính toán chiều cao thực tế + 24px (tương đương 1.5rem padding-bottom)
-        answer.style.maxHeight = (answer.scrollHeight + 24) + "px";
-    }
-}
-
-        // Search & Tab Logic
-        const searchInput = document.getElementById('searchFAQ');
+        
         const tabBtns = document.querySelectorAll('.tab-btn');
         const faqItems = document.querySelectorAll('.faq-item');
         const emptyState = document.getElementById('emptyState');
-
         let currentCategory = 'all';
 
         function filterFAQ() {
-            const term = searchInput.value.toLowerCase();
             let visibleCount = 0;
 
             faqItems.forEach(item => {
-                const text = item.innerText.toLowerCase();
                 const category = item.getAttribute('data-category');
-                
-                const matchesSearch = text.includes(term);
                 const matchesCategory = currentCategory === 'all' || category === currentCategory;
 
-                if (matchesSearch && matchesCategory) {
+                if (matchesCategory) {
                     item.style.display = 'block';
                     visibleCount++;
                 } else {
@@ -263,10 +357,10 @@ function toggleItem(btn) {
                 }
             });
 
-            emptyState.classList.toggle('hidden', visibleCount > 0);
+            if(emptyState) {
+                emptyState.classList.toggle('hidden', visibleCount > 0);
+            }
         }
-
-        searchInput.addEventListener('input', filterFAQ);
 
         tabBtns.forEach(btn => {
             btn.addEventListener('click', () => {
@@ -276,6 +370,25 @@ function toggleItem(btn) {
                 filterFAQ();
             });
         });
+
+        function toggleItem(btn) {
+            const item = btn.parentElement;
+            const answer = item.querySelector('.faq-answer');
+            const isActive = item.classList.contains('active');
+            
+            document.querySelectorAll('.faq-item').forEach(el => {
+                el.classList.remove('active');
+                const elAnswer = el.querySelector('.faq-answer');
+                if(elAnswer) {
+                    elAnswer.style.maxHeight = null;
+                }
+            });
+            
+            if (!isActive) {
+                item.classList.add('active');
+                answer.style.maxHeight = (answer.scrollHeight + 24) + "px";
+            }
+        }
     </script>
 </body>
-</html> 
+</html>
