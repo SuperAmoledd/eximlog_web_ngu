@@ -53,7 +53,7 @@ body {
 }
 
 #stats-counter .stat-item {
-    border: none;
+    border: none;   
 }
 
 @keyframes fadeInUp {
