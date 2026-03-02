@@ -91,7 +91,7 @@ function populateResults(data) {
 
     document.getElementById('detail-packaging').textContent = data.packaging || 'Thùng carton';
     document.getElementById('detail-pieces').textContent = `${data.packages || 0} Kiện`;
-    document.getElementById('detail-weight').textContent = `${data.weight || 0} Kg`;
+    document.getElementById('detail-weight').textContent = `${data.weight || '-'} Kg`;
 
     const historyList = document.getElementById('history-list');
     historyList.innerHTML = '';
