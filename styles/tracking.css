@@ -1,17 +1,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
 
 :root {
-    --primary-color: #102e46; /* Deep nautical blue */
-    --primary-light: #1a4971;
-    --accent-color: #f8b94d; /* Eximlog Orange */
-    --accent-hover: #e0a035;
+    --primary-color: #f8b94d; /* Eximlog Orange as Main Theme */
+    --primary-light: #ffd88a;
+    --accent-color: #102e46; /* Deep nautical blue as Accent */
+    --accent-hover: #1a4971;
+    --text-on-primary: #102e46;
     --success-color: #10b981; /* Modern green */
     --success-light: #d1fae5;
-    --bg-main: #f3f4f6; /* Soft neutral background */
-    --text-primary: #1f2937;
-    --text-secondary: #6b7280;
+    --bg-main: #f8fafc; /* Soft neutral background */
+    --text-primary: #1e293b;
+    --text-secondary: #475569;
     --card-bg: #ffffff;
-    --border-color: #e5e7eb;
+    --border-color: #e2e8f0;
     --radius-lg: 24px;
     --radius-md: 16px;
     --radius-sm: 8px;
@@ -58,7 +59,7 @@ body {
     content: '';
     position: absolute;
     top: 0; left: 0; right: 0; bottom: 0;
-    background: linear-gradient(135deg, rgba(243,244,246,0.92) 0%, rgba(243,244,246,0.7) 100%);
+    background: linear-gradient(135deg, rgba(248,250,252,0.92) 0%, rgba(248,250,252,0.7) 100%);
 }
 
 .main-container {
@@ -82,7 +83,7 @@ body {
    ========================================= */
 .search-section {
     width: 100%;
-    max-width: 750px;
+    max-width: 900px;
     margin: 0 auto;
     padding: 20px;
     display: flex;
@@ -95,7 +96,7 @@ body {
     background: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(12px);
     border-radius: var(--radius-lg);
-    padding: 60px 50px;
+    padding: 80px 60px;
     box-shadow: var(--shadow-float);
     text-align: center;
     width: 100%;
@@ -121,8 +122,8 @@ body {
 }
 
 .search-card h2 {
-    color: var(--primary-color);
-    font-size: 1.85rem;
+    color: var(--accent-color);
+    font-size: 2.1rem;
     font-weight: 800;
     margin-bottom: 12px;
     letter-spacing: -0.5px;
@@ -130,7 +131,7 @@ body {
 
 .search-subtitle {
     color: var(--text-secondary);
-    font-size: 1.05rem;
+    font-size: 1.15rem;
     margin-bottom: 40px;
     line-height: 1.5;
 }
@@ -153,7 +154,7 @@ body {
 
 .input-group:focus-within {
     border-color: var(--primary-color);
-    box-shadow: 0 0 0 5px rgba(16, 46, 70, 0.08);
+    box-shadow: 0 0 0 5px rgba(248, 185, 77, 0.2);
     transform: translateY(-2px);
 }
 
@@ -171,8 +172,8 @@ body {
     flex-grow: 1;
     border: none;
     background: transparent;
-    padding: 16px 12px;
-    font-size: 1.15rem;
+    padding: 20px 16px;
+    font-size: 1.25rem;
     font-weight: 600;
     color: var(--text-primary);
     outline: none;
@@ -187,12 +188,12 @@ body {
 
 #form-on-tracking button {
     background: var(--primary-color);
-    color: #fff;
+    color: var(--text-on-primary);
     border: none;
     border-radius: 50px;
-    padding: 0 36px;
-    font-size: 1.1rem;
-    font-weight: 600;
+    padding: 0 44px;
+    font-size: 1.2rem;
+    font-weight: 700;
     cursor: pointer;
     transition: all 0.3s ease;
     display: flex;
@@ -202,8 +203,8 @@ body {
 
 #form-on-tracking button:hover {
     background: var(--primary-light);
-    box-shadow: 0 6px 15px rgba(16, 46, 70, 0.25);
-    padding: 0 40px 0 32px; /* Slight right shift effect */
+    box-shadow: 0 6px 15px rgba(248, 185, 77, 0.3);
+    padding: 0 48px 0 40px; /* Slight right shift effect */
 }
 
 .error-text {
@@ -232,7 +233,8 @@ body {
 }
 
 .header-container {
-    max-width: 1200px;
+    max-width: 1600px;
+    width: 96%;
     margin: 0 auto;
     display: flex;
     justify-content: space-between;
@@ -273,7 +275,7 @@ body {
 
 .header-input-group:focus-within {
     border-color: var(--accent-color);
-    box-shadow: 0 0 0 4px rgba(248, 185, 77, 0.2);
+    box-shadow: 0 0 0 4px rgba(16, 46, 70, 0.2);
 }
 
 #trackingCodeInputHeader {
@@ -284,13 +286,13 @@ body {
     outline: none;
     background: transparent;
     font-weight: 500;
-    color: var(--primary-color);
+    color: var(--accent-color);
 }
 
 #form-in-header button {
     background: var(--accent-color);
     border: none;
-    color: #000;
+    color: #fff;
     padding: 0 28px;
     cursor: pointer;
     transition: all 0.3s ease;
@@ -308,16 +310,16 @@ body {
    RESULT GRID LAYOUT
    ========================================= */
 .content-wrapper {
-    max-width: 1200px;
+    max-width: 1600px;
+    width: 96%;
     margin: 0 auto;
-    width: 100%;
 }
 
 #resultContainer {
     display: grid;
-    grid-template-columns: 1fr 1fr; 
-    gap: 24px;
-    padding: 40px 24px;
+    grid-template-columns: 1.6fr 1fr; 
+    gap: 30px;
+    padding: 40px 0;
     animation: fadeIn 0.5s ease;
 }
 
@@ -351,7 +353,7 @@ body {
 }
 
 .card h3 i {
-    color: var(--accent-color);
+    color: var(--primary-color);
     margin-right: 12px;
     font-size: 1.4rem;
 }
@@ -366,7 +368,7 @@ body {
 #main-status {
     grid-column: 1 / 2;
     background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-light) 100%);
-    color: #fff;
+    color: var(--text-on-primary);
     border: none;
     display: flex;
     flex-direction: column;
@@ -393,7 +395,7 @@ body {
 }
 
 .status-header h2 {
-    color: #fff;
+    color: var(--text-on-primary);
     margin: 0;
     font-size: 1.1rem;
     opacity: 0.9;
@@ -411,14 +413,14 @@ body {
     color: #fff;
     text-transform: uppercase;
     box-shadow: 0 4px 12px rgba(16, 185, 148, 0.4);
-    border: 2px solid rgba(255,255,255,0.2);
+    border: 2px solid rgba(255,255,255,0.4);
 }
 
 .status-date {
     display: inline-block;
     font-size: 1.05rem;
-    color: rgba(255,255,255,0.85);
-    font-weight: 500;
+    color: rgba(16, 46, 70, 0.85);
+    font-weight: 600;
 }
 
 /* 2. MAIN CODE CARD */
@@ -428,7 +430,7 @@ body {
     align-items: center;
     background: #fff;
     border: 1px solid var(--border-color);
-    border-left: 6px solid var(--accent-color);
+    border-left: 6px solid var(--primary-color);
 }
 
 #main-code h2 {
@@ -447,7 +449,7 @@ body {
     font-weight: 800;
     letter-spacing: 1.5px;
     font-size: 1.7rem;
-    color: var(--primary-color);
+    color: var(--accent-color);
     background: rgba(16, 46, 70, 0.05);
     padding: 6px 14px;
     border-radius: 8px;
@@ -486,7 +488,7 @@ body {
     height: 44px;
     border-radius: 50%;
     background: #fff; 
-    color: var(--primary-color);
+    color: var(--accent-color);
     box-shadow: var(--shadow-sm);
     display: flex;
     justify-content: center;
@@ -499,7 +501,7 @@ body {
 
 .info-item:hover .icon-wrapper {
     background: var(--primary-color);
-    color: #fff;
+    color: var(--text-on-primary);
     transform: rotate(5deg);
 }
 
@@ -651,7 +653,7 @@ body {
 }
 
 .content-col .location i {
-    color: var(--primary-color);
+    color: var(--accent-color);
 }
 
 /* LATEST STATUS HIGHLIGHT */
@@ -737,7 +739,7 @@ body {
     height: 38px;
     border-radius: 10px;
     background: #fff;
-    color: var(--primary-color);
+    color: var(--accent-color);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -825,7 +827,8 @@ body {
 
 .container-footer {
     text-align: center;
-    max-width: 1100px;
+    max-width: 1600px;
+    width: 96%;
     margin: 0 auto;
     position: relative;
 }
@@ -844,7 +847,7 @@ body {
     display: block;
     width: 40px;
     height: 3px;
-    background: var(--accent-color);
+    background: var(--primary-color);
     margin: 8px auto 0;
     border-radius: 2px;
 }
