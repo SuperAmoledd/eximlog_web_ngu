@@ -34,23 +34,34 @@
     <div class="landing-bg"></div>
     <div class="main-container">
         <div id="search-section" class="search-section">
-            <img src="/img/img_logo/eximlog_logo.webp" alt="EXIMLOG EXPRESS" class="logo-image" />
-            <h2>Theo dõi kiện hàng của bạn</h2>
+            <div class="search-card">
+                <img src="/img/img_logo/eximlog_logo.webp" alt="EXIMLOG EXPRESS" class="logo-image" />
+                <h2>Theo Dõi Hành Trình Đơn Hàng</h2>
+                <p class="search-subtitle">Nhập mã vận đơn của bạn để kiểm tra và định vị kiện hàng theo thời gian thực.</p>
 
-            <form id="form-on-tracking">
-                <input type="text" id="trackingCodeInput" placeholder="Nhập mã tracking của bạn tại đây..." />
-                <button type="submit"><i class="fas fa-search"></i></button>
-            </form>
+                <form id="form-on-tracking">
+                    <div class="input-group">
+                        <div class="input-icon"><i class="fas fa-box"></i></div>
+                        <input type="text" id="trackingCodeInput" placeholder="VD: EXIM123456789..." autocomplete="off" />
+                        <button type="submit">Tra Cứu <i class="fas fa-arrow-right"></i></button>
+                    </div>
+                </form>
 
-            <p id="error-message-landing" class="error-text hidden"></p>
+                <p id="error-message-landing" class="error-text hidden"></p>
+            </div>
         </div>
 
         <div id="results-page-wrapper" class="hidden">
             <header class="page-header">
                 <div class="header-container">
+                    <a href="/" class="header-logo" title="Trang chủ">
+                        <img src="/img/img_logo/eximlog_logo.webp" alt="EXIMLOG" class="header-logo-img" onerror="this.src='/img/img_logo/eximlog_logo.jpg'">
+                    </a>
                     <form id="form-in-header">
-                        <input type="text" id="trackingCodeInputHeader" placeholder="Nhập mã khác..." />
-                        <button type="submit"><i class="fas fa-search"></i></button>
+                        <div class="header-input-group">
+                            <input type="text" id="trackingCodeInputHeader" placeholder="Nhập mã vận đơn khác..." />
+                            <button type="submit"><i class="fas fa-search"></i></button>
+                        </div>
                     </form>
                     <div class="lang-select-dummy"></div>
                 </div>
@@ -220,7 +231,7 @@
     </div>
 </footer>
 
-    <script src="/script/tracking.348123947.js"></script>
+    <script src="/asd_script_21374912/tracking.js"></script>
 </body>
 
 </html>

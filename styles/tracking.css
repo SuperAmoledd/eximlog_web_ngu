@@ -1,17 +1,41 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+:root {
+    --primary-color: #102e46; /* Deep nautical blue */
+    --primary-light: #1a4971;
+    --accent-color: #f8b94d; /* Eximlog Orange */
+    --accent-hover: #e0a035;
+    --success-color: #10b981; /* Modern green */
+    --success-light: #d1fae5;
+    --bg-main: #f3f4f6; /* Soft neutral background */
+    --text-primary: #1f2937;
+    --text-secondary: #6b7280;
+    --card-bg: #ffffff;
+    --border-color: #e5e7eb;
+    --radius-lg: 24px;
+    --radius-md: 16px;
+    --radius-sm: 8px;
+    --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.05), 0 2px 4px rgba(0, 0, 0, 0.02);
+    --shadow-lg: 0 12px 24px -4px rgba(16, 46, 70, 0.1), 0 8px 12px -4px rgba(16, 46, 70, 0.06);
+    --shadow-float: 0 20px 40px -10px rgba(16, 46, 70, 0.15), 0 10px 20px -5px rgba(16, 46, 70, 0.1);
+}
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
 }
 
 body {
-    font-family: 'Roboto', 'Source Sans Pro', Arial, sans-serif;
-    background: #f8f9fa;
-    color: #000;
+    background: var(--bg-main);
+    color: var(--text-primary);
     position: relative;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    overflow-x: hidden;
 }
 
 .landing-bg {
@@ -21,20 +45,26 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    
     background-image: url('/img/img_tracking/tracking.webp');
     background-repeat: no-repeat;
-    background-position: center center; 
-    background-attachment: fixed;      
+    background-position: center; 
     background-size: cover;             
-    
     z-index: 0; 
-    opacity: 0.2;
+    opacity: 0.15;
+    pointer-events: none;
 }
+
+.landing-bg::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: linear-gradient(135deg, rgba(243,244,246,0.92) 0%, rgba(243,244,246,0.7) 100%);
+}
+
 .main-container {
     width: 100%;
     margin: 0 auto;
-    padding: 0 0 20px 0;
+    padding: 0;
     position: relative;
     z-index: 2;
     flex-grow: 1;
@@ -47,651 +77,782 @@ body {
     display: none !important;
 }
 
+/* =========================================
+   SEARCH SECTION (LANDING)
+   ========================================= */
 .search-section {
-    text-align: center;
-    padding: 20px 40px 40px;
-    background: transparent;
     width: 100%;
-    max-width: 800px;
+    max-width: 750px;
     margin: 0 auto;
-    transform: translateY(-50px);
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh;
+}
+
+.search-card {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(12px);
+    border-radius: var(--radius-lg);
+    padding: 60px 50px;
+    box-shadow: var(--shadow-float);
+    text-align: center;
+    width: 100%;
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    animation: slideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes slideUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
 .logo-image {
-    width: 250px;
-    height: auto;
-    margin-bottom: 10px;
+    height: 65px;
+    width: auto;
+    margin-bottom: 24px;
+    filter: drop-shadow(0 4px 6px rgba(0,0,0,0.05));
+    transition: transform 0.3s ease;
 }
 
-.logo-title {
-    font-size: 3em;
-    color: #000;
-    margin-bottom: 10px;
-    font-weight: 700;
+.logo-image:hover {
+    transform: scale(1.02);
 }
 
-.highlight {
-    color: #FFA500;
+.search-card h2 {
+    color: var(--primary-color);
+    font-size: 1.85rem;
+    font-weight: 800;
+    margin-bottom: 12px;
+    letter-spacing: -0.5px;
 }
 
-.search-section h2 {
-    color: #546e7a;
-    font-size: 1.3em;
-    margin-bottom: 35px;
-    font-weight: 400;
+.search-subtitle {
+    color: var(--text-secondary);
+    font-size: 1.05rem;
+    margin-bottom: 40px;
+    line-height: 1.5;
 }
 
 #form-on-tracking {
-    display: flex;
-    max-width: 600px;
+    width: 100%;
     margin: 0 auto;
 }
 
-#form-on-tracking input {
+.input-group {
+    display: flex;
+    align-items: stretch;
+    background: #fff;
+    border: 2px solid var(--border-color);
+    border-radius: 50px;
+    padding: 8px;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+}
+
+.input-group:focus-within {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 5px rgba(16, 46, 70, 0.08);
+    transform: translateY(-2px);
+}
+
+.input-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-left: 24px;
+    padding-right: 12px;
+    color: var(--text-secondary);
+    font-size: 1.2rem;
+}
+
+#trackingCodeInput {
     flex-grow: 1;
-    border-radius: 25px 0 0 25px;
-    border: 1px solid #ccc;
-    padding: 12px 20px;
-    font-size: 1.1em;
+    border: none;
+    background: transparent;
+    padding: 16px 12px;
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    outline: none;
+    letter-spacing: 0.5px;
+}
+
+#trackingCodeInput::placeholder {
+    color: #9ca3af;
+    font-weight: 400;
+    letter-spacing: normal;
 }
 
 #form-on-tracking button {
-    border-radius: 0 25px 25px 0;
-    background: #FFA500;
-    color: #000;
-    font-weight: bold;
+    background: var(--primary-color);
+    color: #fff;
     border: none;
-    padding: 0 25px;
+    border-radius: 50px;
+    padding: 0 36px;
+    font-size: 1.1rem;
+    font-weight: 600;
     cursor: pointer;
     transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
 #form-on-tracking button:hover {
-    background: #FF8F00;
+    background: var(--primary-light);
+    box-shadow: 0 6px 15px rgba(16, 46, 70, 0.25);
+    padding: 0 40px 0 32px; /* Slight right shift effect */
 }
 
 .error-text {
-    color: #e74c3c;
-    margin-top: 20px;
-    font-size: 0.95em;
-    padding: 12px;
-    background: rgba(231, 76, 60, 0.1);
-    border-radius: 8px;
-    border-left: 4px solid #e74c3c;
+    color: #dc2626;
+    margin-top: 24px;
+    font-size: 0.95rem;
+    padding: 14px;
+    background: #fef2f2;
+    border-radius: var(--radius-sm);
+    border-left: 4px solid #ef4444;
+    font-weight: 500;
+    animation: fadeIn 0.3s;
 }
 
+/* =========================================
+   HEADER (RESULTS PAGE)
+   ========================================= */
 .page-header {
-    background-color: #f6c777;
-    padding: 20px 0;
+    background-color: var(--primary-color);
+    padding: 16px 0;
     position: sticky;
     top: 0;
     z-index: 1000;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-    margin: 0;
+    box-shadow: var(--shadow-md);
+    border-bottom: 2px solid var(--accent-color);
 }
 
 .header-container {
     max-width: 1200px;
-    margin: auto;
+    margin: 0 auto;
     display: flex;
     justify-content: space-between;
-    padding: 0 20px;
     align-items: center;
+    padding: 0 24px;
+    gap: 40px;
+}
+
+.header-logo-img {
+    height: 44px;
+    width: auto;
+    background: #fff;
+    padding: 6px 12px;
+    border-radius: 8px;
+    box-shadow: var(--shadow-sm);
+    transition: transform 0.2s;
+}
+
+.header-logo:hover .header-logo-img {
+    transform: scale(1.03);
 }
 
 #form-in-header {
-    display: flex;
-    background: #fff;
-    border-radius: 10px;
-    overflow: hidden;
+    flex-grow: 1;
+    max-width: 650px;
 }
 
-#form-in-header input {
+.header-input-group {
+    display: flex;
+    background: #fff;
+    border-radius: 50px;
+    overflow: hidden;
+    height: 50px;
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.05);
+    border: 2px solid transparent;
+    transition: all 0.3s;
+}
+
+.header-input-group:focus-within {
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 4px rgba(248, 185, 77, 0.2);
+}
+
+#trackingCodeInputHeader {
+    flex-grow: 1;
     border: none;
-    padding: 15px 20px;
-    width: 400px;
-    font-size: 1.1em;
+    padding: 0 24px;
+    font-size: 1.05rem;
     outline: none;
+    background: transparent;
+    font-weight: 500;
+    color: var(--primary-color);
 }
 
 #form-in-header button {
-    background: #e0a035; 
+    background: var(--accent-color);
     border: none;
-    color: #fff; /* Chữ trắng đẹp hơn chữ đen trên nền này */
-    padding: 0 30px;
+    color: #000;
+    padding: 0 28px;
     cursor: pointer;
     transition: all 0.3s ease;
-    font-size: 1.3em;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 #form-in-header button:hover {
-    background: #e0a035; /* Màu hover đậm hơn chút */
+    background: var(--accent-hover);
 }
 
-.skeleton-layout {
+/* =========================================
+   RESULT GRID LAYOUT
+   ========================================= */
+.content-wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
     width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 25px;
-    padding: 30px 0;
-}
-
-.skeleton-side img {
-    width: 120px;
-    opacity: 0.9;
-}
-
-.wrapper {
-    max-width: 700px;
-    width: 100%;
-}
-
-.wrapper-cell {
-    display: none;
-}
-
-#skeletonLoader .wrapper-cell {
-    display: flex;
-    align-items: center;
-    margin-bottom: 20px;
-    padding: 20px;
-    background: #fff;
-    border-radius: 8px;
-    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
-}
-
-.wrapper-cell .image {
-    width: 60px;
-    height: 60px;
-    border-radius: 8px;
-    margin-right: 20px;
-}
-
-.wrapper-cell .text {
-    flex-grow: 1;
-}
-
-.text-line {
-    height: 12px;
-    margin-bottom: 10px;
-    border-radius: 6px;
-}
-
-.text-line:last-child {
-    width: 70%;
-}
-
-.animated-background {
-    animation: placeHolderShimmer 1.25s linear infinite;
-    background: linear-gradient(to right, #d4d4d4 8%, #F0F0F0 18%, #F6F6F6 33%);
-    background-size: 800px 104px;
-}
-
-@keyframes placeHolderShimmer {
-    0% {
-        background-position: -468px 0
-    }
-    100% {
-        background-position: 468px 0
-    }
 }
 
 #resultContainer {
     display: grid;
     grid-template-columns: 1fr 1fr; 
-    gap: 20px;
-    padding: 20px 40px;
-    max-width: 100%;
-    width: 100%;
-    margin: 0;
+    gap: 24px;
+    padding: 40px 24px;
+    animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
 .card {
-    background: #fff;
-    border-radius: 8px;
-    padding: 25px;
-    box-shadow: 0 0.46875rem 2.1875rem rgba(4, 9, 20, 0.03), 0 0.9375rem 1.40625rem rgba(4, 9, 20, 0.03), 0 0.25rem 0.53125rem rgba(4, 9, 20, 0.05), 0 0.125rem 0.1875rem rgba(4, 9, 20, 0.03);
-    border-width: 0;
-    transition: all 0.2s;
+    background: var(--card-bg);
+    border-radius: var(--radius-md);
+    padding: 30px;
+    box-shadow: var(--shadow-md);
+    border: 1px solid var(--border-color);
+    transition: all 0.3s ease;
+    height: 100%;
 }
 
 .card:hover {
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
-    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+    border-color: #d1d5db;
 }
 
-.card h2,
-.card h3 {
-    color: #102e46;
-    margin-bottom: 20px;
+.card h2, .card h3 {
+    color: var(--text-primary);
+    margin-bottom: 24px;
     font-weight: 700;
-    text-transform: uppercase;
     font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+}
+
+.card h3 i {
+    color: var(--accent-color);
+    margin-right: 12px;
+    font-size: 1.4rem;
 }
 
 .card-group {
-    /* Áp dụng style card chung cho container nhóm */
-    background: none; 
-    border-radius: 0;
-    padding: 0;
-    box-shadow: none;
-    border-width: 0;
-    transition: none;
-    /* Thiết lập bố cục nội dung là flex để xếp các card con theo chiều dọc */
     display: flex;
     flex-direction: column;
-    gap: 20px; /* Khoảng cách giữa Info và History, hoặc Service và Details */
+    gap: 24px;
 }
 
-.fit-content-card {
-    height: fit-content;
-}
-
-/* --- Yêu cầu: Card group chứa Info/History (scroll không thấy scrollbar) --- */
-.scrollable-card {
-    max-height: 500px; /* Đặt chiều cao tối đa cố định (có thể điều chỉnh) */
-    overflow-y: scroll; /* Kích hoạt thanh cuộn */
-}
-
-/* Ẩn scrollbar trên Chrome, Safari và Opera */
-.scrollable-card::-webkit-scrollbar {
-    display: none;
-    width: 0px; /* Tùy chọn: Đảm bảo độ rộng là 0 */
-}
-
-/* Ẩn scrollbar trên IE và Edge */
-.scrollable-card {
-    -ms-overflow-style: none;
-}
-
-/* Ẩn scrollbar trên Firefox */
-.scrollable-card {
-    scrollbar-width: none;
-}
-
-/* --- Cập nhật Media Query để đảm bảo bố cục 1 cột trên Mobile --- */
-@media (max-width: 900px) {
-    /* Giữ nguyên grid-template-columns: 1fr; */
-    #resultContainer {
-        grid-template-columns: 1fr;
-    }
-    
-    #main-status,
-    #main-code,
-    #infoHistoryContainer, /* THÊM */
-    #serviceDetailsContainer {
-        grid-column: 1 / -1 !important;
-        grid-row: auto !important
-    }
-    
-    /* Đảm bảo scrollbar hoạt động tốt trên mobile */
-    .scrollable-card {
-        max-height: none; /* Giảm chiều cao trên mobile để dễ cuộn */
-    }
-}
-
+/* 1. STATUS CARD */
 #main-status {
     grid-column: 1 / 2;
-    grid-row: 1;
-    background: #fff;
-    color: #102e46;
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-light) 100%);
+    color: #fff;
+    border: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+#main-status::after {
+    content: '';
+    position: absolute;
+    top: 0; right: 0; bottom: 0; left: 0;
+    background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4NiIgaGVpZ2h0PSI4NiIgdmlld0JveD0iMCAwIDg2IDg2Ij4gPHBvbHlnb24gcG9pbnRzPSIwLDg2IDg2LDAgODYsODYiIGZpbGw9InJnYmEoMjU1LDI1NSwyNTUsMC4wMykiLz4gPC9zdmc+') top right/cover no-repeat;
+    pointer-events: none;
 }
 
 .status-header {
-    display: flex;       /* Dùng flex để xếp ngang */
-    align-items: center; /* Căn giữa theo chiều dọc */
-    flex-wrap: wrap;     /* Tự động xuống dòng nếu màn hình quá nhỏ */
-    gap: 15px;           /* Khoảng cách giữa các phần tử */
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+    position: relative;
+    z-index: 2;
 }
 
-/* Chỉnh lại tiêu đề H2 */
 .status-header h2 {
-    color: #102e46;     
-    font-size: 1.2em;
-    margin: 0;           
-    white-space: nowrap;
+    color: #fff;
+    margin: 0;
+    font-size: 1.1rem;
+    opacity: 0.9;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
 .status-tag {
     display: inline-block;
-    padding: 6px 15px;
-    background: #3bd65a; /* MÀU MỚI: Nền vàng cam */
-    border-radius: 50px;
-    font-weight: 600;
-    font-size: 1em;
-    margin: 0;
-    color: #fff; /* Chữ trắng cho nổi */
-    box-shadow: 0 2px 5px rgba(248, 185, 77, 0.4); /* Bóng nhẹ màu cam */
+    padding: 8px 18px;
+    background: var(--success-color);
+    border-radius: 30px;
+    font-weight: 700;
+    font-size: 1.15rem;
+    color: #fff;
+    text-transform: uppercase;
+    box-shadow: 0 4px 12px rgba(16, 185, 148, 0.4);
+    border: 2px solid rgba(255,255,255,0.2);
 }
 
 .status-date {
     display: inline-block;
-    font-size: 0.95em;
-    margin: 0;           /* Bỏ margin cũ */
-    color: #555;         /* Màu chữ xám đậm */
+    font-size: 1.05rem;
+    color: rgba(255,255,255,0.85);
     font-weight: 500;
 }
 
+/* 2. MAIN CODE CARD */
 #main-code {
     grid-column: 2 / 3;
-    grid-row: 1;
-    background: #fff;
-    color: #102e46;
-    display: flex;       /* Căn giữa nội dung theo chiều dọc của Card */
+    display: flex;
     align-items: center;
+    background: #fff;
+    border: 1px solid var(--border-color);
+    border-left: 6px solid var(--accent-color);
 }
 
 #main-code h2 {
-    color: #102e46;
-    font-size: 1.2em;
-    margin: 0;           /* Bỏ margin dưới để không bị đẩy lệch */
-    display: flex;       /* Xếp chữ "MÃ THEO DÕI" và mã code nằm ngang */
-    align-items: center; 
-    gap: 15px;           /* Tạo khoảng cách giữa tiêu đề và mã */
+    margin: 0;
+    color: var(--text-secondary);
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 15px;
     flex-wrap: wrap;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
 #main-tracking-code {
-    display: inline-block; /* Quan trọng: Đổi từ block sang inline để nằm ngang */
     font-weight: 800;
-    letter-spacing: 2px;
-    font-size: 1.4em;    /* Tăng kích thước font lên chút cho rõ */
-    color: #f8b94d;
+    letter-spacing: 1.5px;
+    font-size: 1.7rem;
+    color: var(--primary-color);
+    background: rgba(16, 46, 70, 0.05);
+    padding: 6px 14px;
+    border-radius: 8px;
 }
 
-#info {
-    grid-column: 1 / 2;
-    grid-row: 2;
-}
-
+/* 3. INFO GRID */
 .info-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 15px;
+    gap: 16px;
 }
 
 .info-item {
-    padding: 12px;
-    background: #f8f9fa;
-    border-radius: 8px;
-    border-left: 4px solid #007D88;
+    display: flex;
+    align-items: center;
+    padding: 16px 20px;
+    background: var(--bg-main);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    transition: all 0.2s;
+}
+
+.info-item:hover {
+    background: #fff;
+    border-color: var(--primary-light);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-sm);
 }
 
 .info-item.full-width {
     grid-column: 1 / -1;
 }
 
+.icon-wrapper {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: #fff; 
+    color: var(--primary-color);
+    box-shadow: var(--shadow-sm);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.15rem;
+    margin-right: 18px;
+    flex-shrink: 0;
+    transition: all 0.2s;
+}
+
+.info-item:hover .icon-wrapper {
+    background: var(--primary-color);
+    color: #fff;
+    transform: rotate(5deg);
+}
+
+.info-content {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
 .info-label {
-    display: block; 
-    color: #7f8c8d;
-    font-size: 0.9em;
-    margin-bottom: 8px;
-    font-weight: 500;
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 5px;
 }
 
 .info-item strong {
-    color: #000;
-    font-size: 1em;
+    font-size: 1.05rem;
+    color: var(--text-primary);
+    font-weight: 700;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
-#service {
-    grid-column: 2 / 3;
-    grid-row: 2;
-}
-
-#service p {
-    padding: 12px 0;
-    border-bottom: 1px solid #ecf0f1;
+.dest-group {
     display: flex;
-    justify-content: space-between;
+    align-items: center; 
+    gap: 6px;
 }
 
-#service p:last-child {
-    border-bottom: none;
+.verified-icon {
+    font-size: 1.1rem;      
+    color: #0ea5e9;        
 }
 
-#service p strong {
-    color: #7f8c8d;
-}
-
-#service p span {
-    color: #000;
-    font-weight: 600;
-}
-
-#infoHistoryContainer {
-    grid-column: 1 / 2;
-    grid-row: 2; /* Chiếm vị trí cột 1, hàng 2 */
-}
-
-#serviceDetailsContainer {
-    grid-column: 2 / 3;
-    grid-row: 2; /* Chiếm vị trí cột 2, hàng 2 */
-}
-
-#history {
-    grid-column: 1 / 2;
-    grid-row: 3 / 5;
-}
-
+/* 4. HISTORY TIMELINE */
 #history-list {
     list-style: none;
-    padding: 10px 0 0 0;
+    padding: 10px 0;
     position: relative;
+    max-height: 550px;
+    overflow-y: auto;
+    padding-right: 15px;
+}
+
+#history-list::-webkit-scrollbar {
+    width: 6px;
+}
+#history-list::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+    border-radius: 10px;
+}
+#history-list::-webkit-scrollbar-thumb {
+    background: #cbd5e1; 
+    border-radius: 10px;
+}
+#history-list::-webkit-scrollbar-thumb:hover {
+    background: #94a3b8; 
 }
 
 #history-list::before {
     content: '';
     position: absolute;
-    top: 15px;
-    bottom: 0;
-    left: 100px; /* Vị trí đường kẻ */
+    top: 20px;
+    bottom: 20px;
+    left: 130px;
     width: 2px;
-    background: #e0e0e0;
+    background: #e2e8f0;
     z-index: 1;
 }
 
 #history-list li {
     position: relative;
-    margin-bottom: 25px;
+    margin-bottom: 30px;
     display: flex;
     align-items: flex-start;
     z-index: 2;
 }
 
+#history-list li:last-child {
+    margin-bottom: 0;
+}
+
 #history-list .time-col {
-    width: 85px; /* Cố định chiều rộng */
+    width: 110px;
     text-align: right;
-    padding-right: 25px; /* Khoảng cách đến chấm tròn */
+    padding-right: 35px;
     flex-shrink: 0;
     display: flex;
     flex-direction: column;
+    padding-top: 2px;
 }
 
 .time-col .date-part {
-    font-size: 0.85em;
-    color: #888;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
     font-weight: 500;
 }
 
 .time-col .time-part {
-    font-size: 1.1em;
-    color: #102e46;
+    font-size: 1.15rem;
+    color: var(--text-primary);
     font-weight: 700;
+    margin-bottom: 4px;
 }
 
 #history-list .dot {
     position: absolute;
-    left: 100px; /* Trùng với đường kẻ */
+    left: 130px;
     transform: translateX(-50%);
     width: 14px;
     height: 14px;
     border-radius: 50%;
     background: #fff;
-    border: 3px solid #ccc; /* Mặc định xám */
-    margin-top: 5px; /* Căn chỉnh với dòng đầu của text */
+    border: 3px solid #cbd5e1;
+    margin-top: 6px;
     z-index: 3;
     transition: all 0.3s ease;
 }
 
 #history-list .content-col {
-    padding-left: 25px;
+    padding-left: 35px;
     flex-grow: 1;
 }
 
 .content-col .status {
     display: block;
-    color: #333;
+    color: var(--text-primary);
     font-weight: 700;
-    font-size: 1em;
-    text-transform: uppercase;
-    margin-bottom: 4px;
+    font-size: 1.05rem;
+    margin-bottom: 8px;
     line-height: 1.4;
+    text-transform: uppercase;
 }
 
 .content-col .location {
-    display: block;
-    color: #7f8c8d;
-    font-size: 0.9em;
-    font-style: normal;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    background: var(--bg-main);
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-weight: 500;
 }
 
+.content-col .location i {
+    color: var(--primary-color);
+}
+
+/* LATEST STATUS HIGHLIGHT */
 #history-list li:first-child .dot {
-    border-color: #f8b94d; /* Màu cam */
-    background: #f8b94d;
-    box-shadow: 0 0 0 4px rgba(248, 185, 77, 0.2); /* Hiệu ứng tỏa sáng */
+    border-color: var(--success-color);
+    background: var(--success-color);
+    box-shadow: 0 0 0 6px rgba(16, 185, 148, 0.2);
     width: 18px;
     height: 18px;
+    margin-top: 4px;
+    animation: pulseDot 2s infinite;
+}
+
+@keyframes pulseDot {
+    0% { box-shadow: 0 0 0 0 rgba(16, 185, 148, 0.4); }
+    70% { box-shadow: 0 0 0 10px rgba(16, 185, 148, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(16, 185, 148, 0); }
 }
 
 #history-list li:first-child .time-part {
-    color: #f8b94d; /* Giờ cũng màu cam */
+    color: var(--success-color);
 }
 
 #history-list li:first-child .status {
-    color: #102e46; /* Status đậm hơn */
-    font-size: 1.1em;
+    color: var(--success-color);
+    font-size: 1.15rem;
 }
 
-@media (max-width: 480px) {
-    #history-list::before {
-        left: 15px; /* Dời đường kẻ về sát trái */
-    }
-
-    #history-list li {
-        flex-direction: column; /* Xếp chồng lên nhau */
-        padding-left: 40px; /* Chừa chỗ cho đường kẻ */
-    }
-
-    #history-list .time-col {
-        width: 100%;
-        text-align: left;
-        padding-right: 0;
-        margin-bottom: 4px;
-        flex-direction: row; /* Ngày và giờ nằm ngang trên mobile */
-        gap: 10px;
-        align-items: center;
-    }
-    
-    .time-col .time-part {
-        font-size: 0.95em;
-    }
-    
-    #history-list .dot {
-        left: 15px;
-        margin-top: 2px;
-    }
-
-    #history-list .content-col {
-        padding-left: 0;
-    }
-}
-
-#details {
-    grid-column: 2 / 3;
-    grid-row: 3;
-}
-
-#details p {
-    padding: 12px 0;
-    border-bottom: 1px solid #ecf0f1;
+/* 5. SERVICES & DETAILS */
+#service p, #details p {
+    padding: 16px 0;
+    border-bottom: 1px solid var(--border-color);
     display: flex;
     justify-content: space-between;
+    align-items: center;
 }
 
-#details p:last-child {
+#service p:last-child, #details p:last-child {
     border-bottom: none;
+    padding-bottom: 0;
 }
 
-#details p span {
-    color: #7f8c8d;
+#service p strong, #details p span {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    font-weight: 500;
 }
 
-#details p strong {
-    color: #000;
+#service p span, #details p strong {
+    color: var(--text-primary);
     font-weight: 600;
+    font-size: 1.05rem;
+}
+
+.detail-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.detail-row {
+    display: flex;
+    align-items: center;
+    padding: 14px 18px;
+    background: var(--bg-main);
+    border-radius: var(--radius-sm);
+    border: 1px solid transparent;
+    transition: all 0.2s;
+}
+
+.detail-row:hover {
+    background: #fff;
+    border-color: var(--border-color);
+    box-shadow: var(--shadow-sm);
+}
+
+.detail-row p {
+    margin: 0; padding: 0; border: none; flex-grow: 1;
+}
+
+.icon-mini {
+    width: 38px;
+    height: 38px;
+    border-radius: 10px;
+    background: #fff;
+    color: var(--primary-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 18px;
+    font-size: 1.05rem;
+    box-shadow: var(--shadow-sm);
+}
+
+/* =========================================
+   SKELETON & ERROR
+   ========================================= */
+.skeleton-layout {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    padding: 50px 24px;
+}
+
+.skeleton-side {
+    width: 140px;
+    height: 140px;
+    background: #e2e8f0;
+    border-radius: var(--radius-md);
+    opacity: 0.5;
+}
+
+.wrapper { max-width: 750px; width: 100%; }
+.wrapper-cell { display: none; }
+#skeletonLoader .wrapper-cell {
+    display: flex;
+    align-items: center;
+    margin-bottom: 24px;
+    padding: 30px;
+    background: #fff;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
+}
+.wrapper-cell .image {
+    width: 65px; height: 65px; border-radius: 50%; margin-right: 24px;
+}
+.wrapper-cell .text { flex-grow: 1; }
+.text-line { height: 14px; margin-bottom: 14px; border-radius: 7px; }
+.text-line:last-child { width: 60%; margin-bottom: 0; }
+
+.animated-background {
+    animation: placeHolderShimmer 2s linear infinite;
+    background: linear-gradient(to right, #f1f5f9 8%, #e2e8f0 18%, #f1f5f9 33%);
+    background-size: 800px 104px;
+}
+@keyframes placeHolderShimmer {
+    0% { background-position: -468px 0; }
+    100% { background-position: 468px 0; }
 }
 
 .error-container {
     text-align: center;
-    padding: 60px 40px;
+    padding: 80px 24px;
     max-width: 600px;
-    margin: auto;
+    margin: 0 auto;
 }
 
 #error-message-results {
-    color: #e74c3c;
-    font-size: 1.2em;
-    padding: 30px;
-    background: rgba(231, 76, 60, 0.1);
-    border-radius: 16px;
-    border: 2px solid rgba(231, 76, 60, 0.2);
+    color: #b91c1c;
+    font-size: 1.15rem;
+    padding: 35px;
+    background: #fef2f2;
+    border-radius: var(--radius-md);
+    border: 1px solid #fecaca;
+    font-weight: 500;
+    box-shadow: var(--shadow-sm);
 }
 
+/* =========================================
+   PARTNERS CAROUSEL
+   ========================================= */
 .partners {
     background: #fff;
-    padding: 10px 0;
+    padding: 40px 0;
     width: 100%;
-    overflow: hidden; /* Ẩn phần logo trôi ra ngoài */
+    overflow: hidden;
+    border-top: 1px solid var(--border-color);
 }
 
 .container-footer {
     text-align: center;
-    max-width: 1000px;
+    max-width: 1100px;
     margin: 0 auto;
     position: relative;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
 }
 
 .footer-title {
-    color: #102e46;
+    color: var(--text-secondary);
     font-weight: 700;
-    font-size: 0.9rem; /* Giảm cỡ chữ tiêu đề nhỏ lại */
+    font-size: 0.9rem;
     letter-spacing: 2px;
-    margin-bottom: 10px; /* Kéo carousel lên sát tiêu đề hơn */
-    margin-top: 5px;
-    position: relative;
-    display: inline-block;
+    margin-bottom: 30px;
+    text-transform: uppercase;
 }
 
 .footer-title::after {
     content: '';
     display: block;
-    width: 30px;
-    height: 2px;
-    background: #f8b94d;
-    margin: 4px auto 0;
+    width: 40px;
+    height: 3px;
+    background: var(--accent-color);
+    margin: 8px auto 0;
+    border-radius: 2px;
 }
 
 .carousel-wrapper {
     position: relative;
-    height: 50px; /* Chiều cao vùng hiển thị logo */
+    height: 50px;
     width: 100%;
-    display: flex;
-    justify-content: center;
 }
 
 .carousel-inner {
@@ -706,8 +867,8 @@ body {
     left: 50%;
     transform: translate(-50%, -50%) scale(0.5);
     opacity: 0;
-    transition: all 0.6s cubic-bezier(0.4, 0.0, 0.2, 1);
-    width: 100px; /* Giảm chiều rộng khung item */
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    width: 130px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -715,504 +876,187 @@ body {
 
 .carousel-item img {
     max-width: 100%;
-    max-height: 30px; /* Giảm từ 50px xuống 30px */
+    max-height: 40px;
     object-fit: contain;
-    filter: grayscale(100%);
-    transition: filter 0.3s;
+    filter: grayscale(100%) opacity(0.6);
+    transition: all 0.3s;
 }
 
 .carousel-item.active {
     left: 50%;
-    transform: translate(-50%, -50%) scale(1.2); /* Scale nhỏ hơn chút (1.2) */
+    transform: translate(-50%, -50%) scale(1.1);
     opacity: 1;
     z-index: 10;
 }
 .carousel-item.active img {
-    filter: grayscale(0%); /* Có màu */
+    filter: grayscale(0%) opacity(1);
 }
-
-/* 2. Vị trí BÊN TRÁI (Nhỏ hơn, mờ hơn) */
 .carousel-item.prev {
-    left: 25%; /* Kéo sát vào trung tâm hơn */
-    transform: translate(-50%, -50%) scale(0.8);
-    opacity: 0.3; /* Mờ hơn chút để tập trung vào giữa */
+    left: 30%;
+    transform: translate(-50%, -50%) scale(0.85);
+    opacity: 0.5;
     z-index: 5;
 }
-
-/* 3. Vị trí BÊN PHẢI (Nhỏ hơn, mờ hơn - Nơi logo chuẩn bị vào) */
 .carousel-item.next {
-    left: 75%; /* Kéo sát vào trung tâm hơn */
-    transform: translate(-50%, -50%) scale(0.8);
-    opacity: 0.3;
+    left: 70%;
+    transform: translate(-50%, -50%) scale(0.85);
+    opacity: 0.5;
     z-index: 5;
 }
 
-/* Mobile: Thu hẹp khoảng cách left/right để không bị tràn màn hình */
-@media (max-width: 600px) {
-    .partners {
-        padding: 5px 0; /* Mobile ép sát hơn nữa */
-    }
-    .carousel-item.prev { left: 15%; }
-    .carousel-item.next { left: 85%; }
-}
-
-@media (max-width: 900px) {
-    .skeleton-side {
-        display: none;
-    }
+/* =========================================
+   MOBILE RESPONSIVENESS
+   ========================================= */
+@media (max-width: 992px) {
     #resultContainer {
         grid-template-columns: 1fr;
+        padding: 30px 20px;
     }
     
-    #main-status,
-    #main-code,
-    #info,
-    #service,
-    #details,
-    #history {
-        grid-column: 1 / -1 !important;
-        grid-row: auto !important;
+    #main-status, #main-code {
+        grid-column: 1 / -1;
     }
     
-    .info-grid {
-        grid-template-columns: 1fr;
-    }
-}
-
-@media (max-width: 768px) {
-    .search-section {
-        padding: 15px 20px 30px;
-        transform: translateY(-30px);
-    }
-    .logo-image {
-        width: 150px;
-    }
-    .search-section h2 {
-        font-size: 1.1em;
-        margin-bottom: 20px;
-    }
-    .logo-title {
-        font-size: 2em;
-    }
-    #form-on-tracking {
-        flex-direction: column;
-        gap: 10px;
-    }
-    #form-on-tracking input,
-    #form-on-tracking button {
-        border-radius: 25px;
-        width: 100%;
-        padding: 15px 20px;
-    }
-    #history-list li {
-        padding-left: 40px;
-    }
-    #history-list::before {
-        left: 15px;
-    }
-    #history-list li::before {
-        left: 7px;
-    }
-    #history-list li::after {
-        left: 11px;
-    }
-    .card {
-        padding: 20px;
-    }
-    .card h2,
-    .card h3 {
-        font-size: 1rem;
-    }
-}
-
-@media (max-width: 650px) {
-    .main-container {
-        padding: 10px;
-    }
-    .logo-image {
-        width: 130px;
-    }
-    .search-section h2 {
-        font-size: 1em;
-    }
-    #form-on-tracking input {
-        font-size: 1em;
-    }
-    #history-list::before {
-        left: 19px;
-    }
-    #history-list li::before {
-        left: 11px;
-    }
-    #history-list li::after {
-        left: 15px;
-    }
-    .status-tag {
-        font-size: 0.9em;
-        padding: 6px 15px;
-    }
-    .status-date {
-        font-size: 0.85em;
-    }
-}
-
-@media (max-width: 480px) {
-    .search-section {
-        padding: 10px 15px 25px;
-        transform: translateY(-20px);
-    }
-    .logo-image {
-        width: 120px;
-    }
-    .search-section h2 {
-        font-size: 0.95em;
-        margin-bottom: 15px;
-    }
-    #form-on-tracking input {
-        font-size: 0.95em;
-        padding: 12px 18px;
-    }
-    #form-on-tracking button {
-        padding: 12px 18px;
-        font-size: 0.9em;
-    }
-    .card {
-        padding: 15px;
-    }
-    .card h2,
-    .card h3 {
-        font-size: 0.9rem;
-        margin-bottom: 15px;
-    }
-    #main-tracking-code {
-        font-size: 0.9em;
-        letter-spacing: 1px;
-    }
-    .info-item {
-        padding: 10px;
-    }
-    #history-list .date {
-        font-size: 14px;
-    }
-    #history-list .status {
-        font-size: 12px;
-    }
-    #history-list .location {
-        font-size: 11px;
-    }
-    .partner-logo {
-        width: 80px;
-        margin: 0 10px;
-    }
-}
-
-/* --- START STYLE ICON XỊN --- */
-
-/* 1. Style chung cho icon trong tiêu đề Card */
-.card h3 i {
-    margin-right: 10px;
-    color: #f8b94d; /* Màu cam điểm nhấn */
-}
-
-.info-item {
-    display: flex;
-    align-items: center;
-    padding: 15px;
-    background: #fff;
-    /* Viền dùng màu Xám bạn yêu cầu, chỉnh mờ đi chút */
-    border: 1px solid rgba(168, 168, 169, 0.3); 
-    border-radius: 12px;
-    transition: all 0.2s ease;
-}
-
-.info-item:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-    border-color: #f8b94d; /* Hover vào thì viền sáng màu cam */
-}
-
-.icon-wrapper {
-    width: 45px;
-    height: 45px;
-    border-radius: 50%;
-    /* Nền cam nhạt trong suốt */
-    background: rgba(248, 185, 77, 0.15); 
-    color: #f8b94d; /* Icon màu cam đậm */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 1.2rem;
-    margin-right: 15px;
-    flex-shrink: 0;
-}
-
-.info-content {
-    display: flex;
-    flex-direction: column;
-}
-
-.info-label {
-    margin-bottom: 4px;
-    font-size: 0.85em;
-    color: #a8a8a9; /* MÀU MỚI: Xám */
-    font-weight: 600; /* Tăng độ đậm chút vì màu xám hơi nhạt */
-}
-
-.info-item strong {
-    font-size: 1.05em;
-    color: #102e46;
-}
-
-.detail-list {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-}
-
-.detail-row {
-    display: flex;
-    align-items: center;
-    padding: 10px;
-    background: #f8f9fa;
-    border-radius: 8px;
-}
-
-.detail-row p {
-    margin: 0;
-    padding: 0;
-    border: none;
-    flex-grow: 1;
-    display: flex;
-    justify-content: space-between;
-}
-
-.icon-mini {
-    width: 32px;
-    height: 32px;
-    border-radius: 8px;
-    background: rgba(168, 168, 169, 0.15); /* Nền xám nhạt */
-    color: #f8b94d; /* Icon màu cam */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-right: 15px;
-    font-size: 0.9rem;
-}
-
-
-.dest-group {
-    display: flex;
-    align-items: center; 
-    gap: 6px; /* Khoảng cách giữa tên nước và dấu check */
-}
-
-.verified-icon {
-    font-size: 1.1em;      
-    color: #1da1f2;        
-    
-    margin-left: 6px;      
-    display: inline-block;
-    vertical-align: middle;
-    margin-top: -3px;      
-    
-    background: #fff;     
-    border-radius: 50%;    
-    box-shadow: 0 0 0 1px #fff;
-}
-
-/* --- END STYLE ICON XỊN --- */
-
-@media (max-width: 600px) {
     .header-container {
-        flex-direction: row;
-        justify-content: center;
-        gap: 0;
-    }
-    #form-in-header {
-        width: 100%;
-        max-width: 400px;
-    }
-    #form-in-header input {
-        width: 100%;
-        flex: 1;
-    }
-    #form-in-header button {
-        flex-shrink: 0;
-    }
-    .lang-select-dummy {
-        display: none;
-    }
-    .card {
-        padding: 20px;
-    }
-}
-
-/* ==========================================================================
-   MOBILE & TABLET RESPONSIVE OVERRIDES (Thêm vào cuối file tracking.css)
-   ========================================================================== */
-
-/* 1. Tinh chỉnh Header (Thanh tìm kiếm dính ở trên) cho Mobile */
-@media (max-width: 768px) {
-    .page-header {
-        padding: 10px 0; /* Giảm padding */
-    }
-
-    .header-container {
-        padding: 0 10px;
-    }
-
-    #form-in-header {
-        max-width: 100%;
-        height: 45px; /* Chiều cao cố định nhỏ gọn */
-        border: 1px solid #e0e0e0;
-        box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-    }
-
-    #form-in-header input {
-        font-size: 14px;
-        padding: 0 15px;
-    }
-
-    #form-in-header button {
         padding: 0 20px;
-        font-size: 1rem;
+        gap: 20px;
     }
+    .skeleton-side { display: none; }
 }
 
-@media (max-width: 900px) {
-    #resultContainer {
-        grid-template-columns: 1fr; /* Chuyển về 1 cột */
-        gap: 15px; /* Giảm khoảng cách giữa các card */
-        padding: 15px; /* Padding lề ngoài nhỏ lại */
-    }
-
-    #main-status, #main-code, #infoHistoryContainer, #serviceDetailsContainer, #info, #service, #details, #history {
-        grid-column: 1 / -1 !important;
-        grid-row: auto !important;
+@media (max-width: 768px) {
+    .search-card {
+        padding: 40px 24px;
+        border-radius: var(--radius-md);
     }
     
-    .info-grid {
-        grid-template-columns: repeat(2, 1fr); 
+    .search-card h2 {
+        font-size: 1.5rem;
+    }
+    
+    .search-subtitle {
+        font-size: 0.95rem;
+        margin-bottom: 30px;
+    }
+    
+    .input-group {
+        flex-direction: column;
+        border-radius: var(--radius-md);
+        background: transparent;
+        border: none;
+        box-shadow: none;
+        gap: 12px;
+        padding: 0;
+    }
+    
+    .input-icon {
+        display: none;
+    }
+    
+    #trackingCodeInput {
+        background: #fff;
+        border: 2px solid var(--border-color);
+        border-radius: var(--radius-sm);
+        padding: 16px;
+        text-align: center;
+    }
+    
+    #form-on-tracking button {
+        border-radius: var(--radius-sm);
+        padding: 16px;
+        justify-content: center;
+        width: 100%;
+    }
+    
+    #form-on-tracking button:hover {
+        padding: 16px;
+    }
+    
+    #form-in-header {
+        max-width: none;
+    }
+    
+    .header-logo { display: none; }
+    
+    .header-input-group {
+        border-radius: var(--radius-sm);
+    }
+    
+    #form-in-header button {
+        border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
     }
 }
 
 @media (max-width: 600px) {
-    .search-section {
-        padding: 0 15px 30px;
-        transform: translateY(-20px);
+    #resultContainer {
+        padding: 16px;
+        gap: 16px;
     }
     
-    .logo-image {
-        width: 160px; 
-    }
-
-    .logo-title {
-        font-size: 1.8rem;
-    }
-
     .card {
-        padding: 15px; 
-        border-radius: 12px; 
+        padding: 20px;
+        border-radius: var(--radius-sm);
     }
     
     .info-grid {
         grid-template-columns: 1fr;
-        gap: 10px;
-    }
-
-    .info-item {
-        padding: 10px;
-        flex-direction: row; 
-        align-items: center;
     }
     
-    .icon-wrapper {
-        width: 38px;
-        height: 38px;
-        font-size: 1rem;
-        margin-right: 12px;
-    }
-    
-    .info-item strong {
-        font-size: 0.95rem;  
-        word-break: break-word;  
-    }
-}
-
-
-@media (max-width: 600px) {
-    #history-list {
-        padding-top: 5px;
-    }
- 
     #history-list::before {
-        left: 14px; 
+        left: 20px;
     }
-
+    
     #history-list li {
-        flex-direction: column; 
-        padding-left: 40px; 
-        margin-bottom: 25px;
+        flex-direction: column;
+        padding-left: 50px;
     }
- 
-    #history-list .dot {
-        left: 14px;
-        top: 0; 
-        margin-top: 2px;
-        width: 12px;
-        height: 12px;
-    }
-     
-    #history-list li:first-child .dot {
-        width: 16px;
-        height: 16px;
-        left: 14px; 
-        transform: translateX(-50%);
-    }
- 
+    
     #history-list .time-col {
         width: 100%;
         text-align: left;
         padding-right: 0;
-        margin-bottom: 5px;
         flex-direction: row;
         align-items: center;
-        gap: 8px;
-        border-bottom: 1px dashed #eee;  
-        padding-bottom: 4px;
+        gap: 10px;
+        margin-bottom: 8px;
     }
-
-    .time-col .time-part {
-        font-size: 1rem;
-        color: #102e46;
+    
+    #history-list .dot {
+        left: 20px;
+        top: 24px;
     }
-
-    .time-col .date-part {
-        font-size: 0.85rem;
+    
+    #history-list li:first-child .dot {
+        left: 20px;
     }
- 
+    
     #history-list .content-col {
         padding-left: 0;
     }
-
-    .content-col .status {
-        font-size: 0.95rem;
+    
+    .status-header h2 {
+        font-size: 1rem;
     }
     
-    .content-col .location {
-        font-size: 0.85rem;
-        margin-top: 2px;
+    .status-tag {
+        font-size: 1rem;
+        padding: 6px 14px;
     }
-}
- 
-@media (max-width: 600px) {
-    .partners {
-        padding: 15px 0;
+    
+    #main-code {
+        border-left-width: 4px;
     }
-    .carousel-item img {
-        max-height: 25px;  
+    
+    #main-code h2 {
+        font-size: 0.95rem;
+        gap: 10px;
     }
-    .footer-title {
-        font-size: 0.8rem;
+    
+    #main-tracking-code {
+        font-size: 1.4rem;
+        padding: 4px 10px;
     }
+    
+    .carousel-item.prev { left: 15%; }
+    .carousel-item.next { left: 85%; }
 }
