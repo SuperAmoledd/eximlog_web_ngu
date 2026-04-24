@@ -553,10 +553,6 @@ body:has(#search-section.hidden) .landing-bg {
     height: 100%;
 }
 
-/* Bỏ sticky header vì gây lỗi che khuất khi scroll trang */
-.sticky-header {
-    /* Đã bỏ position: sticky */
-}
 
 .timeline-container {
     padding: 30px;
