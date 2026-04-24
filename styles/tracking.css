@@ -106,12 +106,10 @@ body:has(#search-section.hidden) .landing-bg {
 }
 
 .logo-wrapper {
-    background: #fff;
-    padding: 15px 30px;
-    border-radius: 12px;
+    background: transparent;
+    padding: 10px 0;
     display: inline-block;
     margin-bottom: 30px;
-    box-shadow: var(--shadow-sm);
 }
 
 .logo-image {
@@ -237,9 +235,8 @@ body:has(#search-section.hidden) .landing-bg {
 
 .header-logo img {
     height: 45px;
-    background: #fff;
-    padding: 5px 15px;
-    border-radius: 8px;
+    background: transparent;
+    padding: 5px 0;
 }
 
 .header-search-form {
