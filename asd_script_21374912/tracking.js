@@ -1,4 +1,4 @@
-const API_URL = 'https://dashboard.eximlog.vn/api/track';
+const API_URL = '/api/track';
 
 const searchSection = document.getElementById('search-section');
 const resultsPageWrapper = document.getElementById('results-page-wrapper');
@@ -91,7 +91,7 @@ function populateResults(data) {
 
     document.getElementById('detail-packaging').textContent = data.packaging || 'Thùng carton';
     document.getElementById('detail-pieces').textContent = `${data.packages || 0} Kiện`;
-    document.getElementById('detail-weight').textContent = `${data.weight || '-'} Kg`;
+    document.getElementById('detail-weight').textContent = `${data.weight || 0} Kg`;
 
     const historyList = document.getElementById('history-list');
     historyList.innerHTML = '';
@@ -128,8 +128,8 @@ function populateResults(data) {
             </div>
             <div class="dot"></div>
             <div class="content-col">
-                <span class="status">${entry.status}</span>
-                <span class="location"><i class="fas fa-map-marker-alt"></i> ${locationDisplay}</span>
+                <span class="status">${entry.status.toUpperCase()}</span>
+                <span class="location"><i class="fas fa-map-marker-alt"></i> ${locationDisplay.toUpperCase()}</span>
             </div>
         `;
         historyList.appendChild(li);
