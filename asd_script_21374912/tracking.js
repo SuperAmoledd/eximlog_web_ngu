@@ -1,4 +1,4 @@
-const API_URL = '/api/track';
+const API_URL = 'https://dashboard.eximlog.vn/api/track';
 
 const searchSection = document.getElementById('search-section');
 const resultsPageWrapper = document.getElementById('results-page-wrapper');
@@ -6,7 +6,7 @@ const partnersFooter = document.querySelector('.partners');
 const mainContainer = document.querySelector('.main-container');
 
 const skeletonLoader = document.getElementById('skeletonLoader');
-const resultContainer = document.getElementById('resultContainer');
+const resultContainer = document.getElementById('resultContainer'); 
 const errorContainer = document.getElementById('errorContainer');
 
 const trackingFormLanding = document.getElementById('form-on-tracking');
