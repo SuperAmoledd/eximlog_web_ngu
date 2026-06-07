@@ -6,7 +6,7 @@ const partnersFooter = document.querySelector('.partners');
 const mainContainer = document.querySelector('.main-container');
 
 const skeletonLoader = document.getElementById('skeletonLoader');
-const resultContainer = document.getElementById('resultContainer'); 
+const resultContainer = document.getElementById('resultContainer');
 const errorContainer = document.getElementById('errorContainer');
 
 const trackingFormLanding = document.getElementById('form-on-tracking');
@@ -16,6 +16,19 @@ const errorMessageLanding = document.getElementById('error-message-landing');
 const trackingFormHeader = document.getElementById('form-in-header');
 const trackingCodeInputHeader = document.getElementById('trackingCodeInputHeader');
 const errorMessageResults = document.getElementById('error-message-results');
+
+function escapeHTML(str) {
+    if (!str) return "";
+    return str.replace(/[&<>'"]/g, 
+        tag => ({
+            '&': '&amp;',
+            '<': '&lt;',
+            '>': '&gt;',
+            "'": '&#39;',
+            '"': '&quot;'
+        }[tag] || tag)
+    );
+}
 
 function formatDateTime(isoString) {
     if (!isoString) return 'N/A';
@@ -32,37 +45,37 @@ function formatDateTime(isoString) {
 function showSearchState() {
     searchSection.classList.remove('hidden');
     resultsPageWrapper.classList.add('hidden');
-    partnersFooter.classList.remove('hidden'); 
+    partnersFooter.classList.remove('hidden');
     errorMessageLanding.classList.add('hidden');
     mainContainer.style.justifyContent = 'center';
 }
 
 function showSkeletonState() {
     searchSection.classList.add('hidden');
-    partnersFooter.classList.add('hidden'); 
+    partnersFooter.classList.add('hidden');
     resultsPageWrapper.classList.remove('hidden');
-    
-    document.getElementById('skeleton-layout').classList.remove('hidden'); 
+
+    document.getElementById('skeleton-layout').classList.remove('hidden');
     skeletonLoader.classList.remove('hidden');
     resultContainer.classList.add('hidden');
     errorContainer.classList.add('hidden');
-    
+
     mainContainer.style.justifyContent = 'flex-start';
 }
 
 function showResultState() {
     skeletonLoader.classList.add('hidden');
-    document.getElementById('skeleton-layout').classList.add('hidden'); 
+    document.getElementById('skeleton-layout').classList.add('hidden');
     resultContainer.classList.remove('hidden');
-    partnersFooter.classList.add('hidden'); 
+    partnersFooter.classList.add('hidden');
 }
 
 function showErrorState(message) {
     skeletonLoader.classList.add('hidden');
     document.getElementById('skeleton-layout').classList.add('hidden');
     resultContainer.classList.add('hidden');
-    partnersFooter.classList.add('hidden'); 
-    
+    partnersFooter.classList.add('hidden');
+
     errorMessageResults.textContent = message;
     errorContainer.classList.remove('hidden');
 }
@@ -82,12 +95,12 @@ function populateResults(data) {
     document.getElementById('info-to').textContent = data.toCountry || 'N/A';
     // document.getElementById('info-send-date').textContent = formatDateTime(data.createdAt);
     document.getElementById('info-send-date').textContent = new Date(data.createdAt).toLocaleDateString('vi-VN');
-    
+
     document.getElementById('info-carrier').textContent = data.carrier || 'Chưa cập nhật';
     document.getElementById('info-sub-tracking').textContent = data.subTracking || 'N/A';
-    
+
     document.getElementById('service-type').textContent = data.serviceType || 'Standard Shipping';
-    document.getElementById('service-term').textContent = 'N/A'; 
+    document.getElementById('service-term').textContent = 'N/A';
 
     document.getElementById('detail-packaging').textContent = data.packaging || 'Thùng carton';
     document.getElementById('detail-pieces').textContent = `${data.packages || 0} Kiện`;
@@ -97,47 +110,47 @@ function populateResults(data) {
     historyList.innerHTML = '';
     if (data.history && data.history.length > 0) {
         const sortedHistory = [...data.history].sort((a, b) => new Date(b.date) - new Date(a.date));
-        
+
         sortedHistory.forEach((entry, index) => {
-        const dateObj = new Date(entry.date);
-        const timeStr = dateObj.toLocaleTimeString('vi-VN', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
-        const dateStr = dateObj.toLocaleDateString('vi-VN', { day: '2-digit', month: '2-digit', year: 'numeric' });
+            const dateObj = new Date(entry.date);
+            const timeStr = dateObj.toLocaleTimeString('vi-VN', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+            const dateStr = dateObj.toLocaleDateString('vi-VN', { day: '2-digit', month: '2-digit', year: 'numeric' });
 
-        let locationDisplay = '';
-        
-        // Vì mảng đã sort Mới -> Cũ, nên phần tử cuối cùng (length - 1) là cái cũ nhất.
-        const isFirstStatus = (index === sortedHistory.length - 1);
+            let locationDisplay = '';
 
-        if (entry.location && entry.location.trim() !== "") {
-            // 1. Nếu admin có nhập tay vị trí -> Ưu tiên hiển thị
-            locationDisplay = entry.location;
-        } else if (isFirstStatus) {
-            // 2. Nếu là dòng khởi tạo đầu tiên -> Mặc định là HCM
-            locationDisplay = 'Ho Chi Minh, VN'; 
-        } else {
-            // 3. Các trạng thái trung gian nếu không nhập vị trí -> Lấy nước đến
-            locationDisplay = data.toCountry || 'Đang vận chuyển';
-        }
-        // ---------------------
+            // Vì mảng đã sort Mới -> Cũ, nên phần tử cuối cùng (length - 1) là cái cũ nhất.
+            const isFirstStatus = (index === sortedHistory.length - 1);
 
-        const li = document.createElement('li');
-        li.innerHTML = `
+            if (entry.location && entry.location.trim() !== "") {
+                // 1. Nếu admin có nhập tay vị trí -> Ưu tiên hiển thị
+                locationDisplay = entry.location;
+            } else if (isFirstStatus) {
+                // 2. Nếu là dòng khởi tạo đầu tiên -> Mặc định là HCM
+                locationDisplay = 'Ho Chi Minh, VN';
+            } else {
+                // 3. Các trạng thái trung gian nếu không nhập vị trí -> Lấy nước đến
+                locationDisplay = data.toCountry || 'Đang vận chuyển';
+            }
+            // ---------------------
+
+            const li = document.createElement('li');
+            li.innerHTML = `
             <div class="time-col">
                 <span class="time-part">${timeStr}</span>
                 <span class="date-part">${dateStr}</span>
             </div>
             <div class="dot"></div>
             <div class="content-col">
-                <span class="status">${entry.status.toUpperCase()}</span>
-                <span class="location"><i class="fas fa-map-marker-alt"></i> ${locationDisplay.toUpperCase()}</span>
+                <span class="status">${escapeHTML(entry.status)}</span>
+                <span class="location"><i class="fas fa-map-marker-alt"></i> ${escapeHTML(locationDisplay)}</span>
             </div>
         `;
-        historyList.appendChild(li);
-    });
-} else {
-    historyList.innerHTML = '<li>Chưa có lịch sử vận đơn.</li>';
-}
-    
+            historyList.appendChild(li);
+        });
+    } else {
+        historyList.innerHTML = '<li>Chưa có lịch sử vận đơn.</li>';
+    }
+
 }
 
 async function handleSearch(code) {
@@ -147,16 +160,16 @@ async function handleSearch(code) {
         errorMessageLanding.classList.remove('hidden');
         return;
     }
-    
+
     // Cập nhật URL
     const newUrl = `${window.location.pathname}?code=${code}`;
-    window.history.pushState({path: newUrl}, '', newUrl);
-    
+    window.history.pushState({ path: newUrl }, '', newUrl);
+
     errorMessageLanding.classList.add('hidden');
 
     // Chuyển sang màn hình Skeleton Loading
     showSkeletonState();
-    
+
     // Đồng bộ input
     trackingCodeInputLanding.value = code;
     trackingCodeInputHeader.value = code;
@@ -220,7 +233,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Tính toán chỉ số (index) cho 3 vị trí
         // 1. Active: Phần tử hiện tại
         const activeIndex = currentIndex;
-        
+
         // 2. Prev: Phần tử bên trái (lùi lại 1, nếu < 0 thì quay về cuối)  
         let prevIndex = currentIndex - 1;
         if (prevIndex < 0) prevIndex = totalItems - 1;
