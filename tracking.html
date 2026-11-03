@@ -3,58 +3,152 @@
 
 <head>
     <meta charset='UTF-8'>
-    <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <title>EXIMLOG - Theo dõi TRACKING</title>
-    <meta name='description' content='Eximlog -  Công ty dịch vụ về Vận chuyển hàng hoá quốc tế với độ UY TÍN - CHẤT LƯỢNG - TẬN TÂM - TIẾT KIỆM hàng đầu về Xuất - Nhập khẩu tại Việt Nam. '>
-    <meta name='keywords' content='eximlog, vận chuyển quốc tế tại TPHCM, xuất nhập khẩu eximlog, exim'>
+    <meta name='viewport' content='width=device-width, initial-scale=1, maximum-scale=5, viewport-fit=cover'>
+    <title>Theo Dõi Kiện Hàng Của Bạn | EXIMLOG Logistics</title>
+    <meta name='description'
+        content='Hệ thống tra cứu vận đơn quốc tế EximLog - Theo dõi hành trình bưu phẩm, hàng hóa xuất nhập khẩu chính xác theo thời gian thực kết nối DHL, FedEx, UPS.'>
+    <meta name='keywords'
+        content='tra cứu vận đơn, tracking eximlog, eximlog tracking, theo dõi bưu kiện, chuyển phát nhanh quốc tế, xuất nhập khẩu eximlog'>
     <meta name='author' content='Công ty TNHH Thương Mại Dịch Vụ Vận Tải EXIMLOG'>
     <meta name='robots' content='index, follow'>
-    <meta name='theme-color' content='#0b1a30'>
-    <link rel='canonical' href='https://eximlog.vn/'>
+    <meta name='theme-color' content='#061b36'>
+    <link rel='canonical' href='https://eximlog.vn/tracking.html'>
 
-    <meta property='og:title' content='EXIMLOG - Vận chuyển niềm tin, Nâng tầm giá trị'>
-    <meta property='og:description' content='Eximlog -  Công ty dịch vụ về Vận chuyển hàng hoá quốc tế với độ UY TÍN - CHẤT LƯỢNG - TẬN TÂM - TIẾT KIỆM hàng đầu về Xuất - Nhập khẩu tại Việt Nam. '>
+    <meta property='og:title' content='EXIMLOG - Tra cứu Vận đơn Quốc tế & Nội địa'>
+    <meta property='og:description'
+        content='Hệ thống theo dõi bưu kiện quốc tế uy tín, chuẩn hóa thông tin logistics hàng đầu Việt Nam.'>
     <meta property='og:image' content='https://eximlog.vn/img/1200x630.jpg'>
-    <meta property='og:url' content='https://eximlog.vn/'>
+    <meta property='og:url' content='https://eximlog.vn/tracking.html'>
     <meta property='og:type' content='website'>
-    <meta property='og:locale' content='en_US'>
+    <meta property='og:locale' content='vi_VN'>
 
     <link rel='icon' href='/img/eximlog_logo.jpg' type='image/png'>
     <link rel='apple-touch-icon' href='/apple-touch-icon.png'>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,600&family=Plus+Jakarta+Sans:wght@500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
     <link rel="stylesheet" href="/styles/tracking.css" />
 </head>
 
 <body>
-    <!-- Background for Landing -->
+    <!-- Background image for page -->
     <div class="landing-bg"></div>
 
-    <div class="main-container">
-        
-        <!-- ==============================================
-             LANDING SEARCH STATE
-             ============================================== -->
-        <div id="search-section" class="search-section">
-            <div class="search-box-premium">
-                <div class="logo-wrapper">
-                    <img src="/img/img_logo/eximlog_logo.webp" alt="EXIMLOG" class="logo-image" />
-                </div>
-                <h2>Tra cứu Vận đơn Nội địa & Quốc tế</h2>
-                <p class="search-subtitle">Nhập mã theo dõi của bạn để xem cập nhật hành trình mới nhất.</p>
+    <header class="site-header" role="banner">
+        <div class="header-nav-container">
+            <!-- Left: Logo Ngang -->
+            <a href="/tracking.html" class="nav-logo-link" title="EXIMLOG Logistics">
+                <img src="./assets/images/logo_ngang.png" alt="EXIMLOG Logo" class="nav-logo-img" />
+            </a>
 
-                <form id="form-on-tracking" class="premium-form">
-                    <div class="input-wrapper">
-                        <i class="fas fa-box-open input-icon"></i>
-                        <input type="text" id="trackingCodeInput" placeholder="Ví dụ: EXIM123456789..." autocomplete="off" />
+            <!-- Header Search Bar (Active on results view) -->
+            <form id="form-in-header" class="header-search-form header-search-hidden" role="search"
+                aria-label="Tra cứu mã khác trong trang kết quả">
+                <i class="fas fa-magnifying-glass header-search-icon" aria-hidden="true"></i>
+                <input type="text" id="trackingCodeInputHeader" placeholder="Nhập mã vận đơn khác..." autocomplete="off"
+                    spellcheck="false" aria-label="Nhập mã vận đơn khác" />
+                <button type="submit" aria-label="Tìm kiếm"><i class="fas fa-arrow-right"></i></button>
+            </form>
+
+            <!-- Right: Navigation, Language, Home, Login -->
+            <div class="nav-right-actions">
+                <!-- Home Link -->
+                <a href="https://eximlog.vn/" class="nav-link-item" title="Trang chủ EximLog">
+                    <i class="fas fa-house"></i>
+                    <span class="nav-text" data-i18n="home">Trang chủ</span>
+                </a>
+
+                <!-- Custom Language Switcher (Tiếng Việt / English) -->
+                <div class="lang-dropdown-wrapper" id="langDropdown">
+                    <button type="button" class="lang-btn-current" id="btnLangToggle" aria-expanded="false"
+                        aria-haspopup="true">
+                        <span class="lang-flag" id="currentLangFlag">
+                            <svg width="18" height="18" viewBox="0 0 20 20" class="flag-svg" aria-hidden="true">
+                                <circle cx="10" cy="10" r="10" fill="#da251d" />
+                                <polygon
+                                    points="10,4.5 11.5,8.8 16,8.8 12.3,11.5 13.7,15.8 10,13.1 6.3,15.8 7.7,11.5 4,8.8 8.5,8.8"
+                                    fill="#ffff00" />
+                            </svg>
+                        </span>
+                        <span class="lang-text" id="currentLangText">Tiếng Việt</span>
+                        <i class="fas fa-chevron-down lang-chevron"></i>
+                    </button>
+                    <div class="lang-menu-dropdown hidden" id="langMenu">
+                        <button type="button" class="lang-option active" data-lang="vi">
+                            <span class="lang-flag">
+                                <svg width="18" height="18" viewBox="0 0 20 20" class="flag-svg" aria-hidden="true">
+                                    <circle cx="10" cy="10" r="10" fill="#da251d" />
+                                    <polygon
+                                        points="10,4.5 11.5,8.8 16,8.8 12.3,11.5 13.7,15.8 10,13.1 6.3,15.8 7.7,11.5 4,8.8 8.5,8.8"
+                                        fill="#ffff00" />
+                                </svg>
+                            </span>
+                            <span>Tiếng Việt</span>
+                        </button>
+                        <button type="button" class="lang-option" data-lang="en">
+                            <span class="lang-flag">
+                                <svg width="18" height="18" viewBox="0 0 20 20" class="flag-svg" aria-hidden="true">
+                                    <clipPath id="circleUK">
+                                        <circle cx="10" cy="10" r="10" />
+                                    </clipPath>
+                                    <g clip-path="url(#circleUK)">
+                                        <rect width="20" height="20" fill="#012169" />
+                                        <path d="M0,0 L20,20 M20,0 L0,20" stroke="#fff" stroke-width="3" />
+                                        <path d="M0,0 L20,20 M20,0 L0,20" stroke="#c8102e" stroke-width="1.8" />
+                                        <path d="M10,0 V20 M0,10 H20" stroke="#fff" stroke-width="5" />
+                                        <path d="M10,0 V20 M0,10 H20" stroke="#c8102e" stroke-width="3" />
+                                    </g>
+                                </svg>
+                            </span>
+                            <span>English</span>
+                        </button>
                     </div>
-                    <button type="submit" class="btn-track">
-                        <span>Tracking</span>
-                        <i class="fas fa-arrow-right"></i>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="main-container">
+
+        <div id="search-section" class="search-section">
+            <div class="hero-ksn-box">
+                <!-- EximLog Main Logo -->
+                <div class="hero-logo-wrap">
+                    <img src="./assets/images/eximlog_logo_xoa_nen.png" alt="EXIMLOG" class="hero-center-logo" />
+                </div>
+
+                <!-- Hero Title -->
+                <h1 class="hero-ksn-title" data-i18n="trackTitle">Theo Dõi Kiện Hàng Của Bạn</h1>
+                <p class="hero-ksn-subtitle" data-i18n="trackSubtitle">Nhập mã vận đơn EximLog hoặc mã hãng vận chuyển
+                    để theo dõi hành trình hàng hóa tức thì.</p>
+
+                <!-- KSN Post Unified Search Bar: Input + Button 'Theo dõi' -->
+                <form id="form-on-tracking" class="ksn-search-bar" role="search" aria-label="Tra cứu mã vận đơn">
+                    <div class="ksn-input-wrapper">
+                        <i class="fas fa-barcode ksn-input-icon" aria-hidden="true"></i>
+                        <input type="text" id="trackingCodeInput"
+                            placeholder="Nhập mã theo dõi của bạn (có thể nhập nhiều mã, cách nhau bởi dấu phẩy)"
+                            autocomplete="off" spellcheck="false" aria-label="Mã vận đơn" required />
+                    </div>
+                    <button type="submit" class="btn-ksn-track" id="btn-track-submit" aria-label="Theo dõi">
+                        <i class="fas fa-magnifying-glass"></i>
+                        <span data-i18n="btnTrack">Theo dõi</span>
                     </button>
                 </form>
 
-                <div id="error-message-landing" class="error-text hidden">
-                    <i class="fas fa-exclamation-triangle"></i> <span></span>
+                <div id="error-message-landing" class="error-text hidden" role="alert">
+                    <i class="fas fa-circle-exclamation"></i> <span></span>
+                </div>
+
+                <div class="landing-quick-hints">
+                    <span class="hint-label" data-i18n="sampleCodes">Mã mẫu tra cứu:</span>
+                    <button type="button" class="sample-code-chip" data-code="13937289">13937289</button>
+                    <button type="button" class="sample-code-chip" data-code="91192415">91192415</button>
+                    <button type="button" class="sample-code-chip" data-code="34551234">34551234</button>
+                    <button type="button" class="sample-code-chip" data-code="EXIM88291045">EXIM88291045</button>
                 </div>
             </div>
         </div>
@@ -63,75 +157,135 @@
              RESULTS STATE
              ============================================== -->
         <div id="results-page-wrapper" class="hidden">
-            
-            <!-- STICKY HEADER -->
-            <header class="page-header">
-                <div class="header-container">
-                    <a href="/tracking.html" class="header-logo">
-                        <img src="/img/img_logo/eximlog_logo.webp" alt="EXIMLOG Logo">
-                    </a>
-                    <form id="form-in-header" class="header-search-form">
-                        <input type="text" id="trackingCodeInputHeader" placeholder="Nhập mã vận đơn khác..." />
-                        <button type="submit"><i class="fas fa-search"></i></button>
-                    </form>
-                </div>
-            </header>
 
             <main class="content-wrapper">
-                
+
                 <!-- SKELETON LOADING -->
-                <div id="skeleton-layout" class="skeleton-layout hidden">
+                <div id="skeleton-layout" class="skeleton-layout hidden" aria-busy="true"
+                    aria-label="Đang tải dữ liệu vận đơn...">
                     <div class="skeleton-banner animated-background"></div>
                     <div class="skeleton-grid">
                         <div class="skeleton-left">
                             <div class="skeleton-card animated-background"></div>
-                            <div class="skeleton-card animated-background"></div>
                         </div>
                         <div class="skeleton-right">
-                            <div class="skeleton-timeline animated-background"></div>
+                            <div class="skeleton-card animated-background"></div>
+                            <div class="skeleton-card-sm animated-background"></div>
                         </div>
                     </div>
-                    <div id="skeletonLoader" class="hidden"></div> <!-- Ẩn hoàn toàn vì chỉ dùng ID cho JS -->
+                    <div id="skeletonLoader" class="hidden"></div>
                 </div>
 
                 <!-- MAIN RESULTS CONTAINER -->
                 <div id="resultContainer" class="result-container hidden">
-                    
-                    <!-- TOP BANNER: STATUS & TRACKING CODE -->
-                    <div class="status-banner-card">
-                        <div class="status-banner-content">
-                            <div class="status-banner-left" id="main-code">
-                                <span class="tracking-label">MÃ VẬN ĐƠN / TRACKING NUMBER</span>
-                                <h1 id="main-tracking-code" class="tracking-code-number">---</h1>
-                            </div>
-                            
-                            <div class="status-banner-right" id="main-status">
-                                <div class="status-badge-container">
-                                    <div class="pulse-ring"></div>
-                                    <h2 class="status-tag" id="status-text">Đang tải...</h2>
-                                </div>
-                                <div class="status-date-wrap">
-                                    Cập nhật: <span class="status-date" id="status-date">--</span>
-                                </div>
+
+                    <!-- PRINT-ONLY HEADER (Chỉ hiện khi In phiếu hoặc Lưu PDF) -->
+                    <div class="print-only-header">
+                        <div class="print-header-left">
+                            <img src="./assets/images/logo_ngang.png" alt="EXIMLOG" class="print-logo" />
+                            <div class="print-company-info">
+                                <h4>CÔNG TY TNHH EXIMLOG TRANSPORTATION & LOGISTICS</h4>
+                                <p>Website: eximlog.vn | Hotline: (+84) 909 000 000 | Email: info@eximlog.vn</p>
                             </div>
                         </div>
-                        <div class="status-progress-bar">
-                            <div class="progress-fill"></div>
+                        <div class="print-header-right">
+                            <h2 class="print-doc-title">PHIẾU THEO DÕI VẬN ĐƠN</h2>
+                            <span class="print-doc-sub">WAYBILL TRACKING RECEIPT</span>
+                            <div class="print-timestamp" id="print-timestamp"></div>
                         </div>
                     </div>
 
+                    <!-- TOP BANNER: STATUS & TRACKING CODE -->
+                    <section class="status-banner-card" aria-label="Tổng quan tình trạng vận đơn">
+                        <div class="status-banner-content">
+                            <div class="status-banner-left" id="main-code">
+                                <div class="tracking-label-row">
+                                    <span class="tracking-label">
+                                        <i class="fas fa-barcode"></i> MÃ VẬN ĐƠN / TRACKING NUMBER
+                                    </span>
+                                </div>
+                                <div class="tracking-code-group">
+                                    <h1 id="main-tracking-code" class="tracking-code-number">---</h1>
+                                    <button type="button" class="btn-copy-code" id="btn-copy-main-code"
+                                        title="Sao chép mã vận đơn" aria-label="Sao chép mã vận đơn">
+                                        <i class="far fa-copy" id="copy-icon-main"></i>
+                                        <span class="copy-text-main" id="copy-text-main" data-i18n="copy">Sao
+                                            chép</span>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="status-banner-right" id="main-status">
+                                <div class="status-badge-container" id="status-badge-box">
+                                    <div class="pulse-ring" id="status-pulse-dot"></div>
+                                    <h2 class="status-tag" id="status-text">Đang tải...</h2>
+                                </div>
+                                <div class="status-date-wrap">
+                                    <i class="far fa-clock"></i> <span data-i18n="lastUpdated">Cập nhật lần cuối:</span>
+                                    <span class="status-date" id="status-date">--</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- LOGISTICS STEPPER / PROGRESS TRACK -->
+                        <div class="stepper-section">
+                            <div class="stepper-container" id="logistics-stepper">
+                                <div class="step-item" id="step-node-1" data-step="1">
+                                    <div class="step-marker"><i class="fas fa-box"></i></div>
+                                    <div class="step-label" data-i18n="stepReceived">Tiếp nhận</div>
+                                </div>
+                                <div class="step-connector" id="step-line-1"></div>
+                                <div class="step-item" id="step-node-2" data-step="2">
+                                    <div class="step-marker"><i class="fas fa-plane-departure"></i></div>
+                                    <div class="step-label" data-i18n="stepInTransit">Vận chuyển</div>
+                                </div>
+                                <div class="step-connector" id="step-line-2"></div>
+                                <div class="step-item" id="step-node-3" data-step="3">
+                                    <div class="step-marker"><i class="fas fa-passport"></i></div>
+                                    <div class="step-label" data-i18n="stepCustoms">Thông quan</div>
+                                </div>
+                                <div class="step-connector" id="step-line-3"></div>
+                                <div class="step-item" id="step-node-4" data-step="4">
+                                    <div class="step-marker"><i class="fas fa-circle-check"></i></div>
+                                    <div class="step-label" data-i18n="stepDelivered">Giao thành công</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="status-progress-bar">
+                            <div class="progress-fill" id="status-progress-fill"></div>
+                        </div>
+                    </section>
+
                     <!-- 2 COLUMN GRID LAYOUT -->
                     <div class="results-grid">
-                        
+
                         <!-- COLUMN 1 (LEFT): HISTORY TIMELINE -->
                         <div class="results-col-left" id="history">
                             <div class="premium-card timeline-card">
                                 <div class="card-header">
-                                    <h3><i class="fas fa-route"></i> LỊCH SỬ HÀNH TRÌNH</h3>
+                                    <div class="header-title-wrap">
+                                        <h3><i class="fas fa-route"></i> <span data-i18n="journeyHistory">LỊCH SỬ HÀNH
+                                                TRÌNH</span></h3>
+                                        <span class="history-pill" id="history-count-badge">0 sự kiện</span>
+                                    </div>
+                                    <span class="timezone-note"><i class="fas fa-globe"></i> Giờ địa phương
+                                        (GMT+7)</span>
                                 </div>
                                 <div class="card-body no-padding">
                                     <div class="timeline-container">
-                                        <ul id="history-list"></ul>
+                                        <ul id="history-list" class="history-timeline-list"
+                                            aria-label="Danh sách sự kiện hành trình"></ul>
+
+                                        <!-- TOGGLE VIEW ALL / COLLAPSE BUTTON -->
+                                        <div id="timeline-toggle-wrapper" class="timeline-toggle-wrapper hidden">
+                                            <button type="button" id="btn-toggle-history" class="btn-toggle-history"
+                                                aria-expanded="false">
+                                                <span id="toggle-history-text" data-i18n="viewAllHistory">Xem toàn bộ
+                                                    lịch sử</span>
+                                                <i class="fas fa-chevron-down" id="toggle-history-icon"></i>
+                                            </button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -139,102 +293,171 @@
 
                         <!-- COLUMN 2 (RIGHT): INFO & SERVICES -->
                         <div class="results-col-right">
+
+                            <!-- ROUTE & SHIPMENT CARD -->
                             <div class="premium-card">
                                 <div class="card-header">
-                                    <h3><i class="fas fa-box"></i> THÔNG TIN LÔ HÀNG</h3>
+                                    <h3><i class="fas fa-box"></i> <span data-i18n="shipmentInfo">THÔNG TIN LÔ
+                                            HÀNG</span></h3>
                                 </div>
                                 <div class="card-body">
+                                    <!-- ROUTE HIGHLIGHT BOX -->
+                                    <div class="route-overview-box">
+                                        <div class="route-point origin-point">
+                                            <span class="route-label" data-i18n="origin">NƠI GỬI (ORIGIN)</span>
+                                            <strong id="info-from" class="route-val">Việt Nam</strong>
+                                        </div>
+                                        <div class="route-flow-line">
+                                            <span class="route-line-track"></span>
+                                            <div class="flow-icon"><i class="fas fa-arrow-right-long"
+                                                    id="route-flow-icon"></i></div>
+                                            <span class="route-line-track"></span>
+                                        </div>
+                                        <div class="route-point dest-point">
+                                            <span class="route-label" data-i18n="dest">NƠI ĐẾN (DESTINATION)</span>
+                                            <strong id="info-to" class="route-val">---</strong>
+                                        </div>
+                                    </div>
+
                                     <div class="info-list">
-                                        <div class="info-row">
-                                            <div class="info-icon"><i class="fas fa-plane-departure"></i></div>
-                                            <div class="info-data">
-                                                <span class="label">Từ</span>
-                                                <strong id="info-from"></strong>
-                                            </div>
-                                        </div>
-                                        <div class="info-row">
-                                            <div class="info-icon highlight-icon"><i class="fas fa-location-dot"></i></div>
-                                            <div class="info-data">
-                                                <span class="label">Đến</span>
-                                                <strong id="info-to"></strong>
-                                            </div>
-                                        </div>
                                         <div class="info-row">
                                             <div class="info-icon"><i class="fas fa-truck-fast"></i></div>
                                             <div class="info-data">
-                                                <span class="label">Hãng vận chuyển</span>
-                                                <strong id="info-carrier"></strong>
+                                                <span class="label" data-i18n="carrier">Hãng vận chuyển</span>
+                                                <div class="carrier-flex-group">
+                                                    <strong id="info-carrier" class="carrier-title">---</strong>
+                                                    <a id="carrier-official-link" href="#" target="_blank"
+                                                        rel="noopener noreferrer" class="carrier-link-chip hidden"
+                                                        title="Mở trang tra cứu chính thức của hãng">
+                                                        <i class="fas fa-external-link-alt"></i> <span
+                                                            data-i18n="officialWeb">Web hãng</span>
+                                                    </a>
+                                                </div>
                                             </div>
                                         </div>
+
                                         <div class="info-row">
                                             <div class="info-icon"><i class="far fa-calendar-alt"></i></div>
                                             <div class="info-data">
-                                                <span class="label">Ngày gửi hàng</span>
-                                                <strong id="info-send-date"></strong>
+                                                <span class="label" data-i18n="sendDate">Ngày gửi hàng</span>
+                                                <strong id="info-send-date">---</strong>
                                             </div>
                                         </div>
-                                        <div class="info-row full-width-row">
+
+                                        <div class="info-row full-width-row" id="sub-tracking-row">
                                             <div class="info-icon"><i class="fas fa-link"></i></div>
                                             <div class="info-data">
-                                                <span class="label">Mã theo dõi hãng bay (Sub-tracking)</span>
-                                                <strong id="info-sub-tracking"></strong>
+                                                <span class="label" data-i18n="subTracking">Mã theo dõi hãng
+                                                    (Sub-tracking)</span>
+                                                <div class="sub-tracking-flex-group">
+                                                    <strong id="info-sub-tracking">---</strong>
+                                                    <button type="button" class="btn-copy-sub hidden" id="btn-copy-sub"
+                                                        title="Sao chép mã phụ" aria-label="Sao chép mã phụ">
+                                                        <i class="far fa-copy"></i>
+                                                        <span class="copy-sub-text" data-i18n="copy">Sao chép</span>
+                                                    </button>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
 
+                            <!-- SERVICE & PACKAGING CARD -->
                             <div class="premium-card">
                                 <div class="card-header">
-                                    <h3><i class="fas fa-clipboard-list"></i> CHI TIẾT DỊCH VỤ</h3>
+                                    <h3><i class="fas fa-clipboard-list"></i> <span data-i18n="serviceDetails">CHI TIẾT
+                                            DỊCH VỤ & QUY CÁCH</span></h3>
                                 </div>
                                 <div class="card-body">
-                                    <div class="info-list compact-list">
-                                        <div class="info-row">
-                                            <div class="info-data">
-                                                <span class="label">Dịch vụ</span>
-                                                <strong id="service-type"></strong>
-                                            </div>
+                                    <div class="specs-grid">
+                                        <div class="spec-item">
+                                            <span class="spec-label" data-i18n="service">Dịch vụ</span>
+                                            <strong id="service-type" class="spec-value">---</strong>
                                         </div>
-                                        <div class="info-row" style="display: none;">
-                                            <div class="info-data">
-                                                <span class="label">Điều khoản</span>
-                                                <strong id="service-term">Standard</strong>
-                                            </div>
+                                        <div class="spec-item" style="display: none;">
+                                            <span class="spec-label">Điều khoản</span>
+                                            <strong id="service-term">Standard</strong>
                                         </div>
-                                        <div class="info-row">
-                                            <div class="info-data">
-                                                <span class="label">Đóng gói</span>
-                                                <strong id="detail-packaging"></strong>
-                                            </div>
+                                        <div class="spec-item">
+                                            <span class="spec-label" data-i18n="packaging">Loại đóng gói</span>
+                                            <strong id="detail-packaging" class="spec-value">---</strong>
                                         </div>
-                                        <div class="info-row">
-                                            <div class="info-data">
-                                                <span class="label">Số kiện</span>
-                                                <strong id="detail-pieces"></strong>
-                                            </div>
+                                        <div class="spec-item">
+                                            <span class="spec-label" data-i18n="pieces">Số lượng kiện</span>
+                                            <strong id="detail-pieces" class="spec-value">---</strong>
                                         </div>
-                                        <div class="info-row">
-                                            <div class="info-data">
-                                                <span class="label">Trọng lượng</span>
-                                                <strong id="detail-weight"></strong>
-                                            </div>
+                                        <div class="spec-item">
+                                            <span class="spec-label" data-i18n="weight">Trọng lượng</span>
+                                            <strong id="detail-weight" class="spec-value">---</strong>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+
+                            <!-- QUICK ACTIONS & SUPPORT CARD -->
+                            <div class="premium-card action-support-card">
+                                <div class="card-body card-action-flex">
+                                    <div class="action-desc">
+                                        <strong data-i18n="helpTitle">Cần trợ giúp về lô hàng này?</strong>
+                                        <span data-i18n="helpSubtitle">Đội ngũ chuyên viên vận tải EximLog hỗ trợ
+                                            24/7</span>
+                                    </div>
+                                    <div class="action-buttons-group">
+                                        <button type="button" class="btn-action-outline" id="btnPrintSlip"
+                                            onclick="printTrackingSlip();" title="In hoặc lưu file thông tin">
+                                            <i class="fas fa-print"></i> <span data-i18n="btnPrint">In phiếu</span>
+                                        </button>
+                                        <a href="#" target="_blank" rel="noopener noreferrer"
+                                            class="btn-action-primary">
+                                            <i class="fas fa-comments"></i> <span data-i18n="btnHelp">Hỗ trợ ngay</span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
                         </div>
 
                     </div> <!-- End results-grid -->
+
+                    <!-- PRINT-ONLY FOOTER (Chỉ hiện khi In phiếu hoặc Lưu PDF) -->
+                    <div class="print-only-footer">
+                        <div class="print-footer-notice">
+                            <p>• Phiếu được trích xuất tự động từ Hệ thống định vị điện tử EXIMLOG Logistics
+                                (<b>eximlog.vn</b>).</p>
+                            <p>• Mọi thắc mắc hoặc yêu cầu hỗ trợ giao nhận vui lòng liên hệ bộ phận hỗ trợ khách hàng
+                                EXIMLOG.</p>
+                        </div>
+                        <div class="print-signatures">
+                            <div class="sig-block">
+                                <strong>NGƯỜI GỬI / KHÁCH HÀNG</strong>
+                                <span>(Ký, ghi rõ họ tên)</span>
+                            </div>
+                            <div class="sig-block">
+                                <strong>ĐẠI DIỆN EXIMLOG LOGISTICS</strong>
+                                <span>(Ký tên & Đóng dấu xác nhận)</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
                 <!-- ERROR CONTAINER -->
-                <div id="errorContainer" class="error-container hidden">
+                <div id="errorContainer" class="error-container hidden" role="alert">
                     <div class="error-box">
-                        <i class="fas fa-exclamation-circle error-icon-large"></i>
-                        <h3 class="error-title">Không tìm thấy thông tin</h3>
+                        <div class="error-icon-wrapper">
+                            <i class="fas fa-box-open error-icon-large"></i>
+                        </div>
+                        <h3 class="error-title" data-i18n="notFoundTitle">Không tìm thấy thông tin vận đơn</h3>
                         <p id="error-message-results"></p>
-                        <button class="btn-back-search" onclick="document.getElementById('trackingCodeInputHeader').focus();">Thử lại mã khác</button>
+                        <div class="error-actions">
+                            <button class="btn-back-search" id="btn-back-to-input"
+                                onclick="document.getElementById('trackingCodeInputHeader').focus();">
+                                <i class="fas fa-rotate-left"></i> <span data-i18n="tryAgain">Thử tra cứu lại</span>
+                            </button>
+                            <a href="/tracking.html" class="btn-back-home">
+                                <i class="fas fa-house"></i> <span data-i18n="backHome">Về trang tra cứu</span>
+                            </a>
+                        </div>
                     </div>
                 </div>
 
@@ -245,25 +468,29 @@
     <!-- ==============================================
          PARTNERS FOOTER
          ============================================== -->
-    <footer class="partners">
+    <footer class="partners" role="contentinfo">
         <div class="container-footer">
-            <p class="footer-title">ĐỐI TÁC VẬN CHUYỂN TOÀN CẦU</p>
+            <p class="footer-title" data-i18n="globalPartners">ĐỐI TÁC VẬN CHUYỂN TOÀN CẦU</p>
             <div class="carousel-wrapper">
-                <div class="carousel-inner" id="partner-carousel">
-                    <div class="carousel-item"><img src="./assets/images/dhl.png" alt="DHL"></div>
+                <div class="carousel-inner" id="partner-carousel" aria-label="Logo các đối tác logistics">
+                    <div class="carousel-item"><img src="./assets/images/dhl.png" alt="DHL Express"></div>
                     <div class="carousel-item"><img src="./assets/images/fedex.png" alt="FedEx"></div>
                     <div class="carousel-item"><img src="./assets/images/ups.png" alt="UPS"></div>
                     <div class="carousel-item"><img src="./assets/images/amse.png" alt="AMSE"></div>
                     <div class="carousel-item"><img src="./assets/images/canpar.png" alt="Canpar"></div>
-                    <div class="carousel-item"><img src="./assets/images/toll.png" alt="Toll"></div>
+                    <div class="carousel-item"><img src="./assets/images/toll.png" alt="Toll Global"></div>
                     <div class="carousel-item"><img src="./assets/images/dpd.png" alt="DPD"></div>
-                    <div class="carousel-item"><img src="./assets/images/cadpost.png" alt="CadPost"></div>
-                    <div class="carousel-item"><img src="./assets/images/auspost.png" alt="AusPost"></div>
+                    <div class="carousel-item"><img src="./assets/images/cadpost.png" alt="Canada Post"></div>
+                    <div class="carousel-item"><img src="./assets/images/auspost.png" alt="Australia Post"></div>
                 </div>
+            </div>
+            <div class="footer-bottom-info">
+                <span>© 2026 EXIMLOG Transportation & Logistics. Bảo vệ dữ liệu cá nhân theo tiêu chuẩn quốc tế.</span>
             </div>
         </div>
     </footer>
 
-    <script src="/script/tracking.348123947.js"></script>
+    <script src="/asd_script_21374912/tracking.js"></script>
 </body>
+
 </html>
