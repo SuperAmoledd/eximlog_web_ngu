@@ -145,7 +145,7 @@ button {
 .landing-bg {
     position: fixed;
     inset: -15px;
-    background-image: url('./assets/images/background-tracking-2.jpg');
+    background-image: url('/img/img_tracking/background-tracking-2.jpg');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
@@ -671,7 +671,7 @@ body:has(#results-page-wrapper:not(.hidden)) .landing-bg {
 
 .status-banner-card {
     background: linear-gradient(135deg, rgba(4, 16, 34, 0.6) 0%, rgba(6, 20, 42, 0.35) 50%, rgba(4, 16, 34, 0.65) 100%),
-        url('./assets/images/banner-tracking-1.jpg') center center / cover no-repeat;
+        url('/img/img_tracking/banner-tracking-1.jpg') center center / cover no-repeat;
     background-color: var(--navy-950);
     border-radius: 0;
     color: #ffffff;
